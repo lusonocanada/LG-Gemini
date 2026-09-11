@@ -2,25 +2,22 @@ import LGChromaticBar from './LGChromaticBar';
 
 export default function HeroExecutivePhoto() {
   return (
-    <div className="relative p-2.5 rounded-3xl liquid-glass-card ai-rainbow-border shadow-2xl overflow-hidden">
-      {/* Chromatic Top Accent on Frame */}
+    <div className="hero-photo-frame relative p-2.5 rounded-3xl liquid-glass-card ai-rainbow-border shadow-2xl overflow-hidden">
       <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none rounded-t-3xl overflow-hidden">
         <LGChromaticBar size="xs" />
       </div>
 
       <div className="relative rounded-2xl overflow-hidden bg-[#0F294A] min-h-[460px] sm:min-h-[520px] flex flex-col justify-end">
-        {/* Static Real Photo */}
         <img
           src="/hero-photo2.png"
           alt="Diego Moraes"
-          className="w-full h-[460px] sm:h-[520px] object-cover object-[center_15%]"
+          className="hero-cinematic-photo w-full h-[460px] sm:h-[520px] object-cover object-[center_15%]"
         />
 
-        {/* Subtle cinematic gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1929]/95 via-[#0C1929]/35 to-transparent pointer-events-none" />
+        <div className="hero-photo-light absolute inset-0 pointer-events-none" />
 
-        {/* Floating Apple-Style Liquid Glass Executive ID Card */}
-        <div className="absolute bottom-3 left-3 right-3 p-5 z-20 text-white space-y-2 rounded-2xl liquid-glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl pointer-events-auto">
+        <div className="hero-id-card absolute bottom-3 left-3 right-3 p-5 z-20 text-white space-y-2 rounded-2xl liquid-glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl pointer-events-auto">
           <div className="flex flex-wrap gap-2 items-center justify-between">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
