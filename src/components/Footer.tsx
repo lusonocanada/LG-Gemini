@@ -194,11 +194,18 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
             </div>
           </div>
 
-          <p className="pt-5 text-xs text-slate-400">As fotos do Banco Real, Santander e Safra foram fornecidas por Diego. As demais imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de projetos de Diego.</p>
+          <div className="pt-6 border-b border-slate-800 pb-6">
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] text-slate-300 mb-2">
+              Documento de caráter privado, confidencial e não comercial
+            </p>
+            <p className="text-[10px] sm:text-[11px] text-slate-500 leading-relaxed max-w-6xl">
+              Material destinado exclusivamente a processo seletivo, avaliação de candidatura e apresentação profissional a colaboradores da LG Lugar de Gente. O conteúdo reúne produção autoral e referências visuais inspiradas em materiais públicos disponibilizados pela LG Lugar de Gente em seus canais institucionais. Marcas, logotipos, nomes empresariais, identidade visual, paleta cromática, elementos gráficos e demais sinais distintivos eventualmente reproduzidos ou mencionados permanecem de titularidade de seus respectivos detentores e são utilizados unicamente para contextualização da candidatura, sem alegação de afiliação oficial, endosso, patrocínio, aprovação institucional ou finalidade comercial, publicitária ou de divulgação pública.
+            </p>
+          </div>
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
-              Apresentação profissional independente criada por Diego Moraes. LG Lugar de Gente e suas marcas são citadas exclusivamente como contexto de estudo e afinidade profissional.
+              Uso restrito ao contexto desta candidatura e às pessoas diretamente envolvidas em sua avaliação.
             </p>
             <span className="shrink-0 text-slate-400 font-mono text-xs">
               © {new Date().getFullYear()} Diego Moraes
@@ -239,7 +246,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
             <div className="overflow-y-auto p-6 sm:p-8 space-y-6 flex-1">
               <div className="p-4 bg-[#F8FAFC] border-l-4 border-l-[#008CD2] border-t border-r border-b border-slate-200 text-xs text-slate-700 leading-relaxed font-medium">
-                Fontes institucionais públicas consultadas como contexto para esta apresentação. Elas não representam endosso, afiliação ou participação da LG Lugar de Gente.
+                Referências institucionais públicas consultadas para contextualização da candidatura e compreensão do posicionamento, produtos e iniciativas da LG Lugar de Gente. A utilização dessas referências não implica afiliação, endosso, patrocínio ou aprovação institucional.
               </div>
 
               <div className="space-y-3">
@@ -272,7 +279,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               </div>
 
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed font-normal">
-                Posicionamentos e ofertas podem evoluir. As interpretações profissionais desta apresentação são de Diego Moraes.
+                Posicionamentos, produtos e informações institucionais podem evoluir ao longo do tempo. O conteúdo profissional apresentado neste material corresponde exclusivamente à candidatura de Diego Moraes.
               </div>
             </div>
 
