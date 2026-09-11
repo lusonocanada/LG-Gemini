@@ -82,30 +82,25 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
   return (
     <>
       <footer className="bg-[#0F172A] text-white pt-16 pb-12 relative overflow-hidden border-t border-slate-800">
-        
         <div className="absolute top-0 left-0 right-0">
           <LGChromaticBar size="xs" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
-            
-            {/* Identity & Scope */}
             <div className="lg:col-span-5 space-y-4">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="font-extrabold text-lg tracking-tight text-white">
                   DIEGO MORAES
                 </span>
                 <span className="text-slate-600">|</span>
-                <LGLogo onDark size="sm" />
+                <LGLogo onDark size="sm" className="-mt-[17px]" />
               </div>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
                 Apresentação executiva e proposta de valor profissional direcionada à <strong>LG Lugar de Gente</strong>. Transformação de RH, implantação de plataformas corporativas, governança de processos e inteligência artificial aplicada.
               </p>
 
-              {/* Navigation Links in Footer */}
               <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
                 {navLinks.map((link) => (
                   <a
@@ -145,7 +140,6 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               </div>
             </div>
 
-            {/* Direct Contact Links */}
             <div className="lg:col-span-7 space-y-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[#00A3E0] block mb-2">
                 Contato Direto
@@ -198,12 +192,10 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 </div>
               </div>
             </div>
-
           </div>
 
-<p className="pt-5 text-xs text-slate-400">As fotos do Banco Real, Santander e Safra foram fornecidas por Diego. As demais imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de projetos de Diego.</p>
+          <p className="pt-5 text-xs text-slate-400">As fotos do Banco Real, Santander e Safra foram fornecidas por Diego. As demais imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de projetos de Diego.</p>
 
-          {/* Mandatory Statement */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
               Apresentação profissional independente criada por Diego Moraes. LG Lugar de Gente e suas marcas são citadas exclusivamente como contexto de estudo e afinidade profissional.
@@ -212,36 +204,31 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               © {new Date().getFullYear()} Diego Moraes
             </span>
           </div>
-
         </div>
       </footer>
 
-      {/* Accessible Sources Drawer / Dialog */}
       {sourcesModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-labelledby="sources-drawer-title"
         >
-          {/* Backdrop */}
-          <div 
+          <div
             onClick={() => setSourcesModalOpen(false)}
-            className="fixed inset-0 bg-[#0F294A]/80 backdrop-blur-xs transition-opacity" 
+            className="fixed inset-0 bg-[#0F294A]/80 backdrop-blur-xs transition-opacity"
           />
 
-          {/* Dialog Panel */}
-          <div 
+          <div
             ref={drawerRef}
             tabIndex={-1}
             className="relative z-10 w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] bg-white text-slate-900 rounded-t-3xl sm:rounded-2xl border-t-4 border-t-[#008CD2] shadow-2xl flex flex-col overflow-hidden"
           >
-            {/* Top Bar */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white shrink-0">
               <h2 id="sources-drawer-title" className="text-sm font-bold uppercase tracking-wider text-[#008CD2]">
                 Fontes e Referências
               </h2>
-              <button 
+              <button
                 onClick={() => setSourcesModalOpen(false)}
                 aria-label="Fechar fontes e referências"
                 className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
@@ -250,18 +237,14 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               </button>
             </div>
 
-            {/* Scrollable Content */}
             <div className="overflow-y-auto p-6 sm:p-8 space-y-6 flex-1">
-              
-              {/* Mandatory Opening Statement */}
               <div className="p-4 bg-[#F8FAFC] border-l-4 border-l-[#008CD2] border-t border-r border-b border-slate-200 text-xs text-slate-700 leading-relaxed font-medium">
                 Fontes institucionais públicas consultadas como contexto para esta apresentação. Elas não representam endosso, afiliação ou participação da LG Lugar de Gente.
               </div>
 
-              {/* Real Clickable Links List */}
               <div className="space-y-3">
                 {sourcesList.map((item, idx) => (
-                  <div 
+                  <div
                     key={idx}
                     className="p-3.5 bg-white border border-slate-200 hover:border-[#008CD2] rounded-xl transition-all shadow-2xs hover:shadow-xs group"
                   >
@@ -288,14 +271,11 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 ))}
               </div>
 
-              {/* Mandatory Closing Statement */}
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed font-normal">
                 Posicionamentos e ofertas podem evoluir. As interpretações profissionais desta apresentação são de Diego Moraes.
               </div>
-
             </div>
 
-            {/* Sticky Footer */}
             <div className="p-4 border-t border-slate-200 bg-white flex justify-end shrink-0">
               <button
                 onClick={() => setSourcesModalOpen(false)}
@@ -304,7 +284,6 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 Fechar
               </button>
             </div>
-
           </div>
         </div>
       )}
