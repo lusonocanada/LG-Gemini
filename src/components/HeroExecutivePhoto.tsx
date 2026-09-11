@@ -2,7 +2,7 @@ import LGChromaticBar from './LGChromaticBar';
 
 export default function HeroExecutivePhoto() {
   return (
-    <div className="relative p-2.5 rounded-3xl liquid-glass-card shadow-2xl overflow-hidden">
+    <div className="relative p-2.5 rounded-3xl liquid-glass-card ai-rainbow-border shadow-2xl overflow-hidden">
       {/* Chromatic Top Accent on Frame */}
       <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none rounded-t-3xl overflow-hidden">
         <LGChromaticBar size="xs" />
