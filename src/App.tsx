@@ -25,58 +25,35 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user" transition={reduced ? { duration: 0, delay: 0 } : undefined}>
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative selection:bg-[#008CD2] selection:text-white font-sans antialiased">
+      <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative selection:bg-[#008CD2] selection:text-white font-sans antialiased">
+        {/* A abertura existe sozinha para que nenhuma animação do hero rode escondida atrás dela. */}
+        {showSplash ? (
+          <SplashScreen onComplete={finishSplash} />
+        ) : (
+          <div className="presentation-content">
+            <Header onOpenCvModal={() => setShowCvModal(true)} />
 
-      {/* 00. Breve abertura editorial com constelação de partículas */}
+            <main>
+              <Hero onOpenCvModal={() => setShowCvModal(true)} />
+              <HRVision />
+              <Metrics />
+              <Trajetoria />
+              <SelectedCases />
+              <WorkingMethodology />
+              <ExecutiveFit />
+              <WhyLG />
+              <ClosingCTA onOpenCvModal={() => setShowCvModal(true)} />
+            </main>
 
-        {showSplash && <SplashScreen onComplete={finishSplash} />}
+            <Footer onOpenCvModal={() => setShowCvModal(true)} />
+          </div>
+        )}
 
-
-      {/* 01. Navegação Fixa com Identidade Diego Moraes e Destino Discreto LG */}
-      <div className="presentation-content" inert={showSplash}>
-      <Header onOpenCvModal={() => setShowCvModal(true)} />
-
-      {/* Main Content Sections — Nova Arquitetura Obrigatória */}
-      <main>
-        {/* 1. Hero: Diego em uma frase inesquecível */}
-        <Hero onOpenCvModal={() => setShowCvModal(true)} />
-
-        {/* 2. A tese profissional: como Diego transforma RH (#visao) */}
-        <HRVision />
-
-        {/* 3. Provas de resultado (#resultados) */}
-        <Metrics />
-
-        {/* 4. Trajetória e repertório (#trajetoria) */}
-        <Trajetoria />
-
-        {/* 5. Cases selecionados (#cases) */}
-        <SelectedCases />
-
-        {/* 6. O método de entrega (#metodo) */}
-        <WorkingMethodology />
-
-        {/* 7. Áreas de maior aderência com a experiência (#aderencia) */}
-        <ExecutiveFit />
-
-        {/* 8. Por que a LG faz sentido para Diego — e o que Diego pode fazer acontecer (#porque-lg) */}
-        <WhyLG />
-
-        {/* 8. CTA final e fechamento */}
-        <ClosingCTA onOpenCvModal={() => setShowCvModal(true)} />
-      </main>
-
-      {/* Rodapé com drawer discreto de fontes consultadas e declaração independente */}
-      <Footer onOpenCvModal={() => setShowCvModal(true)} />
-
+        <ResumeDrawer
+          isOpen={showCvModal}
+          onClose={closeCv}
+        />
       </div>
-
-      {/* Perfil Executivo e CV Completo (Drawer / Impressão PDF) */}
-      <ResumeDrawer
-        isOpen={showCvModal}
-        onClose={closeCv}
-      />
-    </div>
     </MotionConfig>
   );
 }
