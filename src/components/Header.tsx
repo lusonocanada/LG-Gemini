@@ -13,10 +13,9 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 56);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -40,73 +39,76 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+          isScrolled ? 'opacity-0 -translate-y-2 pointer-events-none' : 'opacity-100 translate-y-0'
+        }`}
+      >
         <LGChromaticBar size="xs" />
       </div>
 
       <header
-        className={`fixed top-[3px] left-0 right-0 z-40 transition-all duration-300 liquid-glass-light border-b border-slate-200/80 ${
-          isScrolled ? 'shadow-[0_10px_30px_-10px_rgba(15,41,74,0.1)] border-slate-300/90' : ''
+        className={`fixed z-40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isScrolled
+            ? 'top-3 sm:top-4 left-3 right-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-[calc(100%-32px)] sm:max-w-[1240px] rounded-[24px] sm:rounded-full floating-nav-glass'
+            : 'top-[3px] left-0 right-0 border-b border-slate-200/80 liquid-glass-light'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
-            
-            {/* Protagonist Brand Lockup: Diego Moraes first, prominent & legible LG contextual logo */}
-            <a 
-              href="#" 
+        <div className={`mx-auto transition-all duration-500 ${isScrolled ? 'px-3 sm:px-4 lg:px-5' : 'max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
+          <div className={`flex items-center justify-between gap-2 sm:gap-4 transition-all duration-500 ${isScrolled ? 'h-14 sm:h-[62px]' : 'h-16 sm:h-20'}`}>
+            <a
+              href="#"
               className="flex items-center gap-2.5 sm:gap-4 group focus:outline-hidden shrink-0"
               aria-label="Diego Moraes - Início"
             >
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-base sm:text-lg font-black tracking-tight text-[#0F294A] group-hover:text-[#008CD2] transition-colors whitespace-nowrap">
-                    DIEGO MORAES
-                  </span>
-                  <span className="inline-flex gap-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1B4E9B]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#008CD2]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F58220]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#8A1538]" />
-                  </span>
-                </div>
+              <div className="flex items-center gap-2">
+                <span className={`font-black tracking-tight text-[#0F294A] group-hover:text-[#008CD2] transition-all whitespace-nowrap ${isScrolled ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
+                  DIEGO MORAES
+                </span>
+                <span className="inline-flex gap-0.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#1B4E9B]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#008CD2]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F58220]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8A1538]" />
+                </span>
               </div>
 
-              <div className="h-8 w-px bg-slate-300 hidden sm:block mx-1" />
+              <div className={`h-8 w-px bg-slate-300 hidden sm:block mx-1 transition-opacity ${isScrolled ? 'opacity-55' : 'opacity-100'}`} />
 
-              <div className="hidden sm:flex items-center pl-1 shrink-0 -mt-[17px]">
+              <div className={`hidden sm:flex items-center pl-1 shrink-0 -mt-[17px] transition-all duration-500 origin-left ${isScrolled ? 'scale-[0.90]' : 'scale-100'}`}>
                 <LGLogo size="sm" />
               </div>
             </a>
 
-            {/* Desktop Navigation Links - Fluid & Auto-resizing */}
-            <nav className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1.5 2xl:gap-2 flex-1 mx-1 xl:mx-2 min-w-0">
+            <nav className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1 flex-1 mx-1 xl:mx-2 min-w-0">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-[#008CD2] px-1.5 xl:px-2.5 2xl:px-3 py-1.5 transition-colors border-b-2 border-transparent hover:border-[#008CD2] whitespace-nowrap shrink-0"
+                  className={`font-bold uppercase tracking-wider text-slate-600 hover:text-[#008CD2] transition-all whitespace-nowrap shrink-0 rounded-full hover:bg-white/55 ${
+                    isScrolled ? 'text-[10px] xl:text-[11px] px-2 xl:px-2.5 py-2' : 'text-[11px] xl:text-xs px-1.5 xl:px-2.5 py-1.5'
+                  }`}
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            {/* Header Actions */}
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
                 onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
-                className="inline-flex items-center gap-2 bg-[#0F294A] hover:bg-[#1B4E9B] text-white text-[11px] sm:text-xs font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border border-slate-700 hover:border-[#008CD2] transition-all cursor-pointer shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
+                className={`inline-flex items-center gap-2 bg-[#0F294A] hover:bg-[#1B4E9B] text-white font-bold rounded-full border border-[#1B4E9B]/40 hover:border-[#008CD2] transition-all cursor-pointer shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap ${
+                  isScrolled ? 'text-[10px] sm:text-[11px] px-3.5 sm:px-4 py-2' : 'text-[11px] sm:text-xs px-3.5 sm:px-5 py-2 sm:py-2.5'
+                }`}
               >
                 <FileText size={13} className="text-[#FFC20E]" />
                 <span className="hidden min-[400px]:inline">Ver perfil completo</span><span className="min-[400px]:hidden">Perfil</span>
               </button>
 
-              {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-slate-700 hover:text-slate-900 transition-colors focus:outline-hidden rounded-full hover:bg-slate-100/80"
+                className="lg:hidden p-2 text-slate-700 hover:text-[#0F294A] transition-colors focus:outline-hidden rounded-full hover:bg-white/70"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"
                 aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -114,13 +116,14 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
-
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown with Liquid Glass */}
         {mobileMenuOpen && (
-          <div id="mobile-navigation" className="lg:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto liquid-glass-light border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-1 shadow-2xl">
+          <div
+            id="mobile-navigation"
+            className={`lg:hidden max-h-[calc(100dvh-6rem)] overflow-y-auto mx-2 mb-2 px-4 pt-3 pb-5 space-y-1 rounded-3xl border border-white/70 shadow-xl backdrop-blur-3xl bg-white/88 ${isScrolled ? '' : 'mt-1'}`}
+          >
             <div className="pb-3 mb-2 border-b border-slate-200/60 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Apresentação para</span>
               <LGLogo size="sm" />
@@ -131,7 +134,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-sm font-semibold text-slate-700 hover:text-[#008CD2] p-2.5 rounded-full hover:bg-slate-50 transition-colors"
+                className="flex items-center justify-between text-sm font-semibold text-slate-700 hover:text-[#008CD2] p-2.5 rounded-full hover:bg-[#EAF6FB] transition-colors"
               >
                 <span>{link.label}</span>
                 <ChevronRight size={14} className="text-slate-400" />
