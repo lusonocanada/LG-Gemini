@@ -1,6 +1,5 @@
 import ContextImage from './ContextImage';
 import { motion } from 'motion/react';
-import LGLogo from './LGLogo';
 
 export default function WhyLG() {
   const points = [
@@ -47,7 +46,7 @@ export default function WhyLG() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 pb-8 border-b border-slate-200">
+        <div className="mb-14 pb-8 border-b border-slate-200">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-3 h-1 bg-[#8A1538]" />
@@ -63,12 +62,6 @@ export default function WhyLG() {
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
               O que me atrai na empresa e onde vejo aderência com a minha trajetória.
             </p>
-          </div>
-
-          {/* Prominent LG Logo in Liquid Glass Badge */}
-          <div className="liquid-glass-pill px-5 py-3 rounded-2xl flex items-center gap-3 shrink-0 shadow-xs hover:shadow-md transition-shadow">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 hidden sm:inline">Institucional</span>
-            <LGLogo size="md" />
           </div>
         </div>
 
