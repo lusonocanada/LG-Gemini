@@ -22,7 +22,13 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
   const dialogRef = useDialog(true, handleDismiss);
 
   useEffect(() => {
-    if (reduced) return;
+    const preloadLogo = new Image();
+    preloadLogo.src = '/lg_logo_original.svg';
+
+    if (reduced) {
+      setStep(2);
+      return;
+    }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
@@ -31,15 +37,15 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
     };
     window.addEventListener('keydown', handleKeyDown);
 
-    // Reveal context at 1.1s
+    // O destino da apresentação aparece cedo, sem sensação de travamento.
     const timerStep2 = setTimeout(() => {
       setStep(2);
-    }, 1100);
+    }, 420);
 
-    // Auto complete at 3.2s (max 3.5s)
+    // Abertura curta: suficiente para criar atmosfera, sem atrasar o conteúdo principal.
     const timerFinish = setTimeout(() => {
       handleDismiss();
-    }, 3200);
+    }, 2700);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
@@ -48,7 +54,6 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
     };
   }, [reduced, handleDismiss]);
 
-  // Subtle constellation particle canvas
   useEffect(() => {
     if (reduced) return;
     const canvas = canvasRef.current;
@@ -61,31 +66,29 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
     let height = (canvas.height = window.innerHeight);
 
     const handleResize = () => {
-      if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
     window.addEventListener('resize', handleResize);
 
     const particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number; alpha: number }> = [];
-    const count = 75;
+    const count = 52;
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.5 + 0.5,
-        alpha: Math.random() * 0.5 + 0.2
+        vx: (Math.random() - 0.5) * 0.32,
+        vy: (Math.random() - 0.5) * 0.32,
+        radius: Math.random() * 1.3 + 0.4,
+        alpha: Math.random() * 0.4 + 0.18
       });
     }
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(10, 15, 26, 0.35)';
+      ctx.fillStyle = 'rgba(10, 15, 26, 0.32)';
       ctx.fillRect(0, 0, width, height);
 
-      // Connect particles if close
       for (let i = 0; i < count; i++) {
         const p1 = particles[i];
         p1.x += p1.vx;
@@ -102,9 +105,9 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
         for (let j = i + 1; j < count; j++) {
           const p2 = particles[j];
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-          if (dist < 110) {
-            ctx.strokeStyle = `rgba(0, 140, 210, ${0.12 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
+          if (dist < 105) {
+            ctx.strokeStyle = `rgba(0, 140, 210, ${0.1 * (1 - dist / 105)})`;
+            ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -125,93 +128,89 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
   }, [reduced]);
 
   return (
-    <>
-        <motion.div
-          ref={dialogRef}
-          role="dialog" aria-modal="true" aria-labelledby="splash-title" tabIndex={-1}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[300] bg-[#0A0F1A] text-white select-none overflow-y-auto flex flex-col justify-between"
+    <motion.div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="splash-title"
+      tabIndex={-1}
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[300] bg-[#0A0F1A] text-white select-none overflow-y-auto flex flex-col justify-between"
+    >
+      {!reduced && <canvas aria-hidden="true" ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />}
+
+      <div className="relative z-10 w-full h-16 flex items-center justify-between px-6 sm:px-12">
+        <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#008CD2]" />
+          <span>Apresentação profissional executiva</span>
+        </div>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDismiss();
+          }}
+          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white px-4 py-1.5 border border-slate-700 bg-[#14263D] hover:bg-[#1B4E9B] rounded-full transition-colors cursor-pointer"
         >
-          {!reduced && <canvas aria-hidden="true" ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />}
+          <span>Pular</span>
+          <FastForward size={13} />
+        </button>
+      </div>
 
-          {/* Top Bar */}
-          <div className="relative z-10 w-full h-16 flex items-center justify-between px-6 sm:px-12">
-            <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#008CD2]" />
-              <span>Apresentação profissional executiva</span>
-            </div>
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center max-w-3xl mx-auto">
+        <motion.div
+          initial={reduced ? false : { opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduced ? 0 : 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-4"
+        >
+          <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#00A3E0] uppercase block">
+            REPERTÓRIO · MÉTODO · TRANSFORMAÇÃO
+          </span>
 
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDismiss();
-              }}
-              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white px-4 py-1.5 border border-slate-700 bg-[#14263D] hover:bg-[#1B4E9B] rounded-full transition-colors cursor-pointer"
-            >
-              <span>Pular</span>
-              <FastForward size={13} />
-            </button>
-          </div>
+          <h1 id="splash-title" className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
+            DIEGO MORAES
+          </h1>
 
-          {/* Central Focus: Diego Moraes first */}
-          <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center max-w-3xl mx-auto">
-            <motion.div
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-4"
-            >
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#00A3E0] uppercase block">
-                REPERTÓRIO · MÉTODO · TRANSFORMAÇÃO
-              </span>
-
-              <h1 id="splash-title" className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
-                DIEGO MORAES
-              </h1>
-
-              <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-xl mx-auto">
-                Transformação de RH, Implantação e IA Aplicada
-              </p>
-            </motion.div>
-
-            {/* Step 2: The recipient (LG Lugar de Gente) appears understated and respectful */}
-            <AnimatePresence>
-              {(reduced || step >= 2) && (
-                <motion.div
-                  initial={false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0 }}
-                  className="mt-10 pt-8 border-t border-slate-800 flex flex-col items-center gap-3"
-                >
-                  <span className="text-[11px] tracking-wider uppercase text-slate-400">
-                    Apresentação direcionada à
-                  </span>
-
-                  {/* Pristine official LG Logo inside clear container on dark */}
-                  <LGLogo onDark size="md" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Bottom Bar with CTA */}
-          <div className="relative z-10 w-full h-20 flex items-center justify-center px-6 pb-4">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDismiss();
-              }}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer"
-            >
-              <span>Entrar na apresentação</span>
-              <ChevronRight size={14} />
-            </motion.button>
-          </div>
+          <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-xl mx-auto">
+            Transformação de RH, Implantação e IA Aplicada
+          </p>
         </motion.div>
-    </>
+
+        <AnimatePresence>
+          {(reduced || step >= 2) && (
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.48, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-8 pt-7 border-t border-slate-800 flex flex-col items-center gap-3"
+            >
+              <span className="text-[11px] tracking-wider uppercase text-slate-400">
+                Apresentação direcionada à
+              </span>
+              <LGLogo onDark size="md" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="relative z-10 w-full h-20 flex items-center justify-center px-6 pb-4">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDismiss();
+          }}
+          className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer"
+        >
+          <span>Entrar na apresentação</span>
+          <ChevronRight size={14} />
+        </motion.button>
+      </div>
+    </motion.div>
   );
 }
