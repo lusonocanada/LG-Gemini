@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, Cambria, serif;
+  
+  /* LG Official Brand Colors & Bubble Cluster */
+  --color-lg-blue: #008CD2;
+  --color-lg-navy: #1B4E9B;
+  --color-lg-cyan: #00A3E0;
+  --color-lg-yellow: #FFC20E;
+  --color-lg-orange: #F58220;
+  --color-lg-red: #E53924;
+  --color-lg-crimson: #C8102E;
+  --color-lg-wine: #8A1538;
+  --color-lg-charcoal: #3C3C3B;
+  
+  /* Cosmic Dark System (Hero, Preloader, Night layers) */
+  --color-cosmic-dark: #070B14;
+  --color-cosmic-deep: #0B101E;
+  --color-cosmic-card: #0F172A;
+  --color-cosmic-surface: #131E35;
+  --color-cosmic-border: #1E293B;
+
+  /* Executive Light Surfaces */
+  --color-surface-paper: #FFFFFF;
+  --color-surface-subtle: #F8FAFC;
+  --color-surface-muted: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+  --color-border-subtle: #E2E8F0;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  background-color: #070B14;
+  color: #0F172A;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif-lg {
+  font-family: var(--font-serif);
+}
+
+/* Cosmic Space Grids & Stars */
+.bg-cosmic-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-light-grid {
+  background-size: 32px 32px;
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+}
+
+.bg-cosmic-dots {
+  background-image: radial-gradient(rgba(0, 140, 210, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Orbital Animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse-slow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 50s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+/* Smooth Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0B101E; 
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #008CD2; 
+}
+
+/* Smooth selection */
+::selection {
+  background: #008CD2;
+  color: #FFFFFF;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+  
+  html, body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    font-family: var(--font-sans) !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #resume-printable-area, 
+  #resume-printable-area * {
+    visibility: visible;
+  }
+
+  #resume-printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  section, article, .border-l-2, table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

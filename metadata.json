@@ -1,0 +1,8 @@
+{
+  "name": "Diego Moraes | Transformação de RH & Implantação",
+  "description": "Apresentação executiva de Diego Moraes: transformação de RH, implantação de plataformas HCM, governança de processos e IA aplicada para a LG Lugar de Gente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
