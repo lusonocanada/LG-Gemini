@@ -7,14 +7,14 @@ export default function HeroExecutivePhoto() {
         <LGChromaticBar size="xs" />
       </div>
 
-      <div className="relative rounded-2xl overflow-hidden bg-[#0F294A] min-h-[460px] sm:min-h-[520px] flex flex-col justify-end">
+      <div className="relative rounded-2xl overflow-hidden bg-[#0F294A] min-h-[520px] sm:min-h-[600px] lg:min-h-[640px] flex flex-col justify-end">
         <img
           src="/hero-photo2.png"
           alt="Diego Moraes"
-          className="hero-cinematic-photo w-full h-[460px] sm:h-[520px] object-cover object-[center_15%]"
+          className="hero-cinematic-photo w-full h-[520px] sm:h-[600px] lg:h-[640px] object-cover object-[center_12%]"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C1929]/95 via-[#0C1929]/35 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C1929]/95 via-[#0C1929]/30 to-transparent pointer-events-none" />
         <div className="hero-photo-light absolute inset-0 pointer-events-none" />
 
         <div className="hero-id-card absolute bottom-3 left-3 right-3 p-5 z-20 text-white space-y-2 rounded-2xl liquid-glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl pointer-events-auto">
