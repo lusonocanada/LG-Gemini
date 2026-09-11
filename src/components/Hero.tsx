@@ -18,7 +18,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
   const reduced = useMotionPreference();
 
   return (
-    <section className="hero-cinematic relative pt-24 sm:pt-28 pb-16 lg:pb-24 bg-white text-[#0F294A] border-b border-slate-200 overflow-hidden">
+    <section className="hero-cinematic relative pt-24 sm:pt-28 pb-16 lg:pb-20 bg-white text-[#0F294A] border-b border-slate-200 overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -32,8 +32,8 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
         <motion.div
           initial={reduced ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={reduced ? { duration: 0 } : { duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 sm:mb-12 border-b border-slate-200/80"
+          transition={reduced ? { duration: 0 } : { duration: 0.5, delay: 0.08 }}
+          className="flex flex-wrap items-center justify-between gap-4 pb-5 mb-7 sm:mb-9 border-b border-slate-200/80"
         >
           <div className="flex items-center gap-3">
             <span className="inline-flex gap-1">
@@ -51,14 +51,14 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-9 lg:gap-12 items-center">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-7">
             <div className="space-y-2 overflow-visible">
-              <motion.h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]">
+              <motion.h1 className="text-[2.15rem] sm:text-[2.75rem] lg:text-[3.2rem] xl:text-[3.45rem] font-black tracking-[-0.035em] leading-[1.06] max-w-[820px]">
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[#0F294A]"
                 >
                   Eu conheço a transformação
@@ -66,7 +66,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[#0F294A]"
                 >
                   pelo lado de quem vive a <span className="text-[#1B4E9B]">operação.</span>
@@ -74,7 +74,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 0.82, ease: [0.16, 1, 0.3, 1] }}
                   className="block mt-3 text-[#008CD2]"
                 >
                   Agora, quero ajudar a LG
@@ -82,7 +82,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 1.02, ease: [0.16, 1, 0.3, 1] }}
                   className="hero-signature block text-[#008CD2]"
                 >
                   a fazer cada entrega acontecer.
@@ -93,8 +93,8 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
             <motion.p
               initial={reduced ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0 } : { duration: 0.6, delay: 1.55 }}
-              className="text-base sm:text-lg text-slate-700 font-normal leading-relaxed max-w-2xl"
+              transition={reduced ? { duration: 0 } : { duration: 0.6, delay: 1.35 }}
+              className="text-base sm:text-[1.05rem] text-slate-700 font-normal leading-relaxed max-w-2xl"
             >
               Construí minha trajetória dentro de operações complexas de RH. Fui o cliente que precisou organizar prioridades, implantar sistemas, conectar áreas, defender decisões, treinar pessoas e fazer uma mudança funcionar depois do go-live. Hoje, transformo esse repertório em método para conectar tecnologia, experiência e resultado.
             </motion.p>
@@ -107,14 +107,14 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                     key={item.text}
                     initial={reduced ? false : { opacity: 0, y: 16, scale: 0.985 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={reduced ? { duration: 0 } : { duration: 0.46, delay: 1.8 + index * 0.11, ease: [0.16, 1, 0.3, 1] }}
+                    transition={reduced ? { duration: 0 } : { duration: 0.46, delay: 1.58 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     className="p-4 rounded-2xl liquid-glass-card border-l-4 flex items-center gap-3.5"
                     style={{ borderLeftColor: item.color }}
                   >
                     <motion.div
                       initial={reduced ? false : { scale: 0.72, rotate: -8 }}
                       animate={{ scale: 1, rotate: 0 }}
-                      transition={reduced ? { duration: 0 } : { duration: 0.45, delay: 1.92 + index * 0.11, ease: [0.16, 1, 0.3, 1] }}
+                      transition={reduced ? { duration: 0 } : { duration: 0.45, delay: 1.68 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                       className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
                       style={{ backgroundColor: `${item.color}14` }}
                     >
@@ -129,8 +129,8 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0 } : { duration: 0.55, delay: 2.28 }}
-              className="flex flex-wrap items-center gap-4 pt-2"
+              transition={reduced ? { duration: 0 } : { duration: 0.55, delay: 2.04 }}
+              className="flex flex-wrap items-center gap-4 pt-1"
             >
               <a
                 href="#trajetoria"
@@ -153,7 +153,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
           <motion.div
             initial={reduced ? false : { opacity: 0, scale: 0.965, x: 18 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={reduced ? { duration: 0 } : { duration: 1.05, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={reduced ? { duration: 0 } : { duration: 1.05, delay: 0.58, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
           >
             <div className="relative mx-auto max-w-md lg:max-w-none">
