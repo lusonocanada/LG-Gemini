@@ -3,8 +3,6 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-serif: "Source Serif 4", Georgia, Cambria, serif;
-  
-  /* LG Official Brand Colors & Bubble Cluster */
   --color-lg-blue: #008CD2;
   --color-lg-navy: #1B4E9B;
   --color-lg-cyan: #00A3E0;
@@ -14,15 +12,11 @@
   --color-lg-crimson: #C8102E;
   --color-lg-wine: #8A1538;
   --color-lg-charcoal: #3C3C3B;
-  
-  /* Cosmic Dark System (Hero, Preloader, Night layers) */
   --color-cosmic-dark: #070B14;
   --color-cosmic-deep: #0B101E;
   --color-cosmic-card: #0F172A;
   --color-cosmic-surface: #131E35;
   --color-cosmic-border: #1E293B;
-
-  /* Executive Light Surfaces */
   --color-surface-paper: #FFFFFF;
   --color-surface-subtle: #F8FAFC;
   --color-surface-muted: #F1F5F9;
@@ -32,9 +26,7 @@
   --color-border-subtle: #E2E8F0;
 }
 
-:root {
-  color-scheme: light dark;
-}
+:root { color-scheme: light dark; }
 
 body {
   background-color: #070B14;
@@ -44,11 +36,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.font-serif-lg {
-  font-family: var(--font-serif);
-}
+.font-serif-lg { font-family: var(--font-serif); }
 
-/* Cosmic Space Grids & Stars */
 .bg-cosmic-grid {
   background-size: 40px 40px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -66,192 +55,196 @@ body {
   background-size: 28px 28px;
 }
 
-/* Apple-Style Liquid Glass Material Utilities */
+/* Premium liquid glass system */
+.liquid-glass-light,
+.liquid-glass-card,
+.liquid-glass-dark,
+.liquid-glass-pill {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.liquid-glass-light::before,
+.liquid-glass-card::before,
+.liquid-glass-dark::before,
+.liquid-glass-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 8% 0%, rgba(255,255,255,.78), transparent 42%),
+    linear-gradient(115deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.08) 36%, rgba(255,255,255,.18) 64%, rgba(255,255,255,.04) 100%);
+  opacity: .72;
+}
+
 .liquid-glass-light {
-  background: rgba(255, 255, 255, 0.76);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 12px 36px -10px rgba(15, 41, 74, 0.08),
-    0 1px 1px 0 rgba(255, 255, 255, 0.95) inset;
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(28px) saturate(190%) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.04);
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.92),
+    inset 0 -1px 0 rgba(255,255,255,.22),
+    0 8px 26px -18px rgba(15,41,74,.26);
 }
 
 .liquid-glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 
-    0 12px 30px -8px rgba(15, 41, 74, 0.05),
-    0 1px 0 0 rgba(255, 255, 255, 0.95) inset;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(24px) saturate(185%) brightness(1.035);
+  -webkit-backdrop-filter: blur(24px) saturate(185%) brightness(1.035);
+  border: 1px solid rgba(255,255,255,.68);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(148,163,184,.10),
+    0 12px 30px -22px rgba(15,41,74,.26);
+  transition: transform .45s cubic-bezier(.16,1,.3,1), background .45s ease, box-shadow .45s ease, border-color .45s ease;
 }
 
 .liquid-glass-card:hover {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(203, 213, 225, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 20px 40px -12px rgba(15, 41, 74, 0.10),
-    0 1px 0 0 rgba(255, 255, 255, 1) inset;
+  background: rgba(255,255,255,.64);
+  border-color: rgba(255,255,255,.94);
+  transform: translateY(-3px) scale(1.004);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    0 18px 40px -24px rgba(15,41,74,.30),
+    0 0 0 1px rgba(255,255,255,.18);
 }
 
+/* On dark sections the material stays transparent instead of becoming a dark block */
 .liquid-glass-dark {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 24px 60px -15px rgba(0, 0, 0, 0.5),
-    0 1px 1px 0 rgba(255, 255, 255, 0.18) inset;
+  background: rgba(255, 255, 255, 0.075);
+  backdrop-filter: blur(30px) saturate(175%) brightness(1.08);
+  -webkit-backdrop-filter: blur(30px) saturate(175%) brightness(1.08);
+  border: 1px solid rgba(255,255,255,.20);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    0 14px 40px -28px rgba(0,0,0,.48);
+}
+
+.liquid-glass-dark::before {
+  background:
+    radial-gradient(110% 90% at 10% 0%, rgba(255,255,255,.22), transparent 42%),
+    linear-gradient(120deg, rgba(255,255,255,.12), rgba(255,255,255,.025) 42%, rgba(0,163,224,.055) 72%, rgba(255,255,255,.035));
+  opacity: .9;
 }
 
 .liquid-glass-pill {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    0 4px 16px -2px rgba(15, 41, 74, 0.06),
-    0 1px 0 0 rgba(255, 255, 255, 1) inset;
+  background: rgba(255,255,255,.54);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid rgba(255,255,255,.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    0 8px 20px -16px rgba(15,41,74,.24);
+  transition: transform .35s cubic-bezier(.16,1,.3,1), background .35s ease;
 }
 
-/* Orbital Animations */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.liquid-glass-pill:hover { transform: translateY(-1px); background: rgba(255,255,255,.66); }
+
+/* Moving specular highlight: gives the glass a living surface without looking glossy/plastic */
+.liquid-glass-card::after,
+.liquid-glass-pill::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -45%;
+  width: 34%;
+  height: 340%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+  transform: rotate(18deg);
+  opacity: 0;
+  transition: opacity .3s ease;
 }
 
-@keyframes spin-reverse-slow {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+.liquid-glass-card:hover::after,
+.liquid-glass-pill:hover::after {
+  opacity: .72;
+  animation: glass-sweep 1.05s cubic-bezier(.16,1,.3,1) both;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+/* Apple-Intelligence-inspired rainbow edge used selectively on cards */
+.liquid-glass-card:nth-child(3n + 1) {
+  border-color: transparent;
+  background:
+    linear-gradient(rgba(255,255,255,.54), rgba(255,255,255,.54)) padding-box,
+    linear-gradient(120deg,
+      rgba(0,140,210,.68),
+      rgba(120,90,255,.62),
+      rgba(226,75,160,.54),
+      rgba(245,130,32,.58),
+      rgba(255,194,14,.56),
+      rgba(0,163,224,.68)) border-box;
+  background-size: 100% 100%, 260% 260%;
+  animation: ai-border-flow 9s ease-in-out infinite;
 }
 
-.animate-spin-slow {
-  animation: spin-slow 40s linear infinite;
+.liquid-glass-card:nth-child(3n + 1):hover {
+  background:
+    linear-gradient(rgba(255,255,255,.66), rgba(255,255,255,.66)) padding-box,
+    linear-gradient(120deg,
+      rgba(0,140,210,.85),
+      rgba(116,95,255,.82),
+      rgba(229,57,137,.72),
+      rgba(245,130,32,.76),
+      rgba(255,194,14,.72),
+      rgba(0,163,224,.86)) border-box;
 }
 
-.animate-spin-reverse-slow {
-  animation: spin-reverse-slow 50s linear infinite;
+@keyframes glass-sweep {
+  0% { transform: translateX(0) rotate(18deg); }
+  100% { transform: translateX(460%) rotate(18deg); }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 6s ease-in-out infinite;
+@keyframes ai-border-flow {
+  0%, 100% { background-position: 0 0, 0% 50%; }
+  50% { background-position: 0 0, 100% 50%; }
 }
 
-/* Smooth Marquee Animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-reverse-slow { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+.animate-spin-slow { animation: spin-slow 40s linear infinite; }
+.animate-spin-reverse-slow { animation: spin-reverse-slow 50s linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 6s ease-in-out infinite; }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 32s linear infinite;
-}
+@keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+.animate-marquee { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  background: #0B101E; 
-}
-::-webkit-scrollbar-thumb {
-  background: #1E293B; 
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #008CD2; 
-}
-
-/* Smooth selection */
-::selection {
-  background: #008CD2;
-  color: #FFFFFF;
-}
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #0B101E; }
+::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #008CD2; }
+::selection { background: #008CD2; color: #FFFFFF; }
 
 @media print {
-  @page {
-    size: A4 portrait;
-    margin: 10mm 12mm 10mm 12mm;
-  }
-  
-  html, body {
-    background: #FFFFFF !important;
-    color: #0F172A !important;
-    font-family: var(--font-sans) !important;
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  body * {
-    visibility: hidden;
-  }
-
-  #resume-printable-area, 
-  #resume-printable-area * {
-    visibility: visible;
-  }
-
-  #resume-printable-area {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #FFFFFF !important;
-    color: #0F172A !important;
-    overflow: visible !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  section, article, .border-l-2, table {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
+  @page { size: A4 portrait; margin: 10mm 12mm 10mm 12mm; }
+  html, body { background: #FFFFFF !important; color: #0F172A !important; font-family: var(--font-sans) !important; width: 100% !important; height: auto !important; overflow: visible !important; }
+  body * { visibility: hidden; }
+  #resume-printable-area, #resume-printable-area * { visibility: visible; }
+  #resume-printable-area { position: absolute; left: 0; top: 0; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; background: #FFFFFF !important; color: #0F172A !important; overflow: visible !important; box-shadow: none !important; border: none !important; }
+  section, article, .border-l-2, table { break-inside: avoid; page-break-inside: avoid; }
 }
 
-/* Keep anchored section headings clear of the fixed navigation. */
 section[id] { scroll-margin-top: 7rem; }
 :focus-visible { outline: 3px solid #008CD2; outline-offset: 4px; }
 .context-image { display: block; width: 100%; object-fit: cover; }
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   [style*="opacity"], [style*="transform"] { opacity: 1 !important; transform: none !important; }
-  .liquid-glass-card:hover { transform: none; }
+  .liquid-glass-card:hover, .liquid-glass-pill:hover { transform: none; }
 }
+
 @media print {
   body:has(.resume-dialog) .presentation-content { display: none !important; }
-  .resume-dialog, .resume-panel {
-    position: static !important;
-    display: block !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  .resume-dialog, .resume-panel { position: static !important; display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; transform: none !important; box-shadow: none !important; }
   .resume-dialog > :first-child { display: none !important; }
   .resume-panel > :not(#resume-printable-area) { display: none !important; }
   #resume-printable-area { position: static !important; }
@@ -261,6 +254,7 @@ section[id] { scroll-margin-top: 7rem; }
   body:not(:has(.resume-dialog)) header,
   body:not(:has(.resume-dialog)) button { display: none !important; }
 }
+
 .metrics-detail { display: grid; grid-template-columns: 1fr; }
 .metrics-photo { aspect-ratio: 4 / 5; max-height: 360px; border-radius: 0; }
 .method-detail { display: grid; gap: 1.5rem; }
@@ -269,6 +263,7 @@ section[id] { scroll-margin-top: 7rem; }
 .method-photo { order: 1; aspect-ratio: 4 / 5; }
 .method-checkpoint { order: 2; }
 .method-deliverables { order: 3; }
+
 @media (min-width: 1024px) {
   .metrics-detail { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
   .metrics-photo { grid-column: 2; grid-row: 1; height: 100%; max-height: none; }
@@ -278,6 +273,7 @@ section[id] { scroll-margin-top: 7rem; }
   .method-photo { grid-column: 2; grid-row: 1; }
   .method-deliverables { grid-column: 2; grid-row: 2; }
 }
+
 @media print {
   #resume-printable-area .border-l-4 { break-inside: avoid; page-break-inside: avoid; }
   #resume-printable-area button { display: none !important; }
