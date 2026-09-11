@@ -75,7 +75,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
 
               <div className="h-8 w-px bg-slate-300 hidden sm:block mx-1" />
 
-              <div className="hidden sm:flex items-center pl-1 shrink-0">
+              <div className="hidden sm:flex items-center pl-1 shrink-0 -mt-[17px]">
                 <LGLogo size="sm" />
               </div>
             </a>

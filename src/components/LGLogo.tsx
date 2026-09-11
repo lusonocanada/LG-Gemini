@@ -13,32 +13,19 @@ export default function LGLogo({ className = '', onDark = false, size = 'sm' }: 
     size === 'lg' ? 'h-14 sm:h-16' :
     'h-16 sm:h-20';
 
-  const logoElement = (
-    <img
-      src="/lg_logo_original.svg"
-      alt="LG Lugar de Gente"
-      className={`${heightClass} w-auto object-contain select-none`}
-      referrerPolicy="no-referrer"
-    />
-  );
-
-  if (onDark) {
-    return (
-      <div 
-        className={`inline-flex items-center justify-center bg-white px-3.5 py-1.5 rounded-xl border border-white/80 shadow-sm transition-transform hover:scale-[1.02] ${className}`}
-        aria-label="LG Lugar de Gente"
-      >
-        {logoElement}
-      </div>
-    );
-  }
+  const logoSrc = onDark ? '/lg_logo_white.png' : '/lg_logo_original.svg';
 
   return (
     <div 
       className={`inline-flex items-center shrink-0 transition-transform hover:scale-[1.02] ${className}`} 
       aria-label="LG Lugar de Gente"
     >
-      {logoElement}
+      <img
+        src={logoSrc}
+        alt="LG Lugar de Gente"
+        className={`${heightClass} w-auto object-contain select-none`}
+        referrerPolicy="no-referrer"
+      />
     </div>
   );
 }
