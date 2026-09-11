@@ -18,13 +18,10 @@ export default function HeroExecutivePhoto() {
         <div className="hero-photo-light absolute inset-0 pointer-events-none" />
 
         <div className="hero-id-card absolute bottom-3 left-3 right-3 p-5 z-20 text-white space-y-2 rounded-2xl liquid-glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl pointer-events-auto">
-          <div className="flex flex-wrap gap-2 items-center justify-between">
+          <div className="flex flex-wrap gap-2 items-center">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
               Apresentação executiva
-            </span>
-            <span className="text-[10px] font-mono text-slate-300 font-semibold">
-              Brasil · Canadá
             </span>
           </div>
 
@@ -39,7 +36,7 @@ export default function HeroExecutivePhoto() {
           <div className="pt-2.5 border-t border-white/15 flex flex-wrap gap-2 items-center justify-between text-[11px] text-slate-200 font-medium">
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#008CD2]" />
-              <span>Workday · PeopleSoft</span>
+              <span>Ecossistemas de RH</span>
             </span>
             <span className="font-mono text-slate-300 px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-[10px]">
               15+ anos de experiência
