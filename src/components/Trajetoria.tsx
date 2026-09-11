@@ -198,8 +198,8 @@ export default function Trajetoria() {
                     'Vista urbana de Toronto em contexto multicultural e profissional.',
                     'Mesa de trabalho com protótipos e materiais de planejamento.'
                   ][activeChapter]}
-                  fit={activeChapter < 3 ? 'contain' : 'cover'}
-                  className="aspect-video rounded-none bg-slate-100"
+                  fit={activeChapter === 1 ? 'contain' : 'cover'}
+                  className="aspect-video w-full block object-center rounded-none bg-slate-100"
                 />
 
                 {/* Chapter Content Body */}
