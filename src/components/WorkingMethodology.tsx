@@ -1,7 +1,15 @@
-import ContextImage from './ContextImage';
 import { useState } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import {
+  CheckCircle2,
+  ScanSearch,
+  Network,
+  Workflow,
+  Rocket,
+  TrendingUp,
+} from 'lucide-react';
 import LGChromaticBar from './LGChromaticBar';
+
+const icons = [ScanSearch, Network, Workflow, Rocket, TrendingUp];
 
 export default function WorkingMethodology() {
   const [activeStep, setActiveStep] = useState(0);
@@ -74,11 +82,12 @@ export default function WorkingMethodology() {
     }
   ];
 
+  const active = steps[activeStep];
+  const ActiveIcon = icons[activeStep];
+
   return (
     <section id="metodo" className="py-20 lg:py-28 bg-[#F8FAFC] text-[#0F294A] relative border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
         <div className="max-w-3xl mb-14 pb-8 border-b border-slate-200">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-3 h-1 bg-[#FFC20E]" />
@@ -97,26 +106,37 @@ export default function WorkingMethodology() {
           </p>
         </div>
 
-        {/* Phase Selector Conveyor (5 Step Blueprint) with Liquid Glass */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 mb-8">
           {steps.map((step, idx) => {
             const isSelected = activeStep === idx;
+            const StepIcon = icons[idx];
+
             return (
               <button
-                key={idx}
+                key={step.number}
                 onClick={() => setActiveStep(idx)}
                 aria-pressed={isSelected}
-                className={`p-4 text-left rounded-2xl transition-all duration-200 cursor-pointer ${
+                className={`group p-4 text-left rounded-2xl transition-all duration-200 cursor-pointer border ${
                   isSelected
-                    ? 'liquid-glass-dark text-white border-2 border-[#00A3E0] shadow-xl scale-[1.02]'
-                    : 'liquid-glass-card text-slate-700 hover:text-[#0F294A] hover:scale-[1.01]'
+                    ? 'bg-[#0F294A] text-white border-[#0F294A] shadow-xl -translate-y-1'
+                    : 'bg-white/80 text-slate-700 border-slate-200 hover:bg-white hover:border-slate-300 hover:-translate-y-0.5 shadow-sm'
                 }`}
               >
-                <div className="flex items-center justify-between text-[11px] font-mono mb-1.5 font-bold">
-                  <span style={{ color: isSelected ? '#00A3E0' : step.color }}>PASSO {step.number}</span>
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: step.color }} />
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-transform duration-200 group-hover:scale-105 ${
+                      isSelected ? 'bg-white/10 border-white/15' : 'bg-slate-50 border-slate-200'
+                    }`}
+                  >
+                    <StepIcon size={22} strokeWidth={1.8} style={{ color: isSelected ? step.color : step.color }} />
+                  </div>
+                  <span className="w-2.5 h-2.5 rounded-full mt-1" style={{ backgroundColor: step.color }} />
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider block opacity-80 mb-1">
+
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest block mb-1" style={{ color: isSelected ? '#FFFFFF' : step.color }}>
+                  PASSO {step.number}
+                </span>
+                <div className={`text-[10px] font-mono uppercase tracking-wider mb-1 ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>
                   {step.focus}
                 </div>
                 <h3 className="text-sm sm:text-base font-black tracking-tight leading-snug">
@@ -127,72 +147,101 @@ export default function WorkingMethodology() {
           })}
         </div>
 
-        {/* Detailed Inspection Stage for Selected Phase with Liquid Glass */}
-        <div className="liquid-glass-card rounded-3xl border border-slate-200/90 shadow-2xl p-6 sm:p-10 relative overflow-hidden">
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl relative overflow-hidden">
           <div className="w-full absolute top-0 left-0 right-0">
             <LGChromaticBar size="xs" />
           </div>
 
-          <div className="method-detail pt-2">
-            
-            <div className="method-copy">
-            <div className="method-summary space-y-4">
-              <div className="flex items-center gap-3">
-                <span 
-                  className="px-3 py-1 rounded-md text-xs font-mono font-bold text-white uppercase shadow-xs"
-                  style={{ backgroundColor: steps[activeStep].color }}
-                >
-                  ETAPA {steps[activeStep].number}
-                </span>
-                <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
-                  {steps[activeStep].focus}
-                </span>
-              </div>
+          <div className="p-6 sm:p-10 pt-10 sm:pt-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex items-start gap-4 sm:gap-5">
+                  <div
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shrink-0"
+                    style={{ backgroundColor: `${active.color}10`, borderColor: `${active.color}30` }}
+                  >
+                    <ActiveIcon size={34} strokeWidth={1.7} style={{ color: active.color }} />
+                  </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-[#0F294A] leading-tight">
-                {steps[activeStep].title}
-              </h3>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span
+                        className="px-3 py-1 rounded-md text-xs font-mono font-bold text-white uppercase shadow-xs"
+                        style={{ backgroundColor: active.color }}
+                      >
+                        ETAPA {active.number}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
+                        {active.focus}
+                      </span>
+                    </div>
 
-              <p className="text-base text-slate-700 leading-relaxed font-normal">
-                {steps[activeStep].summary}
-              </p>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#0F294A] leading-tight">
+                      {active.title}
+                    </h3>
+                  </div>
+                </div>
 
-            </div>
-            <div className="method-checkpoint">
-              {/* Quality Gate Checkpoint */}
-              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-md border-l-4 border-l-[#E53924] border-t border-r border-b border-slate-200/80 shadow-xs">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#E53924] font-bold block mb-1">
-                  Ponto de controle:
-                </span>
-                <p className="text-xs sm:text-sm text-slate-800 font-semibold">
-                  {steps[activeStep].checkpoint}
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-3xl">
+                  {active.summary}
                 </p>
+
+                <div className="p-5 rounded-2xl bg-[#F8FAFC] border-l-4 border-t border-r border-b border-slate-200 shadow-sm" style={{ borderLeftColor: active.color }}>
+                  <span className="text-[10px] font-mono uppercase tracking-widest font-bold block mb-1" style={{ color: active.color }}>
+                    Ponto de controle
+                  </span>
+                  <p className="text-sm sm:text-base text-slate-800 font-semibold leading-relaxed">
+                    {active.checkpoint}
+                  </p>
+                </div>
+
+                <div className="hidden lg:flex items-center gap-3 pt-1 text-xs font-mono uppercase tracking-widest text-slate-400">
+                  <span className="h-px flex-1 bg-slate-200" />
+                  <span>Da leitura do contexto à sustentação</span>
+                </div>
               </div>
-            </div>
 
-            </div>
-            <ContextImage name="metodo-colaboracao" alt="Equipe reunida para alinhar um plano de trabalho." portrait className="method-photo" />
-
-            <div className="method-deliverables space-y-3 bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/80 shadow-xs">
-              <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold block mb-2">
-                Entregáveis Desta Fase:
-              </span>
-
-              <div className="space-y-3">
-                {steps[activeStep].deliverables.map((item, dIdx) => (
-                  <div key={dIdx} className="flex items-start gap-3 bg-white/90 backdrop-blur-sm p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
-                    <CheckCircle2 size={16} className="text-[#008CD2] shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
-                      {item}
+              <div className="lg:col-span-5">
+                <div className="bg-[#F8FAFC] rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold">
+                      Entregáveis desta fase
+                    </span>
+                    <span className="text-xs font-mono font-black" style={{ color: active.color }}>
+                      {active.number}/05
                     </span>
                   </div>
-                ))}
+
+                  <div className="space-y-3">
+                    {active.deliverables.map((item, dIdx) => (
+                      <div key={dIdx} className="flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${active.color}12` }}>
+                          <CheckCircle2 size={15} style={{ color: active.color }} />
+                        </div>
+                        <span className="text-sm text-slate-800 font-medium leading-relaxed">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-5 gap-1.5 mt-6" aria-hidden="true">
+                    {steps.map((step, idx) => (
+                      <div
+                        key={step.number}
+                        className="h-1.5 rounded-full transition-opacity duration-200"
+                        style={{
+                          backgroundColor: step.color,
+                          opacity: idx === activeStep ? 1 : 0.2,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );
