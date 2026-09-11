@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { useDialog } from '../hooks/useDialog';
 import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X, ExternalLink } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
@@ -62,52 +63,11 @@ const sourcesList: SourceItem[] = [
 export default function Footer({ onOpenCvModal }: FooterProps) {
   const [sourcesModalOpen, setSourcesModalOpen] = useState(false);
   const sourcesButtonRef = useRef<HTMLButtonElement>(null);
-  const drawerRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useDialog(sourcesModalOpen, () => setSourcesModalOpen(false));
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   };
-
-  useEffect(() => {
-    if (sourcesModalOpen) {
-      document.body.style.overflow = 'hidden';
-
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          setSourcesModalOpen(false);
-        }
-        if (e.key === 'Tab' && drawerRef.current) {
-          const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusableElements.length === 0) return;
-          const firstElement = focusableElements[0];
-          const lastElement = focusableElements[focusableElements.length - 1];
-
-          if (e.shiftKey) {
-            if (document.activeElement === firstElement) {
-              lastElement.focus();
-              e.preventDefault();
-            }
-          } else {
-            if (document.activeElement === lastElement) {
-              firstElement.focus();
-              e.preventDefault();
-            }
-          }
-        }
-      };
-
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        document.body.style.overflow = '';
-        if (sourcesButtonRef.current) {
-          sourcesButtonRef.current.focus();
-        }
-      };
-    }
-  }, [sourcesModalOpen]);
 
   const navLinks = [
     { label: 'Visão', href: '#visao' },
@@ -160,7 +120,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
               <div className="flex flex-wrap items-center gap-3 pt-3">
                 <button
-                  onClick={onOpenCvModal}
+                  onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
                   className="inline-flex items-center gap-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors uppercase tracking-wider cursor-pointer shadow-xs"
                 >
                   <FileText size={14} />
@@ -169,7 +129,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
                 <button
                   ref={sourcesButtonRef}
-                  onClick={() => setSourcesModalOpen(true)}
+                  onClick={event => { event.currentTarget.focus(); setSourcesModalOpen(true); }}
                   className="inline-flex items-center gap-1.5 bg-[#14263D] hover:bg-[#1C3352] text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 text-xs font-semibold px-4 py-2.5 rounded-full transition-colors cursor-pointer"
                 >
                   <span>Fontes e referências</span>
@@ -241,6 +201,8 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
           </div>
 
+<p className="pt-5 text-xs text-slate-400">As imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de clientes, empresas ou projetos de Diego.</p>
+
           {/* Mandatory Statement */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
@@ -271,6 +233,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
           {/* Dialog Panel */}
           <div 
             ref={drawerRef}
+            tabIndex={-1}
             className="relative z-10 w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] bg-white text-slate-900 rounded-t-3xl sm:rounded-2xl border-t-4 border-t-[#008CD2] shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Top Bar */}

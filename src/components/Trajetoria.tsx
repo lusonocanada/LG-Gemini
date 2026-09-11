@@ -1,9 +1,12 @@
+import { useMotionPreference } from '../hooks/useMotionPreference';
+import ContextImage from './ContextImage';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2 } from 'lucide-react';
 import LGChromaticBar from './LGChromaticBar';
 
 export default function Trajetoria() {
+  const reduced = useMotionPreference();
   const [activeChapter, setActiveChapter] = useState(0);
 
   const chapters = [
@@ -123,6 +126,7 @@ export default function Trajetoria() {
                 <button
                   key={chap.id}
                   onClick={() => setActiveChapter(idx)}
+                  aria-pressed={isActive}
                   className={`w-full text-left p-4 transition-all duration-200 cursor-pointer border-l-4 ${
                     isActive 
                       ? 'bg-white shadow-md border-t border-r border-b border-slate-300 translate-x-1' 
@@ -150,10 +154,10 @@ export default function Trajetoria() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeChapter}
-                initial={{ opacity: 0, y: 15 }}
+                initial={reduced ? false : { opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25 }}
+                transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.25 }}
                 className="bg-white border-2 border-slate-200 shadow-xl overflow-hidden"
               >
                 {/* Chromatic Top Bar */}
@@ -182,6 +186,13 @@ export default function Trajetoria() {
                     {current.role}
                   </p>
                 </div>
+
+                <ContextImage
+                  key={activeChapter < 3 ? 'brasil' : current.id}
+                  name={activeChapter < 3 ? 'trajetoria-brasil' : activeChapter === 3 ? 'trajetoria-canada' : 'trajetoria-digital'}
+                  alt={activeChapter < 3 ? 'Vista urbana de São Paulo ao amanhecer, em contexto de negócios.' : activeChapter === 3 ? 'Vista urbana de Toronto em contexto multicultural e profissional.' : 'Mesa de trabalho com protótipos e materiais de planejamento.'}
+                  className="aspect-video rounded-none"
+                />
 
                 {/* Chapter Content Body */}
                 <div className="p-6 sm:p-10 space-y-6">

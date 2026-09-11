@@ -1,4 +1,6 @@
+import { useMotionPreference } from '../hooks/useMotionPreference';
 import { useState } from 'react';
+import { useDialog } from '../hooks/useDialog';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ChevronRight, X } from 'lucide-react';
 import LGChromaticBar from './LGChromaticBar';
@@ -131,8 +133,11 @@ const casesData: CaseItem[] = [
 ];
 
 export default function SelectedCases() {
+  const reduced = useMotionPreference();
   const [selectedCaseIdx, setSelectedCaseIdx] = useState(0);
   const [mobileModalCase, setMobileModalCase] = useState<CaseItem | null>(null);
+
+  const dialogRef = useDialog(!!mobileModalCase, () => setMobileModalCase(null));
 
   const activeCase = casesData[selectedCaseIdx];
 
@@ -150,7 +155,7 @@ export default function SelectedCases() {
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F294A] leading-[1.12]">
-            Projetos em que liderei a transformação na prática.
+            Projetos em que participei da transformação na prática.
           </h2>
         </div>
 
@@ -196,10 +201,10 @@ export default function SelectedCases() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCase.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={reduced ? false : { opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25 }}
+                transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.25 }}
                 className="liquid-glass-card rounded-3xl border border-slate-200/80 shadow-2xl overflow-hidden"
               >
                 {/* Chromatic Top Bar */}
@@ -330,7 +335,7 @@ export default function SelectedCases() {
               </div>
 
               <button
-                onClick={() => setMobileModalCase(c)}
+                onClick={event => { event.currentTarget.focus(); setMobileModalCase(c); }}
                 className="w-full inline-flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-slate-50 text-slate-900 text-xs font-bold border border-slate-300 rounded-full cursor-pointer uppercase tracking-wider shadow-xs"
               >
                 <span>Ver detalhes do case</span>
@@ -343,9 +348,9 @@ export default function SelectedCases() {
         {/* Mobile Detail Modal Bottom Sheet (Dark backdrop, solid header with close button, single scroll) */}
         <AnimatePresence>
           {mobileModalCase && (
-            <div className="fixed inset-0 z-50 flex items-end justify-center lg:hidden">
+            <div className="fixed inset-0 z-[120] flex items-end justify-center" role="dialog" aria-modal="true" aria-labelledby="case-dialog-title">
               <motion.div
-                initial={{ opacity: 0 }}
+                initial={reduced ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setMobileModalCase(null)}
@@ -353,10 +358,12 @@ export default function SelectedCases() {
               />
 
               <motion.div
-                initial={{ y: '100%' }}
+                ref={dialogRef}
+                tabIndex={-1}
+                initial={reduced ? false : { y: '100%' }}
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+                transition={reduced ? { duration: 0, delay: 0 } : { type: 'spring', damping: 25, stiffness: 250 }}
                 className="relative z-10 w-full max-h-[88vh] liquid-glass-light rounded-t-3xl border-t-4 p-6 overflow-y-auto space-y-6 shadow-2xl backdrop-blur-2xl"
                 style={{ borderTopColor: mobileModalCase.color }}
               >
@@ -374,7 +381,7 @@ export default function SelectedCases() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-black text-[#0F294A]">{mobileModalCase.title}</h3>
+                  <h3 id="case-dialog-title" className="text-xl font-black text-[#0F294A]">{mobileModalCase.title}</h3>
                   <p className="text-xs text-slate-600 mt-1 font-medium">{mobileModalCase.period}</p>
                 </div>
 

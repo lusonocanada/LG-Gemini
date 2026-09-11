@@ -1,3 +1,4 @@
+import { useMotionPreference } from '../hooks/useMotionPreference';
 import { motion } from 'motion/react';
 import { ArrowRight, FileText, CheckCircle2, TrendingUp, Award, Globe } from 'lucide-react';
 import HeroExecutivePhoto from './HeroExecutivePhoto';
@@ -7,6 +8,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenCvModal }: HeroProps) {
+  const reduced = useMotionPreference();
   return (
     <section className="relative pt-24 sm:pt-28 pb-16 lg:pb-24 bg-white text-[#0F294A] border-b border-slate-200 overflow-hidden">
       
@@ -47,9 +49,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
             
             <div className="space-y-3">
               <motion.h1
-                initial={{ opacity: 0, y: 16 }}
+                initial={reduced ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5 }}
                 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F294A] tracking-tight leading-[1.1]"
               >
                 Eu conheço a transformação pelo lado de quem vive a operação.{' '}
@@ -60,9 +62,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
             </div>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.1 }}
               className="text-base sm:text-lg text-slate-700 font-normal leading-relaxed max-w-2xl"
             >
               Construí minha trajetória dentro de operações complexas de RH. Fui o cliente que precisou organizar prioridades, implantar sistemas, conectar áreas, defender decisões, treinar pessoas e fazer uma mudança funcionar depois do go-live. Hoje, transformo esse repertório em método para conectar tecnologia, experiência e resultado.
@@ -70,9 +72,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
 
             {/* Quatro provas breves */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.2 }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
             >
               <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#1B4E9B] flex items-center gap-3.5">
@@ -114,9 +116,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
 
             {/* Actions: High-Contrast Executive Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 pt-2"
             >
               <a
@@ -128,7 +130,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
               </a>
 
               <button
-                onClick={onOpenCvModal}
+                onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
                 className="inline-flex items-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-50 text-[#0F294A] border border-slate-300 hover:border-slate-400 text-xs font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-xs hover:shadow-sm"
               >
                 <FileText size={15} className="text-[#008CD2]" />
@@ -139,9 +141,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
 
           {/* Right Column: High-Impact Visual Composition with Real Executive Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={reduced ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
             <div className="relative mx-auto max-w-md lg:max-w-none">

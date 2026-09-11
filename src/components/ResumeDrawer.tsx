@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useMotionPreference } from '../hooks/useMotionPreference';
+import { useState } from 'react';
+import { useDialog } from '../hooks/useDialog';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
@@ -19,56 +21,16 @@ interface ResumeDrawerProps {
 }
 
 export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
+  const reduced = useMotionPreference();
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
-  const previousActiveElement = useRef<HTMLElement | null>(null);
+  const drawerRef = useDialog(isOpen, onClose);
 
-  useEffect(() => {
-    if (isOpen) {
-      previousActiveElement.current = document.activeElement as HTMLElement;
-      document.body.style.overflow = 'hidden';
-
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          onClose();
-        }
-        if (e.key === 'Tab' && drawerRef.current) {
-          const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusableElements.length === 0) return;
-          const firstElement = focusableElements[0];
-          const lastElement = focusableElements[focusableElements.length - 1];
-
-          if (e.shiftKey) {
-            if (document.activeElement === firstElement) {
-              lastElement.focus();
-              e.preventDefault();
-            }
-          } else {
-            if (document.activeElement === lastElement) {
-              firstElement.focus();
-              e.preventDefault();
-            }
-          }
-        }
-      };
-
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        document.body.style.overflow = '';
-        if (previousActiveElement.current) {
-          previousActiveElement.current.focus();
-        }
-      };
-    }
-  }, [isOpen, onClose]);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('mvdigo@gmail.com');
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('mvdigo@gmail.com');
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    } catch { setCopiedEmail(false); }
   };
 
   const handlePrint = () => {
@@ -79,14 +41,14 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
     <AnimatePresence>
       {isOpen && (
         <div 
-          className="fixed inset-0 z-[120] flex justify-end"
+          className="resume-dialog fixed inset-0 z-[120] flex justify-end"
           role="dialog"
           aria-modal="true"
           aria-labelledby="resume-drawer-title"
         >
           {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={reduced ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
@@ -96,17 +58,18 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
           {/* Drawer Container */}
           <motion.div
             ref={drawerRef}
-            initial={{ x: '100%' }}
+            tabIndex={-1}
+            initial={reduced ? false : { x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="relative w-full max-w-3xl bg-white text-[#0F294A] shadow-2xl h-full flex flex-col z-10 overflow-hidden"
+            transition={reduced ? { duration: 0, delay: 0 } : { type: 'spring', damping: 28, stiffness: 280 }}
+            className="resume-panel relative w-full max-w-3xl bg-white text-[#0F294A] shadow-2xl h-full flex flex-col z-10 overflow-hidden"
           >
             {/* Top LG Chromatic Bar */}
             <LGChromaticBar size="xs" />
 
             {/* Sticky Action Header with Liquid Glass */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200/80 liquid-glass-light shrink-0">
+            <div className="flex items-center justify-between px-3 sm:px-6 py-4 border-b border-slate-200/80 liquid-glass-light shrink-0">
               <div className="flex items-center gap-3">
                 <LGLogo size="sm" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 hidden sm:inline">
@@ -120,7 +83,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   className="inline-flex items-center gap-1.5 px-5 py-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Printer size={13} />
-                  <span>Imprimir / Salvar PDF</span>
+                  <span>Imprimir / PDF</span>
                 </button>
 
                 <button
@@ -162,13 +125,14 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                     <span>São Paulo, SP</span>
                   </span>
                   <span>•</span>
+                  <a href="mailto:mvdigo@gmail.com" className="font-semibold text-slate-800">mvdigo@gmail.com</a>
                   <button 
                     onClick={handleCopyEmail} 
                     className="flex items-center gap-1.5 hover:text-[#008CD2] transition-colors cursor-pointer"
                     title="Copiar e-mail"
                   >
                     <Mail size={13} className="text-[#008CD2]" />
-                    <span className="font-semibold text-slate-800">mvdigo@gmail.com</span>
+                    <span>{copiedEmail ? "Copiado" : "Copiar e-mail"}</span>
                     {copiedEmail ? <Check size={12} className="text-emerald-600" /> : <Copy size={11} className="opacity-50" />}
                   </button>
                   <span>•</span>

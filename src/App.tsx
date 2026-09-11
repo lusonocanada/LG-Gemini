@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'motion/react';
+import { useState, useCallback } from 'react';
+import { MotionConfig } from 'motion/react';
+import { useMotionPreference } from './hooks/useMotionPreference';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HRVision from './components/HRVision';
@@ -18,24 +19,21 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [showCvModal, setShowCvModal] = useState(false);
 
-  // Lock scroll while splash or CV modal is active
-  useEffect(() => {
-    if (showSplash || showCvModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [showSplash, showCvModal]);
+  const reduced = useMotionPreference();
+  const closeCv = useCallback(() => setShowCvModal(false), []);
+  const finishSplash = useCallback(() => setShowSplash(false), []);
 
   return (
+    <MotionConfig reducedMotion="user" transition={reduced ? { duration: 0, delay: 0 } : undefined}>
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] relative selection:bg-[#008CD2] selection:text-white font-sans antialiased">
-      
+
       {/* 00. Breve abertura editorial com constelação de partículas */}
-      <AnimatePresence mode="wait">
-        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      </AnimatePresence>
+
+        {showSplash && <SplashScreen onComplete={finishSplash} />}
+
 
       {/* 01. Navegação Fixa com Identidade Diego Moraes e Destino Discreto LG */}
+      <div className="presentation-content" inert={showSplash}>
       <Header onOpenCvModal={() => setShowCvModal(true)} />
 
       {/* Main Content Sections — Nova Arquitetura Obrigatória */}
@@ -71,11 +69,14 @@ export default function App() {
       {/* Rodapé com drawer discreto de fontes consultadas e declaração independente */}
       <Footer onOpenCvModal={() => setShowCvModal(true)} />
 
+      </div>
+
       {/* Perfil Executivo e CV Completo (Drawer / Impressão PDF) */}
-      <ResumeDrawer 
-        isOpen={showCvModal} 
-        onClose={() => setShowCvModal(false)} 
+      <ResumeDrawer
+        isOpen={showCvModal}
+        onClose={closeCv}
       />
     </div>
+    </MotionConfig>
   );
 }

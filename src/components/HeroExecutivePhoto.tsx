@@ -21,13 +21,13 @@ export default function HeroExecutivePhoto() {
 
         {/* Floating Apple-Style Liquid Glass Executive ID Card */}
         <div className="absolute bottom-3 left-3 right-3 p-5 z-20 text-white space-y-2 rounded-2xl liquid-glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl pointer-events-auto">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap gap-2 items-center justify-between">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
-              Apresentação Executiva
+              Apresentação executiva
             </span>
             <span className="text-[10px] font-mono text-slate-300 font-semibold">
-              São Paulo 🇧🇷 · Toronto 🇨🇦
+              Brasil · Canadá
             </span>
           </div>
 
@@ -36,16 +36,16 @@ export default function HeroExecutivePhoto() {
           </h2>
 
           <p className="text-xs text-slate-300 font-medium">
-            HR Transformation · HCM Implementation · PMO & IA Aplicada
+            Transformação de RH · Implantação · PMO · IA aplicada
           </p>
 
-          <div className="pt-2.5 border-t border-white/15 flex items-center justify-between text-[11px] text-slate-200 font-medium">
+          <div className="pt-2.5 border-t border-white/15 flex flex-wrap gap-2 items-center justify-between text-[11px] text-slate-200 font-medium">
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#008CD2]" />
               <span>Workday · PeopleSoft</span>
             </span>
             <span className="font-mono text-slate-300 px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-[10px]">
-              15+ Anos Exp.
+              15+ anos de experiência
             </span>
           </div>
         </div>
@@ -53,4 +53,3 @@ export default function HeroExecutivePhoto() {
     </div>
   );
 }
-

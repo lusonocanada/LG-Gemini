@@ -1,3 +1,4 @@
+import ContextImage from './ContextImage';
 import { useState } from 'react';
 import LGChromaticBar from './LGChromaticBar';
 
@@ -71,6 +72,7 @@ export default function Metrics() {
               <button
                 key={idx}
                 onClick={() => setActiveMetric(idx)}
+                aria-pressed={isSelected}
                 className={`p-5 text-left rounded-2xl transition-all cursor-pointer ${
                   isSelected 
                     ? 'liquid-glass-dark text-white border-2 border-[#00A3E0] shadow-xl scale-[1.02]' 
@@ -98,7 +100,9 @@ export default function Metrics() {
             <LGChromaticBar size="xs" />
           </div>
 
-          <div className="p-8 sm:p-12 space-y-8">
+          <div className="metrics-detail">
+            <ContextImage name="resultados-decisao" alt="Profissional analisando indicadores em uma mesa de trabalho." portrait className="metrics-photo" />
+            <div className="p-6 sm:p-8 space-y-8 min-w-0">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-white/15">
               <div>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-xs font-mono uppercase tracking-widest text-[#FFC20E] font-bold mb-2 border border-white/10">
@@ -115,7 +119,7 @@ export default function Metrics() {
             </div>
 
             {/* Contexto / Meu Papel / Resultado with Frosted Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5">
               <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors border-t-4 border-t-[#008CD2]">
                 <span className="text-[11px] font-mono uppercase text-[#008CD2] font-bold block mb-2">
                   Contexto
@@ -142,6 +146,7 @@ export default function Metrics() {
                   {current.resultado}
                 </p>
               </div>
+            </div>
             </div>
           </div>
         </div>

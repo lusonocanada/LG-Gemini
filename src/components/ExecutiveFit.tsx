@@ -1,3 +1,4 @@
+import ContextImage from './ContextImage';
 export default function ExecutiveFit() {
   const areas = [
     {
@@ -51,6 +52,8 @@ export default function ExecutiveFit() {
             Onde minha trajetória pode gerar contribuição prática dentro da agenda da empresa.
           </p>
         </div>
+
+        <ContextImage name="aderencia-executiva" alt="Profissional conectando pessoas, processos e tecnologia em uma sessão de trabalho." className="aspect-video mb-10" />
 
         {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

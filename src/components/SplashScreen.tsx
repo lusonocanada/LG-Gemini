@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useMotionPreference } from '../hooks/useMotionPreference';
+import { useDialog } from '../hooks/useDialog';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, FastForward } from 'lucide-react';
 import LGLogo from './LGLogo';
@@ -9,23 +11,18 @@ interface SplashScreenProps {
 }
 
 export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps) {
-  const [isVisible, setIsVisible] = useState(true);
+  const reduced = useMotionPreference();
   const [step, setStep] = useState<1 | 2>(1);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const handleDismiss = () => {
-    setIsVisible(false);
+  const handleDismiss = useCallback(() => {
     if (onFinish) onFinish();
     if (onComplete) onComplete();
-  };
+  }, [onFinish, onComplete]);
+  const dialogRef = useDialog(true, handleDismiss);
 
   useEffect(() => {
-    // Check prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      handleDismiss();
-      return;
-    }
+    if (reduced) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
@@ -49,10 +46,11 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
       clearTimeout(timerStep2);
       clearTimeout(timerFinish);
     };
-  }, []);
+  }, [reduced, handleDismiss]);
 
   // Subtle constellation particle canvas
   useEffect(() => {
+    if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -124,19 +122,19 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [reduced]);
 
   return (
-    <AnimatePresence>
-      {isVisible && (
+    <>
         <motion.div
+          ref={dialogRef}
+          role="dialog" aria-modal="true" aria-labelledby="splash-title" tabIndex={-1}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[300] bg-[#0A0F1A] text-white select-none overflow-hidden flex flex-col justify-between"
-          onClick={handleDismiss}
+          transition={{ duration: 0, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-[300] bg-[#0A0F1A] text-white select-none overflow-y-auto flex flex-col justify-between"
         >
-          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+          {!reduced && <canvas aria-hidden="true" ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />}
 
           {/* Top Bar */}
           <div className="relative z-10 w-full h-16 flex items-center justify-between px-6 sm:px-12">
@@ -160,35 +158,35 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
           {/* Central Focus: Diego Moraes first */}
           <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: reduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-4"
             >
               <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#00A3E0] uppercase block">
-                Apresentação profissional executiva
+                REPERTÓRIO · MÉTODO · TRANSFORMAÇÃO
               </span>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
+              <h1 id="splash-title" className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
                 DIEGO MORAES
               </h1>
 
               <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-xl mx-auto">
-                Transformação de RH · Operações Corporativas · Implantação de Plataformas · IA Aplicada
+                Transformação de RH, Implantação e IA Aplicada
               </p>
             </motion.div>
 
             {/* Step 2: The recipient (LG Lugar de Gente) appears understated and respectful */}
             <AnimatePresence>
-              {step >= 2 && (
+              {(reduced || step >= 2) && (
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.1 }}
+                  transition={{ duration: 0 }}
                   className="mt-10 pt-8 border-t border-slate-800 flex flex-col items-center gap-3"
                 >
                   <span className="text-[11px] tracking-wider uppercase text-slate-400">
-                    Contexto estratégico: afinidade com a LG Lugar de Gente
+                    Apresentação direcionada à
                   </span>
 
                   {/* Pristine official LG Logo inside clear container on dark */}
@@ -214,7 +212,6 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
             </motion.button>
           </div>
         </motion.div>
-      )}
-    </AnimatePresence>
+    </>
   );
 }

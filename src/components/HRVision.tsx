@@ -1,3 +1,4 @@
+import ContextImage from './ContextImage';
 import { Target, Shuffle, Cpu, ShieldCheck } from 'lucide-react';
 
 export default function HRVision() {
@@ -52,6 +53,8 @@ export default function HRVision() {
             Minha forma de trabalhar começa pela operação. Eu traduzo uma ambição de negócio em processos claros, governança possível, escolhas de tecnologia e uma experiência que líderes e colaboradores conseguem adotar. É assim que uma entrega deixa de ser projeto e passa a gerar capacidade real para o RH.
           </p>
         </div>
+
+        <ContextImage name="visao-operacao" alt="Profissionais analisando uma jornada de processos em ambiente de trabalho." className="h-[240px] lg:h-[420px] mb-10" />
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

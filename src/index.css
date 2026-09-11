@@ -227,3 +227,58 @@ body {
     page-break-inside: avoid;
   }
 }
+
+/* Keep anchored section headings clear of the fixed navigation. */
+section[id] { scroll-margin-top: 7rem; }
+:focus-visible { outline: 3px solid #008CD2; outline-offset: 4px; }
+.context-image { display: block; width: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  [style*="opacity"], [style*="transform"] { opacity: 1 !important; transform: none !important; }
+  .liquid-glass-card:hover { transform: none; }
+}
+@media print {
+  body:has(.resume-dialog) .presentation-content { display: none !important; }
+  .resume-dialog, .resume-panel {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .resume-dialog > :first-child { display: none !important; }
+  .resume-panel > :not(#resume-printable-area) { display: none !important; }
+  #resume-printable-area { position: static !important; }
+  #resume-printable-area img { print-color-adjust: exact; }
+  #resume-printable-area li { break-inside: avoid; }
+  body:not(:has(.resume-dialog)) * { visibility: visible; }
+  body:not(:has(.resume-dialog)) header,
+  body:not(:has(.resume-dialog)) button { display: none !important; }
+}
+.metrics-detail { display: grid; grid-template-columns: 1fr; }
+.metrics-photo { aspect-ratio: 4 / 5; max-height: 360px; border-radius: 0; }
+.method-detail { display: grid; gap: 1.5rem; }
+.method-copy { display: contents; }
+.method-summary { order: 0; }
+.method-photo { order: 1; aspect-ratio: 4 / 5; }
+.method-checkpoint { order: 2; }
+.method-deliverables { order: 3; }
+@media (min-width: 1024px) {
+  .metrics-detail { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
+  .metrics-photo { grid-column: 2; grid-row: 1; height: 100%; max-height: none; }
+  .method-detail { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 2rem; align-items: start; }
+  .method-copy { display: block; grid-column: 1; grid-row: 1 / span 2; }
+  .method-summary { margin-bottom: 1.5rem; }
+  .method-photo { grid-column: 2; grid-row: 1; }
+  .method-deliverables { grid-column: 2; grid-row: 2; }
+}
+@media print {
+  #resume-printable-area .border-l-4 { break-inside: avoid; page-break-inside: avoid; }
+  #resume-printable-area button { display: none !important; }
+}

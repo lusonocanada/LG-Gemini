@@ -38,7 +38,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
           
           {/* 1. Ver perfil completo */}
           <button
-            onClick={onOpenCvModal}
+            onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
           >
             <FileText size={16} />
@@ -91,7 +91,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
               </span>
               <p className="text-sm font-bold text-white flex items-center gap-2">
                 <Phone size={16} className="text-[#F58220] shrink-0" />
-                <span>+55 11 93221-1288</span>
+                <a href="https://wa.me/5511932211288" target="_blank" rel="noreferrer">+55 11 93221-1288</a>
               </p>
               <p className="text-xs text-slate-400">
                 Contato direto com Diego Moraes.
@@ -104,7 +104,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
               </span>
               <p className="text-sm font-bold text-white flex items-center gap-2">
                 <Mail size={16} className="text-emerald-400 shrink-0" />
-                <span>mvdigo@gmail.com</span>
+                <a href="mailto:mvdigo@gmail.com">mvdigo@gmail.com</a>
               </p>
               <p className="text-xs text-slate-400">
                 Canal para propostas e conversas profissionais.

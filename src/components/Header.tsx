@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { lockScroll } from '../hooks/useDialog';
 import { Menu, X, FileText, ChevronRight } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
@@ -20,11 +21,11 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
   }, []);
 
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    if (!mobileMenuOpen) return;
+    const unlock = lockScroll();
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') setMobileMenuOpen(false); };
+    window.addEventListener('keydown', escape);
+    return () => { unlock(); window.removeEventListener('keydown', escape); };
   }, [mobileMenuOpen]);
 
   const navLinks = [
@@ -95,17 +96,19 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
             {/* Header Actions */}
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
-                onClick={onOpenCvModal}
+                onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
                 className="inline-flex items-center gap-2 bg-[#0F294A] hover:bg-[#1B4E9B] text-white text-[11px] sm:text-xs font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border border-slate-700 hover:border-[#008CD2] transition-all cursor-pointer shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
               >
                 <FileText size={13} className="text-[#FFC20E]" />
-                <span>Ver perfil completo</span>
+                <span className="hidden min-[400px]:inline">Ver perfil completo</span><span className="min-[400px]:hidden">Perfil</span>
               </button>
 
               {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="lg:hidden p-2 text-slate-700 hover:text-slate-900 transition-colors focus:outline-hidden rounded-full hover:bg-slate-100/80"
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
                 aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
               >
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -117,7 +120,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
 
         {/* Mobile Navigation Dropdown with Liquid Glass */}
         {mobileMenuOpen && (
-          <div className="lg:hidden liquid-glass-light border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-1 shadow-2xl">
+          <div id="mobile-navigation" className="lg:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto liquid-glass-light border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-1 shadow-2xl">
             <div className="pb-3 mb-2 border-b border-slate-200/60 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Apresentação para</span>
               <LGLogo size="sm" />

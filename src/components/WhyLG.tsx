@@ -1,3 +1,4 @@
+import ContextImage from './ContextImage';
 import { motion } from 'motion/react';
 import LGLogo from './LGLogo';
 
@@ -70,6 +71,8 @@ export default function WhyLG() {
             <LGLogo size="md" />
           </div>
         </div>
+
+        <ContextImage name="porque-lg-contexto" alt="Conexões entre pessoas, processos e tecnologia em ambiente corporativo." className="aspect-video mb-10" />
 
         {/* 4 Points Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
