@@ -67,7 +67,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
 
             <div className="flex items-center justify-between px-3 sm:px-6 py-4 border-b border-slate-200/80 liquid-glass-light shrink-0">
               <div className="flex items-center gap-3">
-                <LGLogo size="sm" />
+                <LGLogo size="sm" className="-mt-[17px]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 hidden sm:inline">
                   | Perfil Executivo
                 </span>
