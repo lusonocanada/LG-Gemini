@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
 interface ContextImageProps {
-  name: string;
+  name?: string;
+  src?: string;
+  fit?: 'cover' | 'contain';
   alt: string;
   portrait?: boolean;
   className?: string;
 }
 
-export default function ContextImage({ name, alt, portrait = false, className = '' }: ContextImageProps) {
+export default function ContextImage({ name, src, fit = 'cover', alt, portrait = false, className = '' }: ContextImageProps) {
   const [loaded, setLoaded] = useState(false);
   return (
     <img
-      src={`/images/${name}.webp`}
+      src={src ?? `/images/${name}.webp`}
       alt={alt}
       loading="lazy"
       decoding="async"
@@ -20,7 +22,7 @@ export default function ContextImage({ name, alt, portrait = false, className = 
       onLoad={() => setLoaded(true)}
       ref={image => { if (image?.complete && image.naturalWidth) setLoaded(true); }}
       className={`context-image rounded-2xl ${className}`}
-      style={{ opacity: loaded ? 1 : 0, transition: 'opacity 200ms ease-out' }}
+      style={{ objectFit: fit, opacity: loaded ? 1 : 0, transition: 'opacity 200ms ease-out' }}
     />
   );
 }

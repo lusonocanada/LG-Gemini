@@ -31,3 +31,9 @@ Apresentação executiva pessoal finalizada sobre a base existente, com a ordem 
 ## Bloqueios
 
 Nenhum bloqueio pendente. Entrega em branch de revisão no repositório solicitado; sem deploy.
+
+## Atualização: fotografias dos bancos
+
+As três fotografias fornecidas posteriormente por Diego substituem a ilustração de São Paulo nos capítulos 2008–2012 (Banco Real), 2012–2018 (Santander) e 2018–2020 (Safra). Os arquivos foram copiados integralmente, sem geração, recorte ou remoção de créditos. O enquadramento usa `object-fit: contain` para manter toda a fotografia visível. Os cases permanecem sem imagens.
+
+Arquivos: `public/images/banco-real.jpg`, `santander-sede.jpg`, `banco-safra.webp`; `Trajetoria.tsx`, `ContextImage.tsx` e nota no `Footer.tsx`. As oito ilustrações anteriores continuam arquivadas; a imagem genérica de São Paulo deixou de ser exibida.

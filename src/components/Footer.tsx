@@ -201,7 +201,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
           </div>
 
-<p className="pt-5 text-xs text-slate-400">As imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de clientes, empresas ou projetos de Diego.</p>
+<p className="pt-5 text-xs text-slate-400">As fotos do Banco Real, Santander e Safra foram fornecidas por Diego. As demais imagens de contexto são ilustrações fotográficas criadas para esta apresentação; não são registros de projetos de Diego.</p>
 
           {/* Mandatory Statement */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">

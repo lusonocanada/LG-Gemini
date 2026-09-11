@@ -188,10 +188,18 @@ export default function Trajetoria() {
                 </div>
 
                 <ContextImage
-                  key={activeChapter < 3 ? 'brasil' : current.id}
-                  name={activeChapter < 3 ? 'trajetoria-brasil' : activeChapter === 3 ? 'trajetoria-canada' : 'trajetoria-digital'}
-                  alt={activeChapter < 3 ? 'Vista urbana de São Paulo ao amanhecer, em contexto de negócios.' : activeChapter === 3 ? 'Vista urbana de Toronto em contexto multicultural e profissional.' : 'Mesa de trabalho com protótipos e materiais de planejamento.'}
-                  className="aspect-video rounded-none"
+                  key={current.id}
+                  src={activeChapter < 3 ? ['/images/banco-real.jpg', '/images/santander-sede.jpg', '/images/banco-safra.webp'][activeChapter] : undefined}
+                  name={activeChapter === 3 ? 'trajetoria-canada' : 'trajetoria-digital'}
+                  alt={[
+                    'Fachada do Banco Real / ABN AMRO, em fotografia fornecida por Diego Moraes.',
+                    'Fachada do Santander, em fotografia fornecida por Diego Moraes.',
+                    'Fachada do Banco Safra, em fotografia fornecida por Diego Moraes.',
+                    'Vista urbana de Toronto em contexto multicultural e profissional.',
+                    'Mesa de trabalho com protótipos e materiais de planejamento.'
+                  ][activeChapter]}
+                  fit={activeChapter < 3 ? 'contain' : 'cover'}
+                  className="aspect-video rounded-none bg-slate-100"
                 />
 
                 {/* Chapter Content Body */}
