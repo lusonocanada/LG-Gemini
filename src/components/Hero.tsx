@@ -7,24 +7,34 @@ interface HeroProps {
   onOpenCvModal: () => void;
 }
 
+const proofCards = [
+  { icon: Award, color: '#1B4E9B', text: '15+ anos em RH, projetos e transformação' },
+  { icon: TrendingUp, color: '#008CD2', text: 'R$ 10 milhões de economia anual aproximada em Talent Acquisition' },
+  { icon: CheckCircle2, color: '#00A3E0', text: '60% de redução aproximada no ciclo de admissão digital' },
+  { icon: Globe, color: '#F58220', text: 'Brasil + Canadá: experiência corporativa e multicultural' },
+];
+
 export default function Hero({ onOpenCvModal }: HeroProps) {
   const reduced = useMotionPreference();
+
   return (
-    <section className="relative pt-24 sm:pt-28 pb-16 lg:pb-24 bg-white text-[#0F294A] border-b border-slate-200 overflow-hidden">
-      
-      {/* Background Architectural Grid Pattern */}
-      <div 
+    <section className="hero-cinematic relative pt-24 sm:pt-28 pb-16 lg:pb-24 bg-white text-[#0F294A] border-b border-slate-200 overflow-hidden">
+      <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: 'radial-gradient(#0F294A 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}
       />
+      <div className="hero-light-sweep pointer-events-none absolute inset-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Top Editorial Eyebrow */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 sm:mb-12 border-b border-slate-200/80">
+        <motion.div
+          initial={reduced ? false : { opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduced ? { duration: 0 } : { duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 sm:mb-12 border-b border-slate-200/80"
+        >
           <div className="flex items-center gap-3">
             <span className="inline-flex gap-1">
               <span className="w-2.5 h-1.5 rounded-full bg-[#1B4E9B]" />
@@ -36,89 +46,90 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
               <span className="w-2.5 h-1.5 rounded-full bg-[#8A1538]" />
             </span>
             <span className="text-xs font-bold font-mono tracking-widest text-slate-600 uppercase">
-              APRESENTAÇÃO EXECUTIVA · TRANSFORMAÇÃO DE RH, IMPLANTAÇÃO E IA APLICADA
+              TRANSFORMAÇÃO · OPERAÇÃO · ENTREGA
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Main Hero Layout: Asymmetric Editorial Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Left Column: Bold Headline & Executive Positioning */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            
-            <div className="space-y-3">
-              <motion.h1
-                initial={reduced ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5 }}
-                className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F294A] tracking-tight leading-[1.1]"
-              >
-                Eu conheço a transformação pelo lado de quem vive a operação.{' '}
-                <span className="text-[#008CD2] block mt-2">
-                  Agora, quero ajudar a LG a fazer cada entrega acontecer.
-                </span>
+            <div className="space-y-2 overflow-visible">
+              <motion.h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]">
+                <motion.span
+                  initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-[#0F294A]"
+                >
+                  Eu conheço a transformação
+                </motion.span>
+                <motion.span
+                  initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-[#0F294A]"
+                >
+                  pelo lado de quem vive a <span className="text-[#1B4E9B]">operação.</span>
+                </motion.span>
+                <motion.span
+                  initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+                  className="block mt-3 text-[#008CD2]"
+                >
+                  Agora, quero ajudar a LG
+                </motion.span>
+                <motion.span
+                  initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="hero-signature block text-[#008CD2]"
+                >
+                  a fazer cada entrega acontecer.
+                </motion.span>
               </motion.h1>
             </div>
 
             <motion.p
-              initial={reduced ? false : { opacity: 0, y: 16 }}
+              initial={reduced ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.1 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.6, delay: 1.55 }}
               className="text-base sm:text-lg text-slate-700 font-normal leading-relaxed max-w-2xl"
             >
               Construí minha trajetória dentro de operações complexas de RH. Fui o cliente que precisou organizar prioridades, implantar sistemas, conectar áreas, defender decisões, treinar pessoas e fazer uma mudança funcionar depois do go-live. Hoje, transformo esse repertório em método para conectar tecnologia, experiência e resultado.
             </motion.p>
 
-            {/* Quatro provas breves */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {proofCards.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.text}
+                    initial={reduced ? false : { opacity: 0, y: 16, scale: 0.985 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={reduced ? { duration: 0 } : { duration: 0.46, delay: 1.8 + index * 0.11, ease: [0.16, 1, 0.3, 1] }}
+                    className="p-4 rounded-2xl liquid-glass-card border-l-4 flex items-center gap-3.5"
+                    style={{ borderLeftColor: item.color }}
+                  >
+                    <motion.div
+                      initial={reduced ? false : { scale: 0.72, rotate: -8 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={reduced ? { duration: 0 } : { duration: 0.45, delay: 1.92 + index * 0.11, ease: [0.16, 1, 0.3, 1] }}
+                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${item.color}14` }}
+                    >
+                      <Icon size={18} style={{ color: item.color }} />
+                    </motion.div>
+                    <span className="text-xs font-bold text-[#0F294A] leading-snug">{item.text}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
-            >
-              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#1B4E9B] flex items-center gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-[#1B4E9B]/10 flex items-center justify-center shrink-0">
-                  <Award size={18} className="text-[#1B4E9B]" />
-                </div>
-                <span className="text-xs font-bold text-[#0F294A] leading-snug">
-                  15+ anos em RH, projetos e transformação
-                </span>
-              </div>
-
-              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#008CD2] flex items-center gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-[#008CD2]/10 flex items-center justify-center shrink-0">
-                  <TrendingUp size={18} className="text-[#008CD2]" />
-                </div>
-                <span className="text-xs font-bold text-[#0F294A] leading-snug">
-                  R$ 10 milhões de economia anual aproximada em Talent Acquisition
-                </span>
-              </div>
-
-              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#00A3E0] flex items-center gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center shrink-0">
-                  <CheckCircle2 size={18} className="text-[#00A3E0]" />
-                </div>
-                <span className="text-xs font-bold text-[#0F294A] leading-snug">
-                  60% de redução aproximada no ciclo de admissão digital
-                </span>
-              </div>
-
-              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#F58220] flex items-center gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-[#F58220]/10 flex items-center justify-center shrink-0">
-                  <Globe size={18} className="text-[#F58220]" />
-                </div>
-                <span className="text-xs font-bold text-[#0F294A] leading-snug">
-                  Brasil + Canadá: experiência corporativa e multicultural
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Actions: High-Contrast Executive Buttons */}
-            <motion.div
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.5, delay: 0.3 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.55, delay: 2.28 }}
               className="flex flex-wrap items-center gap-4 pt-2"
             >
               <a
@@ -139,22 +150,18 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
             </motion.div>
           </div>
 
-          {/* Right Column: High-Impact Visual Composition with Real Executive Photo */}
           <motion.div
-            initial={reduced ? false : { opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={reduced ? { duration: 0, delay: 0 } : { duration: 0.7, delay: 0.2 }}
+            initial={reduced ? false : { opacity: 0, scale: 0.965, x: 18 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={reduced ? { duration: 0 } : { duration: 1.05, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
           >
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <HeroExecutivePhoto />
             </div>
           </motion.div>
-
         </div>
-
       </div>
-
     </section>
   );
 }
