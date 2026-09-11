@@ -1,35 +1,21 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Building2, 
-  Briefcase, 
-  Cpu, 
-  TrendingUp, 
-  Globe2, 
-  Sparkles, 
-  CheckCircle2, 
-  ChevronRight, 
-  ArrowRight,
-  Layers,
-  X
-} from 'lucide-react';
+import { CheckCircle2, ChevronRight, X } from 'lucide-react';
+import LGChromaticBar from './LGChromaticBar';
 
 interface CaseItem {
   id: string;
   number: string;
   title: string;
-  tagline: string;
   organization: string;
   period: string;
   color: string;
-  image: string;
-  keyMetric: string;
-  keyMetricLabel: string;
   contexto: string;
   desafio: string;
   meuPapel: string;
-  comoConduzi: string[];
-  resultado: string[];
+  comoConduzi: string;
+  entregas: string[];
+  resultado: string;
 }
 
 const casesData: CaseItem[] = [
@@ -37,302 +23,218 @@ const casesData: CaseItem[] = [
     id: 'case-1',
     number: '01',
     title: 'HR PMO e PeopleSoft',
-    tagline: 'Governança, priorização, admissão digital, portal e desligamento.',
     organization: 'Banco Safra',
     period: '2018 – 2020',
     color: '#1B4E9B',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: '-60%',
-    keyMetricLabel: 'Tempo de Admissão Digital',
-    contexto: 'Ambiente bancário de alta exigência regulatória e operacional com dependência de processos legados no PeopleSoft e alta carga manual no atendimento ao colaborador.',
-    desafio: 'Falta de uma governança única para priorizar projetos de RH, admissões com prazos extensos e processos de desligamento fragmentados que geravam riscos jurídicos e operacionais.',
-    meuPapel: 'Líder de HR PMO, responsável por estruturar o escritório de projetos, articular os times de RH, TI e Jurídico e redesenhar as esteiras críticas de ponta a ponta.',
-    comoConduzi: [
-      'Implementação de metodologia ágil adaptada ao PMO com comitê executivo de priorização de demandas',
-      'Mapeamento detalhado e digitalização integral da esteira de admissão, eliminando envio físico de documentos',
-      'Redesenho completo do fluxo de homologação e desligamento com controle estrito de prazos legais e integração ao PeopleSoft'
+    contexto: 'A Diretoria de RH tinha uma carteira prioritária de projetos que precisava de governança, cadência de decisão e visibilidade executiva.',
+    desafio: 'Criar o PMO de RH e acelerar jornadas críticas de admissão e desligamento sem gerar fricção na operação.',
+    meuPapel: 'Gerente de Projetos de RH, responsável por estruturar o HR PMO e conduzir a carteira prioritária da diretoria.',
+    comoConduzi: 'Metodologia de PMO, matriz de priorização, rituais executivos, gestão de riscos e dependências com Tecnologia e Operações.',
+    entregas: [
+      'Metodologia de PMO, comitês e rituais executivos',
+      'Admissão digital no PeopleSoft',
+      'Modernização do portal e do aplicativo de RH',
+      'Redesenho do fluxo de desligamento'
     ],
-    resultado: [
-      'Redução de aproximadamente 60% no tempo total do ciclo de admissão digital',
-      'Redução de aproximadamente 50% no tempo de processamento das rescisões e homologações',
-      'Mitigação significativa de passivos trabalhistas decorrentes de atrasos cadastrais'
-    ]
+    resultado: 'Redução aproximada de 60% no ciclo de admissão e de 50% no tempo de processamento de desligamentos.'
   },
   {
     id: 'case-2',
     number: '02',
-    title: 'CSC e Planejamento de RH',
-    tagline: 'Catálogo de serviços, SLAs, orçamento e escala operacional.',
+    title: 'CSC, orçamento e governança',
     organization: 'Santander Brasil',
     period: '2012 – 2015',
     color: '#008CD2',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: '99.4%',
-    keyMetricLabel: 'Conformidade de SLAs do CSC',
-    contexto: 'Operação de RH com dezenas de milhares de chamados mensais, múltiplos sistemas descentralizados e necessidade de padronizar a prestação de serviços internos.',
-    desafio: 'Falta de visibilidade sobre custos unitários de atendimento, ausência de catálogo padronizado de serviços e necessidade de conciliar a disciplina orçamentária com a experiência do colaborador.',
-    meuPapel: 'Especialista de Planejamento de RH responsável por estruturar o catálogo de serviços do CSC, estabelecer SLAs e conectar o planejamento financeiro à operação.',
-    comoConduzi: [
-      'Construção do catálogo corporativo de serviços de RH com classificação de complexidade e prazos pactuados',
-      'Implantação de painéis de controle de SLAs em tempo real e rotinas de gestão com a liderança operacional',
-      'Alinhamento direto entre a esteira de orçamento (capex/opex de RH) e os níveis de serviço prestados'
+    contexto: 'A Vice-Presidência de RH precisava conectar planejamento estratégico, disciplina orçamentária e modernização operacional.',
+    desafio: 'Governar o orçamento de pessoal enquanto as operações de RH migravam para um modelo de Centro de Serviços Compartilhados.',
+    meuPapel: 'Atuação em indicadores, orçamento e planejamento estratégico de RH, com apoio à gestão do portfólio da VP de RH e interface com TI.',
+    comoConduzi: 'Cenários orçamentários, estruturação de catálogo de serviços, definição de SLAs e articulação entre negócio, TI e especialistas funcionais.',
+    entregas: [
+      'Governança e acompanhamento do budget de pessoal',
+      'Catálogo de serviços de RH e SLAs',
+      'Cenários orçamentários para liderança',
+      'Operações com autosserviço e escala'
     ],
-    resultado: [
-      'Previsibilidade total sobre custos de atendimento e capacidade de atendimento do CSC',
-      'Aumento expressivo na taxa de resolução no primeiro contato (FCR) e redução de reaberturas de chamados',
-      'Interface fluida e governada entre áreas clientes, RH Corporativo e TI'
-    ]
+    resultado: 'Maior clareza para a liderança sobre orçamento, serviços e prioridades operacionais de RH.'
   },
   {
     id: 'case-3',
     number: '03',
     title: 'Talent Acquisition e Workday',
-    tagline: 'Transformação da seleção, economia, experiência do candidato e localização global.',
     organization: 'Santander Brasil',
     period: '2015 – 2017',
     color: '#8A1538',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: 'R$ 10M',
-    keyMetricLabel: 'Economia Anual Recorrente',
-    contexto: 'Volume de contratação massivo em âmbito nacional, dependência elevada de consultorias externas e processo de implantação global da plataforma Workday.',
-    desafio: 'Localizar a plataforma Workday para as particularidades trabalhistas brasileiras ao mesmo tempo em que se reestruturava a operação de atração para reduzir custos externos.',
-    meuPapel: 'Líder funcional do projeto de Talent Acquisition, atuando como ponte entre o time global de produto, a equipe de TI local e as lideranças de negócio do banco.',
-    comoConduzi: [
-      'Condução de workshops de mapeamento de processos com recrutadores, gestores e especialistas em folha',
-      'Configuração das regras de negócio, esteiras de aprovação e adequação aos requisitos de compliance do Brasil',
-      'Criação de um novo modelo de atração direta, capacitação em larga escala dos times de seleção e gestão de mudança'
+    contexto: 'O modelo de atração e seleção precisava ganhar eficiência e oferecer uma experiência mais digital ao candidato, em paralelo à implantação global do Workday.',
+    desafio: 'Reformular o modelo com economia real, sem perder qualidade, e adaptar os processos de recrutamento à realidade brasileira dentro de um projeto global.',
+    meuPapel: 'Liderança na reformulação de Talent Acquisition e ponto focal de Talent no projeto global Workday para o Brasil.',
+    comoConduzi: 'Internalização de processos seletivos estratégicos, redesenho de fluxos, acompanhamento de indicadores e localização funcional do Workday.',
+    entregas: [
+      'Internalização de processos seletivos estratégicos',
+      'Redesenho de fluxos de seleção',
+      'Localização dos processos de recrutamento no Workday para o Brasil'
     ],
-    resultado: [
-      'Economia anual estimada em aproximadamente R$ 10 milhões pela internalização e otimização de canais de seleção',
-      'Go-live bem-sucedido com aderência plena aos requisitos regulatórios locais',
-      'Melhoria substancial na experiência do candidato e redução do tempo de preenchimento de vagas críticas'
-    ]
+    resultado: 'Economia anual aproximada de R$ 10 milhões.'
   },
   {
     id: 'case-4',
     number: '04',
-    title: 'People Analytics e Mobilidade',
-    tagline: 'Dados de talento conectados à decisão corporativa.',
+    title: 'People Analytics e mobilidade',
     organization: 'Santander Brasil',
-    period: '2016 – 2018',
-    color: '#00A3E0',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: '50 mil',
-    keyMetricLabel: 'Vidas Integradas na Plataforma',
-    contexto: 'Organização com cerca de 50 mil colaboradores onde as oportunidades internas eram pouco visíveis e as decisões de retenção e movimentação careciam de inteligência de dados.',
-    desafio: 'Integrar dados de múltiplas fontes dispersas para dar transparência ao mercado interno de trabalho e fornecer aos executivos indicadores acionáveis de pessoas.',
-    meuPapel: 'Especialista responsável pelo desenho funcional da plataforma de mobilidade interna e estruturação dos modelos de dados de People Analytics.',
-    comoConduzi: [
-      'Desenho da jornada de candidatura interna aberta, permitindo aos colaboradores explorarem vagas em todo o país',
-      'Modelagem e saneamento de bases de competências, desempenho, histórico salarial e potencial',
-      'Construção de dashboards executivos para diretoria com análise de turnover voluntário, mobilidade e gap de lideranças'
+    period: '2017 – 2018',
+    color: '#F58220',
+    contexto: 'Uma organização com cerca de 50 mil colaboradores precisava de mais visibilidade para decisões sobre talentos e mobilidade interna.',
+    desafio: 'Conectar dados de pessoas a uma visão mais estruturada de oportunidades internas.',
+    meuPapel: 'Atuação em People Analytics e iniciativas de mobilidade interna.',
+    comoConduzi: 'Organização de informações de talento, criação de dashboards e desenvolvimento de algoritmo de mobilidade.',
+    entregas: [
+      'Dashboards de People Analytics',
+      'Algoritmo e modelos de mobilidade interna',
+      'Informações para apoiar decisões de talento'
     ],
-    resultado: [
-      'Adesão em massa de colaboradores em âmbito nacional à esteira de mobilidade interna',
-      'Decisões de promoção e retenção pautadas em dados consistentes e auditáveis',
-      'Redução de custos de contratação externa aproveitando talentos já aculturados na organização'
-    ]
+    resultado: 'Mais visibilidade sobre talentos e mobilidade interna para cerca de 50 mil colaboradores.'
   },
   {
     id: 'case-5',
     number: '05',
-    title: 'HRBP e Operação no Canadá',
-    tagline: 'Pessoas, gestão e execução em contexto multicultural.',
+    title: 'HRBP e operação internacional',
     organization: 'Toronto, Canadá',
     period: '2020 – 2025',
     color: '#FFC20E',
-    image: 'https://images.unsplash.com/photo-1507992781348-310259076fa0?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: '100%',
-    keyMetricLabel: 'Ambiente Internacional Bilíngue',
-    contexto: 'Ambiente de negócios internacional, equipe diversa com profissionais de múltiplos países e culturas e necessidade de adaptação rápida a práticas globais de gestão.',
-    desafio: 'Garantir alto padrão de entrega operacional e retenção de equipe ao mesmo tempo em que se consolidava formação acadêmica executiva na América do Norte.',
-    meuPapel: 'HR Business Partner e gestor operacional, conduzindo rotinas de gestão de pessoas, resolução de conflitos e governança de processos.',
-    comoConduzi: [
-      'Aplicação de práticas de escuta ativa, liderança empática e rituais claros de feedback e alinhamento de metas',
-      'Conciliação entre governança operacional rigorosa e flexibilidade cultural para engajamento dos talentos',
-      'Conclusão da formação executiva em Business Management pela Toronto School of Management'
+    contexto: 'Atuação no Canadá em ambiente multicultural, conectando operação, pessoas e relacionamento com stakeholders.',
+    desafio: 'Conciliar proximidade com pessoas, planejamento e execução operacional em contexto internacional.',
+    meuPapel: 'HR Business Partner e líder de operações.',
+    comoConduzi: 'Apoio à governança, planejamento de atividades, organização de rotinas e relacionamento próximo com pessoas e clientes.',
+    entregas: [
+      'Apoio à governança e planejamento',
+      'Padronização de operações críticas',
+      'Gestão de operações e relacionamento'
     ],
-    resultado: [
-      'Estabilidade de equipe e elevados índices de engajamento e produtividade',
-      'Visão multicultural prática sobre como liderar e comunicar transformações em cenários diversos',
-      'Enriquecimento do repertório com padrões internacionais de governança corporativa'
-    ]
+    resultado: 'Experiência prática de gestão de pessoas e operações em ambiente multicultural.'
   },
   {
     id: 'case-6',
     number: '06',
-    title: 'IA Aplicada e Prototipação',
-    tagline: 'Transformar gargalos em hipóteses, automações e experiências testáveis.',
-    organization: 'Consultoria e Soluções Digitais',
+    title: 'IA aplicada e prototipação',
+    organization: 'Consultoria e soluções digitais',
     period: '2025 – Atual',
-    color: '#F58220',
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
-    keyMetric: '10x',
-    keyMetricLabel: 'Velocidade na Síntese Operacional',
-    contexto: 'Disseminação de ferramentas de IA generativa no mercado, porém com escassez de casos de uso práticos integrados aos processos reais das empresas.',
-    desafio: 'Superar o discurso teórico de inteligência artificial e construir soluções funcionais com contexto, governança e valor comprovado para a operação.',
-    meuPapel: 'Consultor de transformação e desenvolvedor de protótipos aplicados a processos operacionais e de recursos humanos.',
-    comoConduzi: [
-      'Mapeamento de gargalos em processos de atendimento, recrutamento e geração de relatórios executivos',
-      'Construção de protótipos funcionais com modelos de linguagem integrados a regras de negócio e validação humana',
-      'Validação empírica de redução de esforço em tarefas rotineiras mantendo a segurança e a precisão dos dados'
+    color: '#00A3E0',
+    contexto: 'Gargalos de operação e RH podem ser testados em ciclos curtos antes de exigir um grande investimento.',
+    desafio: 'Reduzir o tempo entre uma necessidade real e uma solução utilizável, com validação humana.',
+    meuPapel: 'Atuação em transformação digital, automação, dados e IA aplicada.',
+    comoConduzi: 'Diagnóstico, prototipação, desenho de fluxos, dashboards e automações para testar hipóteses.',
+    entregas: [
+      'Protótipos funcionais',
+      'Dashboards e fluxos de apoio à decisão',
+      'Automações de rotinas de análise e documentação'
     ],
-    resultado: [
-      'Capacidade demonstrada de traduzir IA em ferramentas funcionais com trilha de auditoria e utilidade real',
-      'Criação de esteiras que reduzem drasticamente o tempo de síntese de dados e atendimento primário',
-      'Visão madura e desmistificada sobre como IA deve servir à operação — sem substituir o julgamento humano'
-    ]
+    resultado: 'Hipóteses testadas em ciclos curtos antes de uma implantação em maior escala.'
   }
 ];
 
 export default function SelectedCases() {
-  const [activeCaseId, setActiveCaseId] = useState<string>('case-1');
+  const [selectedCaseIdx, setSelectedCaseIdx] = useState(0);
   const [mobileModalCase, setMobileModalCase] = useState<CaseItem | null>(null);
 
-  const activeCase = casesData.find((c) => c.id === activeCaseId) || casesData[0];
+  const activeCase = casesData[selectedCaseIdx];
 
   return (
     <section id="cases" className="py-20 lg:py-28 bg-white text-[#0F294A] relative border-b border-slate-200">
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-16">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-14 pb-8 border-b border-slate-200">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-1 bg-[#008CD2]" />
-            <span className="text-xs font-bold uppercase tracking-widest text-[#008CD2]">
-              Cases Selecionados
+            <span className="w-3 h-1 bg-[#8A1538]" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8A1538] font-mono">
+              CASES SELECIONADOS
             </span>
           </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F294A] leading-tight mb-6"
-          >
-            Seis momentos em que o meu papel foi fazer a mudança sair do papel.
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal"
-          >
-            A visão prática de quem esteve à frente do planejamento, da governança, do redesenho de processos e da entrega final.
-          </motion.p>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F294A] leading-[1.12]">
+            Projetos em que liderei a transformação na prática.
+          </h2>
         </div>
 
-        {/* Desktop Experience: Rich Selector + Detail Panel */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
+        {/* Desktop View: Split Sidebar Navigation (Left) + Detail Card (Right) */}
+        <div className="hidden lg:grid grid-cols-12 gap-8 items-start">
           
-          {/* Left: 6 Cases Selector List */}
-          <div className="lg:col-span-4 space-y-2">
-            {casesData.map((c) => {
-              const isSelected = c.id === activeCaseId;
+          {/* Left: Case Selector */}
+          <div className="col-span-4 space-y-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-3">
+              Selecione o Case:
+            </span>
+
+            {casesData.map((c, idx) => {
+              const isSelected = selectedCaseIdx === idx;
               return (
                 <button
                   key={c.id}
-                  onClick={() => setActiveCaseId(c.id)}
-                  className={`w-full text-left p-4.5 border transition-colors flex items-center justify-between cursor-pointer ${
-                    isSelected
-                      ? 'bg-white border-l-4 border-t border-r border-b border-slate-200'
-                      : 'bg-[#F8FAFC] hover:bg-white border-l-4 border-t border-r border-b border-slate-200 opacity-80 hover:opacity-100'
+                  onClick={() => setSelectedCaseIdx(idx)}
+                  className={`w-full text-left p-4 transition-all duration-200 cursor-pointer border-l-4 ${
+                    isSelected 
+                      ? 'bg-white shadow-md border-t border-r border-b border-slate-300 translate-x-1' 
+                      : 'bg-[#F8FAFC] hover:bg-white border-t border-r border-b border-slate-200 opacity-85 hover:opacity-100'
                   }`}
                   style={{ borderLeftColor: c.color }}
                 >
-                  <div className="flex items-center gap-3">
-                    <span 
-                      className="text-xs font-mono font-bold px-2 py-0.5 rounded-full"
-                      style={{ 
-                        backgroundColor: c.color === '#FFC20E' ? '#FEF3C7' : `${c.color}15`, 
-                        color: c.color === '#FFC20E' ? '#92400E' : c.color 
-                      }}
-                    >
-                      {c.number}
-                    </span>
-                    <div>
-                      <h4 className="text-sm font-bold text-[#0F294A]">
-                        {c.title}
-                      </h4>
-                      <span className="text-[11px] text-slate-500 block font-medium">
-                        {c.organization} · {c.period}
-                      </span>
-                    </div>
+                  <div className="flex items-center justify-between text-[11px] font-mono mb-1">
+                    <span className="font-bold" style={{ color: c.color }}>CASE {c.number}</span>
+                    <span className="text-slate-400 font-semibold">{c.period}</span>
                   </div>
-                  <ChevronRight size={16} style={{ color: isSelected ? c.color : '#94A3B8' }} />
+                  <div className="text-sm font-black text-[#0F294A] tracking-tight">
+                    {c.title}
+                  </div>
+                  <div className="text-xs text-slate-600 truncate mt-0.5">
+                    {c.organization}
+                  </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Right: Detailed Case Panel with Strict Sequence: contexto → desafio → meu papel → como conduzi → resultado */}
-          <div className="lg:col-span-8">
+          {/* Right: Detailed Showcase */}
+          <div className="col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCase.id}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
+                exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.25 }}
                 className="bg-white border-2 border-slate-200 shadow-xl overflow-hidden"
               >
-                {/* Visual Editorial Header with Real Corporate Photography */}
-                <div className="relative h-60 sm:h-72 bg-[#0F294A] overflow-hidden">
-                  <img
-                    src={activeCase.image}
-                    alt={activeCase.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-center filter contrast-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C1929] via-[#0C1929]/50 to-transparent" />
-                  
-                  {/* Chromatic Top Bar */}
-                  <div className="absolute top-0 left-0 right-0 z-20 h-1" style={{ backgroundColor: activeCase.color }} />
+                {/* Chromatic Top Bar */}
+                <div className="w-full">
+                  <LGChromaticBar size="xs" />
+                </div>
 
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-6 right-6 z-20 flex items-center justify-between">
+                {/* Case Header (Typographic, no image) */}
+                <div className="p-6 sm:p-8 bg-[#0F294A] text-white">
+                  <div className="flex items-center justify-between gap-2 mb-2">
                     <span 
-                      className="text-xs font-mono font-bold px-3 py-1 text-white uppercase tracking-wider rounded-full"
+                      className="px-3 py-1 text-xs font-mono font-bold text-white uppercase tracking-wider"
                       style={{ backgroundColor: activeCase.color }}
                     >
                       CASE {activeCase.number}
                     </span>
-                    <span className="text-xs font-bold text-slate-200 font-mono bg-[#0C1929]/80 px-3 py-1 border border-slate-700 rounded-full">
+                    <span className="text-xs font-mono text-slate-300">
                       {activeCase.organization} · {activeCase.period}
                     </span>
                   </div>
 
-                  {/* Impact Metric Floating Callout on Image */}
-                  <div className="absolute bottom-4 right-6 z-20 bg-[#0F294A] border-l-4 p-3.5 shadow-lg max-w-[200px]" style={{ borderLeftColor: activeCase.color }}>
-                    <div className="text-2xl sm:text-3xl font-black text-white leading-none mb-1">
-                      {activeCase.keyMetric}
-                    </div>
-                    <div className="text-[10px] font-mono uppercase text-slate-300 font-semibold leading-tight">
-                      {activeCase.keyMetricLabel}
-                    </div>
-                  </div>
-
-                  {/* Case Headline on Image */}
-                  <div className="absolute bottom-4 left-6 z-20 max-w-md text-white pr-4">
-                    <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-                      {activeCase.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 mt-1 font-medium line-clamp-1">
-                      {activeCase.tagline}
-                    </p>
-                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white">
+                    {activeCase.title}
+                  </h3>
                 </div>
 
-                {/* Case Body with Strict 5-Step Editorial Sequence */}
+                {/* Structured Body: Contexto -> Desafio -> Meu Papel -> Como Conduzi -> Entregas -> Resultado */}
                 <div className="p-6 sm:p-10 space-y-6">
                   
-                  {/* 1 & 2: Contexto e Desafio in Split Architectural Grid */}
+                  {/* Contexto & Desafio */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-4 bg-[#F8FAFC] border-t-2 border-slate-300 border-l border-r border-b border-slate-200">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-1">
-                        1. O Cenário & Contexto
+                        Contexto
                       </span>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                         {activeCase.contexto}
@@ -341,7 +243,7 @@ export default function SelectedCases() {
 
                     <div className="p-4 bg-[#F8FAFC] border-t-2 border-t-[#E53924] border-l border-r border-b border-slate-200">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-[#E53924] font-bold block mb-1">
-                        2. O Desafio Crítico
+                        Desafio
                       </span>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                         {activeCase.desafio}
@@ -349,44 +251,49 @@ export default function SelectedCases() {
                     </div>
                   </div>
 
-                  {/* 3. Meu Papel (High-contrast prominent card) */}
+                  {/* Meu Papel */}
                   <div className="bg-[#0F294A] text-white p-5 border-l-4 shadow-sm" style={{ borderLeftColor: activeCase.color }}>
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold block mb-1">
-                      3. Meu Papel na Liderança da Solução
+                      Meu Papel
                     </span>
-                    <p className="text-sm sm:text-base text-slate-100 font-semibold leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
                       {activeCase.meuPapel}
                     </p>
                   </div>
 
-                  {/* 4. Como Conduzi */}
-                  <div className="pt-2">
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-3">
-                      4. Como Conduzi a Transformação (Método & Execução):
+                  {/* Como Conduzi */}
+                  <div className="p-4 bg-[#F8FAFC] border-l-4 border-slate-300 border-t border-r border-b border-slate-200">
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-1">
+                      Como Conduzi
                     </span>
-                    <ul className="space-y-2.5">
-                      {activeCase.comoConduzi.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                          <span className="w-1.5 h-1.5 mt-2 shrink-0" style={{ backgroundColor: activeCase.color }} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      {activeCase.comoConduzi}
+                    </p>
                   </div>
 
-                  {/* 5. Resultado Mensurável */}
-                  <div className="pt-6 border-t border-slate-200">
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#8A1538] font-bold block mb-3">
-                      5. Impacto Mensurável Comprovado:
+                  {/* Entregas */}
+                  <div className="pt-2">
+                    <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold block mb-3">
+                      Entregas:
                     </span>
-                    <div className="grid grid-cols-1 gap-2.5">
-                      {activeCase.resultado.map((res, idx) => (
-                        <div key={idx} className="flex items-start gap-3 bg-[#F8FAFC] p-3.5 border-l-4 border-l-[#8A1538] border-t border-r border-b border-slate-200 text-xs sm:text-sm text-slate-900 font-semibold">
-                          <CheckCircle2 size={16} className="text-[#8A1538] shrink-0 mt-0.5" />
-                          <span>{res}</span>
+                    <div className="space-y-2">
+                      {activeCase.entregas.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
+                          <CheckCircle2 size={16} className="text-[#008CD2] shrink-0 mt-0.5" />
+                          <span>{item}</span>
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Resultado */}
+                  <div className="p-4 bg-[#F8FAFC] border-l-4 border-l-[#8A1538] border-t border-r border-b border-slate-200 text-xs sm:text-sm text-slate-900 font-semibold">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#8A1538] font-bold block mb-1">
+                      Resultado
+                    </span>
+                    <p className="leading-relaxed">
+                      {activeCase.resultado}
+                    </p>
                   </div>
 
                 </div>
@@ -397,9 +304,9 @@ export default function SelectedCases() {
 
         </div>
 
-        {/* Mobile Experience: Sharp architectural cards */}
+        {/* Mobile View: Cards + Bottom Sheet */}
         <div className="lg:hidden space-y-4">
-          {casesData.map((c) => (
+          {casesData.map((c, idx) => (
             <div
               key={c.id}
               className="bg-[#F8FAFC] border-l-4 border-t border-r border-b border-slate-200 p-5 space-y-3"
@@ -420,7 +327,7 @@ export default function SelectedCases() {
 
               <div>
                 <h3 className="text-lg font-bold text-[#0F294A]">{c.title}</h3>
-                <p className="text-xs text-slate-600 mt-1">{c.tagline}</p>
+                <p className="text-xs text-slate-600 mt-1">{c.period}</p>
               </div>
 
               <button
@@ -434,7 +341,7 @@ export default function SelectedCases() {
           ))}
         </div>
 
-        {/* Mobile Detail Modal (Solid, no translucent backdrop) */}
+        {/* Mobile Detail Modal Bottom Sheet (Dark backdrop, solid header with close button, single scroll) */}
         <AnimatePresence>
           {mobileModalCase && (
             <div className="fixed inset-0 z-50 flex items-end justify-center lg:hidden">
@@ -443,7 +350,7 @@ export default function SelectedCases() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setMobileModalCase(null)}
-                className="fixed inset-0 bg-[#0F294A]/80"
+                className="fixed inset-0 bg-[#0F294A]/80 backdrop-blur-xs"
               />
 
               <motion.div
@@ -451,15 +358,16 @@ export default function SelectedCases() {
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-                className="relative z-10 w-full max-h-[88vh] bg-white border-t-4 border-slate-900 p-6 overflow-y-auto space-y-6 shadow-2xl"
+                className="relative z-10 w-full max-h-[88vh] bg-white border-t-4 p-6 overflow-y-auto space-y-6 shadow-2xl"
                 style={{ borderTopColor: mobileModalCase.color }}
               >
-                <div className="flex items-center justify-between pb-3 border-b border-slate-200 sticky top-0 bg-white">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 sticky top-0 bg-white z-20">
                   <span className="text-xs font-mono font-bold" style={{ color: mobileModalCase.color }}>
                     CASE {mobileModalCase.number} · {mobileModalCase.organization}
                   </span>
                   <button
                     onClick={() => setMobileModalCase(null)}
+                    aria-label="Fechar detalhes do case"
                     className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
                   >
                     <X size={20} />
@@ -468,42 +376,47 @@ export default function SelectedCases() {
 
                 <div>
                   <h3 className="text-xl font-black text-[#0F294A]">{mobileModalCase.title}</h3>
-                  <p className="text-xs text-slate-600 mt-1 font-medium">{mobileModalCase.tagline}</p>
+                  <p className="text-xs text-slate-600 mt-1 font-medium">{mobileModalCase.period}</p>
                 </div>
 
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">1. Contexto</span>
+                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">Contexto</span>
                     <p className="text-slate-700 leading-relaxed">{mobileModalCase.contexto}</p>
                   </div>
+
                   <div>
-                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">2. Desafio</span>
+                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">Desafio</span>
                     <p className="text-slate-700 leading-relaxed">{mobileModalCase.desafio}</p>
                   </div>
+
                   <div className="bg-[#F8FAFC] p-3.5 border-l-4 border-slate-300" style={{ borderLeftColor: mobileModalCase.color }}>
-                    <span className="font-bold uppercase tracking-wider block mb-1" style={{ color: mobileModalCase.color }}>3. Meu Papel</span>
+                    <span className="font-bold uppercase tracking-wider block mb-1" style={{ color: mobileModalCase.color }}>Meu Papel</span>
                     <p className="text-slate-900 font-semibold">{mobileModalCase.meuPapel}</p>
                   </div>
+
                   <div>
-                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">4. Como Conduzi</span>
-                    <ul className="space-y-2">
-                      {mobileModalCase.comoConduzi.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-slate-700">
-                          <span className="w-1.5 h-1.5 mt-1.5 shrink-0" style={{ backgroundColor: mobileModalCase.color }} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">Como Conduzi</span>
+                    <p className="text-slate-700 leading-relaxed">{mobileModalCase.comoConduzi}</p>
                   </div>
-                  <div className="pt-2 border-t border-slate-200">
-                    <span className="font-bold uppercase tracking-wider text-[#8A1538] block mb-2">5. Resultado</span>
-                    <div className="space-y-2">
-                      {mobileModalCase.resultado.map((res, idx) => (
-                        <div key={idx} className="bg-[#F8FAFC] p-3 border-l-4 border-l-[#8A1538] text-slate-900 font-medium">
-                          {res}
+
+                  <div>
+                    <span className="font-bold uppercase tracking-wider text-slate-400 block mb-1">Entregas</span>
+                    <div className="space-y-1.5">
+                      {mobileModalCase.entregas.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-slate-700">
+                          <CheckCircle2 size={14} className="text-[#008CD2] shrink-0 mt-0.5" />
+                          <span>{item}</span>
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-200">
+                    <span className="font-bold uppercase tracking-wider text-[#8A1538] block mb-1">Resultado</span>
+                    <p className="bg-[#F8FAFC] p-3 border-l-4 border-l-[#8A1538] text-slate-900 font-medium">
+                      {mobileModalCase.resultado}
+                    </p>
                   </div>
                 </div>
               </motion.div>

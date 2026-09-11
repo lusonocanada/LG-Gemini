@@ -1,5 +1,4 @@
-import { motion } from 'motion/react';
-import { FileText, Phone, Linkedin, Mail, MapPin, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
+import { FileText, Phone, Linkedin, MapPin, Mail } from 'lucide-react';
 import LGChromaticBar from './LGChromaticBar';
 
 interface ClosingCTAProps {
@@ -22,65 +21,54 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
           
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#14263D] border border-slate-700 text-xs font-mono font-bold uppercase tracking-widest text-[#FFC20E] rounded-full">
             <span className="w-2 h-2 rounded-full bg-[#FFC20E]" />
-            <span>PROPOSTA DE VALOR & PRÓXIMO PASSO</span>
+            <span>PRÓXIMO PASSO</span>
           </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight"
-          >
-            Quero levar para a LG a visão de quem já esteve na cadeira do cliente — e sabe como fazer a transformação{' '}
-            <span className="text-[#00A3E0]">acontecer na prática.</span>
-          </motion.h2>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+            Quero levar para a LG a visão de quem viveu a dor da implantação na cadeira do cliente.
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-3xl mx-auto"
-          >
-            Trago repertório consolidado em RH, governança, implantação de plataformas corporativas, análise de dados e inteligência artificial. Mas, acima de tudo, trago postura executiva: escutar antes de desenhar, organizar antes de acelerar e acompanhar a entrega até que ela faça parte natural da operação diária do cliente da LG.
-          </motion.p>
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-3xl mx-auto">
+            Trago repertório em projetos, processos, dados e tecnologia, com a postura de quem prefere resolver gargalos reais a vender promessas vazias. Se a agenda da LG é fazer a transformação chegar com qualidade à ponta, temos muito sobre o que conversar.
+          </p>
         </div>
 
-        {/* 3 Prominent Executive CTAs in Solid Chromatic Style */}
+        {/* 3 Executive CTAs */}
         <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-4 mb-16">
           
-          {/* 1. Meu perfil completo */}
+          {/* 1. Ver perfil completo */}
           <button
             onClick={onOpenCvModal}
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
           >
             <FileText size={16} />
-            <span>Ver Currículo Executivo Completo</span>
+            <span>Ver perfil completo</span>
           </button>
 
-          {/* 2. WhatsApp Direto */}
+          {/* 2. Conversar no WhatsApp */}
           <a
-            href="https://wa.me/5511974338557"
+            href="https://wa.me/5511932211288"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#F58220] hover:bg-[#E53924] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
           >
             <Phone size={16} />
-            <span>Falar com Diego no WhatsApp</span>
+            <span>Conversar no WhatsApp</span>
           </a>
 
-          {/* 3. LinkedIn */}
+          {/* 3. Conectar no LinkedIn */}
           <a
-            href="https://linkedin.com/in/mvdigo"
+            href="https://linkedin.com/in/diegomoraes87"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#14263D] hover:bg-[#1E3A5F] text-white border border-slate-700 hover:border-slate-500 text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-md hover:shadow-lg"
           >
             <Linkedin size={16} className="text-[#00A3E0]" />
-            <span>Perfil no LinkedIn</span>
+            <span>Conectar no LinkedIn</span>
           </a>
         </div>
 
-        {/* Executive Availability & Credentials Card */}
+        {/* Executive Contact Card */}
         <div className="max-w-4xl mx-auto bg-[#0A192F] border-2 border-slate-800 p-6 sm:p-8 shadow-2xl">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
             
@@ -93,35 +81,33 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
                 <span>São Paulo / Brasil</span>
               </p>
               <p className="text-xs text-slate-400">
-                Disponibilidade imediata para atuação presencial, híbrida ou projetos nacionais.
+                Disponível para atuação presencial, híbrida ou projetos em escala.
               </p>
             </div>
 
             <div className="sm:pl-6 pt-4 sm:pt-0 space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#00A3E0] font-bold block">
-                CONTATO DIRETO
+                TELEFONE / WHATSAPP
               </span>
               <p className="text-sm font-bold text-white flex items-center gap-2">
                 <Phone size={16} className="text-[#F58220] shrink-0" />
-                <span>+55 (11) 97433-8557</span>
+                <span>+55 11 93221-1288</span>
               </p>
               <p className="text-xs text-slate-400">
-                Canal exclusivo para lideranças da LG Lugar de Gente.
+                Contato direto com Diego Moraes.
               </p>
             </div>
 
             <div className="sm:pl-6 pt-4 sm:pt-0 space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#8A1538] font-bold block">
-                STATUS PROFISSIONAL
+                E-MAIL
               </span>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-bold text-emerald-400 font-mono uppercase">
-                  Disponível para Conversas
-                </span>
-              </div>
+              <p className="text-sm font-bold text-white flex items-center gap-2">
+                <Mail size={16} className="text-emerald-400 shrink-0" />
+                <span>mvdigo@gmail.com</span>
+              </p>
               <p className="text-xs text-slate-400">
-                Pronto para contribuir com a agenda estratégica de HCM e IA da LG.
+                Canal para propostas e conversas profissionais.
               </p>
             </div>
 

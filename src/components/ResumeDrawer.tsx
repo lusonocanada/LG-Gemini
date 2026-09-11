@@ -1,25 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
   Mail, 
-  Phone, 
   Linkedin, 
   MapPin, 
-  Briefcase, 
-  GraduationCap, 
-  Award, 
-  Languages, 
-  Check, 
   Printer,
   Copy,
-  Layers,
-  Sparkles,
-  CheckCircle2
+  Check,
+  Phone
 } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
-import { getStoredPhoto, subscribeToPhotoUpdates } from '../utils/photoManager';
 
 interface ResumeDrawerProps {
   isOpen: boolean;
@@ -28,32 +20,55 @@ interface ResumeDrawerProps {
 
 export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
-  const [photoUrl, setPhotoUrl] = useState<string | null>(getStoredPhoto() || '/hero-photo2.png');
-  const [imageError, setImageError] = useState(false);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const unsubscribe = subscribeToPhotoUpdates((newPhoto) => {
-      if (newPhoto) {
-        setPhotoUrl(newPhoto);
-        setImageError(false);
-      } else {
-        setPhotoUrl('/hero-photo2.png');
-      }
-    });
-    return unsubscribe;
-  }, []);
+    if (isOpen) {
+      previousActiveElement.current = document.activeElement as HTMLElement;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+        if (e.key === 'Tab' && drawerRef.current) {
+          const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          if (focusableElements.length === 0) return;
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = '';
+        if (previousActiveElement.current) {
+          previousActiveElement.current.focus();
+        }
+      };
+    }
+  }, [isOpen, onClose]);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('mvdigo@gmail.com');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
-  };
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText('(11) 97433-8557');
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handlePrint = () => {
@@ -63,19 +78,24 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex justify-end">
-          
+        <div 
+          className="fixed inset-0 z-[120] flex justify-end"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="resume-drawer-title"
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#0F294A]/80"
+            className="fixed inset-0 bg-[#0F294A]/80 backdrop-blur-xs"
           />
 
           {/* Drawer Container */}
           <motion.div
+            ref={drawerRef}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -120,25 +140,17 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               <div className="pb-6 border-b border-slate-200">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    {photoUrl && !imageError ? (
-                      <img
-                        src={photoUrl}
-                        onError={() => setImageError(true)}
-                        alt="Diego Moraes da Silva"
-                        referrerPolicy="no-referrer"
-                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover object-[center_15%] border-2 border-[#008CD2] shadow-sm shrink-0"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#1B4E9B] border-2 border-[#008CD2] flex items-center justify-center text-white font-black text-lg sm:text-xl shadow-sm shrink-0">
-                        DM
-                      </div>
-                    )}
+                    <img
+                      src="/hero-photo2.png"
+                      alt="Diego Moraes"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover object-[center_15%] border-2 border-[#008CD2] shadow-sm shrink-0"
+                    />
                     <div>
-                      <h1 className="text-2xl sm:text-3xl font-black text-[#0F294A] tracking-tight">
+                      <h1 id="resume-drawer-title" className="text-2xl sm:text-3xl font-black text-[#0F294A] tracking-tight">
                         Diego Moraes da Silva
                       </h1>
                       <p className="text-sm font-bold text-[#008CD2] mt-1">
-                        HR Transformation · Implantação de HCM · Governança & IA Aplicada
+                        HR Transformation · HCM Implementation · PMO & IA Aplicada
                       </p>
                     </div>
                   </div>
@@ -154,16 +166,6 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   </span>
                   <span>•</span>
                   <button 
-                    onClick={handleCopyPhone} 
-                    className="flex items-center gap-1.5 hover:text-[#008CD2] transition-colors cursor-pointer"
-                    title="Copiar telefone"
-                  >
-                    <Phone size={13} className="text-[#F58220]" />
-                    <span className="font-semibold text-slate-800">(11) 97433-8557</span>
-                    {copiedPhone ? <Check size={12} className="text-emerald-600" /> : <Copy size={11} className="opacity-50" />}
-                  </button>
-                  <span>•</span>
-                  <button 
                     onClick={handleCopyEmail} 
                     className="flex items-center gap-1.5 hover:text-[#008CD2] transition-colors cursor-pointer"
                     title="Copiar e-mail"
@@ -174,13 +176,24 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   </button>
                   <span>•</span>
                   <a 
-                    href="https://linkedin.com/in/mvdigo" 
+                    href="https://wa.me/5511932211288" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="flex items-center gap-1.5 hover:text-[#008CD2] transition-colors font-semibold text-slate-800"
+                    title="Conversar no WhatsApp"
+                  >
+                    <Phone size={13} className="text-[#F58220]" />
+                    <span>+55 11 93221-1288</span>
+                  </a>
+                  <span>•</span>
+                  <a 
+                    href="https://linkedin.com/in/diegomoraes87" 
                     target="_blank" 
                     rel="noreferrer" 
                     className="flex items-center gap-1.5 hover:text-[#008CD2] transition-colors font-semibold text-slate-800"
                   >
                     <Linkedin size={13} className="text-[#00A3E0]" />
-                    <span>linkedin.com/in/mvdigo</span>
+                    <span>linkedin.com/in/diegomoraes87</span>
                   </a>
                 </div>
               </div>
@@ -191,7 +204,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   Resumo Executivo
                 </h2>
                 <p className="text-sm text-slate-700 leading-relaxed text-justify font-normal">
-                  Profissional com mais de 15 anos de experiência em gestão de projetos, transformação de processos, recursos humanos e operações corporativas em instituições financeiras de grande porte (Santander e Safra) e vivência internacional em Toronto, Canadá. Especialista em implantação de sistemas de RH (Workday, PeopleSoft), People Analytics, reestruturação operacional (CSC), governança de portfólio e aplicação prática de IA a fluxos de trabalho.
+                  Profissional com mais de 15 anos de experiência em gestão de projetos, transformação de processos, recursos humanos e operações corporativas em instituições financeiras de grande porte (Santander e Safra) e vivência internacional em Toronto, Canadá. Especialista em implantação de sistemas de RH (Workday, PeopleSoft), People Analytics, reestruturação operacional (CSC), governança de portfólio e aplicação prática de tecnologia a fluxos de trabalho.
                 </p>
               </div>
 
@@ -207,7 +220,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                     { text: "People Analytics e Inteligência de Dados", color: "#00A3E0" },
                     { text: "Redesenho de Processos e Eficiência Operacional (CSC)", color: "#FFC20E" },
                     { text: "Gestão de Mudança e Adoção de Tecnologia", color: "#F58220" },
-                    { text: "IA Aplicada a Fluxos e Agentes de RH", color: "#8A1538" }
+                    { text: "Automação e IA Aplicada a Processos de RH", color: "#8A1538" }
                   ].map((area, idx) => (
                     <div key={idx} className="flex items-center gap-2 p-3 bg-[#F8FAFC] border-l-2 border-t border-r border-b border-slate-200 text-xs font-semibold text-slate-800" style={{ borderLeftColor: area.color }}>
                       <span className="w-1.5 h-1.5 shrink-0" style={{ backgroundColor: area.color }} />
@@ -231,13 +244,14 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                       <span className="text-xs font-mono font-semibold text-slate-500">2008 – 2018 (10 anos)</span>
                     </div>
                     <p className="text-xs font-bold text-[#E53924] mb-3">
-                      Especialista em Processos, Talent Acquisition e PMO de RH
+                      Processos, Orçamento, Talent Acquisition e People Analytics
                     </p>
                     <ul className="space-y-1.5 text-xs text-slate-700 leading-relaxed list-disc list-inside">
-                      <li>Liderança na reformulação do modelo de atração e seleção, internalizando demandas estratégicas com economia anual de ~R$ 10 milhões.</li>
+                      <li>Atuação em projetos de integração sistêmica pós-fusão ABN/Santander, mapeamento de processos e governança orçamentária.</li>
+                      <li>Liderança na reformulação do modelo de atração e seleção, com internalização de processos estratégicos e economia anual aproximada de R$ 10 milhões.</li>
                       <li>Ponto focal de Talent Acquisition no projeto global de implementação do Workday Brasil.</li>
-                      <li>Criação de modelos analíticos de mobilidade interna contemplando cerca de 50 mil colaboradores.</li>
-                      <li>Gestão de orçamento de pessoal e suporte à transição para Centro de Serviços Compartilhados (CSC) de RH.</li>
+                      <li>Iniciativas de People Analytics e modelos de mobilidade interna alcançando cerca de 50 mil colaboradores.</li>
+                      <li>Gestão de orçamento de pessoal, catálogo de serviços e suporte à transição para Centro de Serviços Compartilhados (CSC) de RH.</li>
                     </ul>
                   </div>
 
@@ -251,42 +265,42 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                       Gerente de Projetos de RH · Estruturação do HR PMO
                     </p>
                     <ul className="space-y-1.5 text-xs text-slate-700 leading-relaxed list-disc list-inside">
-                      <li>Estruturação e consolidação da metodologia do PMO de RH da instituição.</li>
-                      <li>Implementação da admissão digital no PeopleSoft, reduzindo o ciclo total em ~60%.</li>
-                      <li>Redesenho do fluxo de desligamento com redução de ~50% no tempo de processamento.</li>
-                      <li>Modernização de portal corporativo e aplicativo mobile para colaboradores e líderes.</li>
+                      <li>Estruturação e metodologia do PMO de RH da instituição e rituais executivos de decisão.</li>
+                      <li>Implementação da admissão digital no PeopleSoft, reduzindo o ciclo total em aproximadamente 60%.</li>
+                      <li>Redesenho do fluxo de desligamento com redução aproximada de 50% no tempo de processamento.</li>
+                      <li>Modernização de portal corporativo e aplicativo de RH para colaboradores e líderes.</li>
                     </ul>
                   </div>
 
                   {/* Vivência Internacional Canadá */}
                   <div className="p-5 bg-[#F8FAFC] border-l-4 border-l-[#F58220] border-t border-r border-b border-slate-200">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                      <h3 className="text-sm font-black text-[#0F294A]">Toronto, Canadá · FCBB & Consultoria</h3>
+                      <h3 className="text-sm font-black text-[#0F294A]">Toronto, Canadá</h3>
                       <span className="text-xs font-mono font-semibold text-slate-500">2020 – 2025 (5 anos)</span>
                     </div>
                     <p className="text-xs font-bold text-[#F58220] mb-3">
-                      HR Business Partner & Gestão de Operações
+                      HR Business Partner e Gestão de Operações
                     </p>
                     <ul className="space-y-1.5 text-xs text-slate-700 leading-relaxed list-disc list-inside">
-                      <li>Atuação como HRBP na Federation of Canadian-Brazilian Businesses em ambiente bilíngue.</li>
-                      <li>Padronização de processos críticos e governança operacional para clientes corporativos.</li>
-                      <li>Formação internacional em gestão de negócios pela Toronto School of Management.</li>
+                      <li>Atuação em Business Partnering, governança e liderança de operações em ambiente multicultural.</li>
+                      <li>Padronização de processos críticos e governança operacional.</li>
+                      <li>Formação em Business Management pela Toronto School of Management.</li>
                     </ul>
                   </div>
 
-                  {/* Consultoria & IA Aplicada */}
+                  {/* Consultoria & Prototipação */}
                   <div className="p-5 bg-[#F8FAFC] border-l-4 border-l-[#8A1538] border-t border-r border-b border-slate-200">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
                       <h3 className="text-sm font-black text-[#0F294A]">Consultoria e Soluções Digitais</h3>
                       <span className="text-xs font-mono font-semibold text-slate-500">2025 – Atual</span>
                     </div>
                     <p className="text-xs font-bold text-[#8A1538] mb-3">
-                      Transformação de Processos, Prototipação e IA Aplicada
+                      Transformação, Prototipação e IA Aplicada
                     </p>
                     <ul className="space-y-1.5 text-xs text-slate-700 leading-relaxed list-disc list-inside">
-                      <li>Diagnóstico de fluxos operacionais, desenho de jornadas e automação com agentes de IA.</li>
-                      <li>Saneamento e estruturação de bases de dados para dashboards de People Analytics.</li>
-                      <li>Apoio a estratégias de adoção de novas tecnologias centradas na experiência do colaborador.</li>
+                      <li>Diagnóstico, redesenho de processos operacionais e protótipos funcionais para validação de hipóteses em ciclos curtos.</li>
+                      <li>Organização de dados e automação de fluxos de apoio à decisão.</li>
+                      <li>Desenho de jornadas centradas na experiência e adoção pelos usuários.</li>
                     </ul>
                   </div>
                 </div>

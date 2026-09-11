@@ -33,6 +33,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
     { label: 'Trajetória', href: '#trajetoria' },
     { label: 'Cases', href: '#cases' },
     { label: 'Método', href: '#metodo' },
+    { label: 'Aderência', href: '#aderencia' },
     { label: 'Por que LG', href: '#porque-lg' },
   ];
 
@@ -50,10 +51,10 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             
-            {/* Protagonist Brand Lockup: Diego Moraes first, subtle LG destination */}
+            {/* Protagonist Brand Lockup: Diego Moraes first, subtle LG contextual logo */}
             <a 
               href="#" 
-              className="flex items-center gap-3.5 group focus:outline-hidden"
+              className="flex items-center gap-3 group focus:outline-hidden"
               aria-label="Diego Moraes - Início"
             >
               <div className="flex flex-col">
@@ -61,7 +62,6 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                   <span className="text-base sm:text-lg font-black tracking-tight text-[#0F294A] group-hover:text-[#008CD2] transition-colors">
                     DIEGO MORAES
                   </span>
-                  {/* Subtle multi-color indicator pip */}
                   <span className="inline-flex gap-0.5">
                     <span className="w-1 h-1 rounded-full bg-[#1B4E9B]" />
                     <span className="w-1 h-1 rounded-full bg-[#008CD2]" />
@@ -75,10 +75,9 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 </span>
               </div>
 
-              <div className="h-6 w-px bg-slate-300 hidden sm:block" />
+              <div className="h-6 w-px bg-slate-300 hidden sm:block mx-1" />
 
-              <div className="hidden sm:flex items-center gap-1.5">
-                <span className="text-[10px] text-slate-400 uppercase font-medium">para</span>
+              <div className="hidden sm:flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                 <LGLogo size="xs" />
               </div>
             </a>
@@ -103,7 +102,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 className="inline-flex items-center gap-2 bg-[#0F294A] hover:bg-[#1B4E9B] text-white text-xs font-bold px-5 py-2.5 rounded-full border border-slate-700 hover:border-[#008CD2] transition-all cursor-pointer shadow-xs"
               >
                 <FileText size={13} className="text-[#FFC20E]" />
-                <span>Perfil Completo</span>
+                <span>Ver perfil completo</span>
               </button>
 
               {/* Mobile Menu Toggle Button */}
@@ -124,10 +123,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
           <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-1 shadow-xl">
             <div className="pb-3 mb-2 border-b border-slate-100 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Navegação</span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[10px] text-slate-400 uppercase">Apresentação para</span>
-                <LGLogo size="xs" />
-              </div>
+              <LGLogo size="xs" />
             </div>
 
             {navLinks.map((link) => (
@@ -151,7 +147,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 className="w-full flex items-center justify-center gap-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold py-3 rounded-full transition-colors shadow-xs"
               >
                 <FileText size={14} />
-                <span>Meu perfil completo</span>
+                <span>Ver perfil completo</span>
               </button>
             </div>
           </div>

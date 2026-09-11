@@ -7,6 +7,7 @@ import Metrics from './components/Metrics';
 import Trajetoria from './components/Trajetoria';
 import SelectedCases from './components/SelectedCases';
 import WorkingMethodology from './components/WorkingMethodology';
+import ExecutiveFit from './components/ExecutiveFit';
 import WhyLG from './components/WhyLG';
 import ClosingCTA from './components/ClosingCTA';
 import Footer from './components/Footer';
@@ -57,7 +58,10 @@ export default function App() {
         {/* 6. O método de entrega (#metodo) */}
         <WorkingMethodology />
 
-        {/* 7. Por que a LG faz sentido para Diego — e o que Diego pode fazer acontecer (#porque-lg) */}
+        {/* 7. Áreas de maior aderência com a experiência (#aderencia) */}
+        <ExecutiveFit />
+
+        {/* 8. Por que a LG faz sentido para Diego — e o que Diego pode fazer acontecer (#porque-lg) */}
         <WhyLG />
 
         {/* 8. CTA final e fechamento */}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
 
@@ -14,6 +14,16 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navLinks = [
+    { label: 'Visão', href: '#visao' },
+    { label: 'Resultados', href: '#resultados' },
+    { label: 'Trajetória', href: '#trajetoria' },
+    { label: 'Cases', href: '#cases' },
+    { label: 'Método', href: '#metodo' },
+    { label: 'Aderência', href: '#aderencia' },
+    { label: 'Por que LG', href: '#porque-lg' },
+  ];
+
   return (
     <>
       <footer className="bg-[#0F172A] text-white pt-16 pb-12 relative overflow-hidden border-t border-slate-800">
@@ -27,7 +37,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
             
             {/* Identity & Scope */}
-            <div className="lg:col-span-6 space-y-4">
+            <div className="lg:col-span-5 space-y-4">
               <div className="flex items-center gap-3">
                 <span className="font-extrabold text-lg tracking-tight text-white">
                   DIEGO MORAES
@@ -36,22 +46,35 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 <LGLogo onDark size="xs" />
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-lg font-normal">
-                Apresentação executiva e proposta de valor de <strong>Diego Moraes</strong> direcionada à <strong>LG Lugar de Gente</strong>. Transformação de RH, implantação de plataformas HCM, governança de processos e inteligência artificial aplicada.
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                Apresentação executiva e proposta de valor profissional direcionada à <strong>LG Lugar de Gente</strong>. Transformação de RH, implantação de plataformas corporativas, governança de processos e inteligência artificial aplicada.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              {/* Navigation Links in Footer */}
+              <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-xs font-semibold text-slate-400 hover:text-[#00A3E0] transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-3">
                 <button
                   onClick={onOpenCvModal}
                   className="inline-flex items-center gap-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors uppercase tracking-wider cursor-pointer shadow-xs"
                 >
                   <FileText size={14} />
-                  <span>Ver currículo executivo</span>
+                  <span>Ver perfil completo</span>
                 </button>
 
                 <button
                   onClick={() => setSourcesModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 bg-[#14263D] hover:bg-[#1C3352] text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 text-xs font-semibold px-5 py-2.5 rounded-full transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-[#14263D] hover:bg-[#1C3352] text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 text-xs font-semibold px-4 py-2.5 rounded-full transition-colors cursor-pointer"
                 >
                   <span>Fontes e referências</span>
                 </button>
@@ -67,22 +90,22 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
             </div>
 
             {/* Direct Contact Links */}
-            <div className="lg:col-span-6 space-y-3">
+            <div className="lg:col-span-7 space-y-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[#00A3E0] block mb-2">
                 Contato Direto
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <a
-                  href="https://wa.me/5511974338557"
+                  href="https://wa.me/5511932211288"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#F58220] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
                 >
                   <Phone size={15} className="text-[#F58220] shrink-0" />
                   <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-mono">Telefone / WhatsApp</span>
-                    <span className="font-bold text-white">(11) 97433-8557</span>
+                    <span className="text-[10px] text-slate-400 block uppercase font-mono">WhatsApp</span>
+                    <span className="font-bold text-white">+55 11 93221-1288</span>
                   </div>
                 </a>
 
@@ -98,7 +121,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/mvdigo"
+                  href="https://linkedin.com/in/diegomoraes87"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#00A3E0] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
@@ -106,7 +129,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                   <Linkedin size={15} className="text-[#00A3E0] shrink-0" />
                   <div>
                     <span className="text-[10px] text-slate-400 block uppercase font-mono">LinkedIn</span>
-                    <span className="font-bold text-white">linkedin.com/in/mvdigo</span>
+                    <span className="font-bold text-white">linkedin.com/in/diegomoraes87</span>
                   </div>
                 </a>
 
@@ -122,10 +145,10 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
           </div>
 
-          {/* Mandatory Statement */}
+          {/* Mandatory Neutrality Statement */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
-              Apresentação profissional independente criada por Diego Moraes. LG Lugar de Gente e suas marcas são citadas exclusivamente como contexto de estudo e afinidade profissional.
+              Página profissional elaborada por Diego Moraes como proposta executiva para a LG Lugar de Gente. As marcas, produtos e dados mencionados pertencem aos seus respectivos titulares e são citados para fins de análise e contexto profissional.
             </p>
             <span className="shrink-0 text-slate-400 font-mono text-xs">
               © {new Date().getFullYear()} Diego Moraes
@@ -157,12 +180,12 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
             <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
               <p>
-                <strong className="text-slate-900 block mb-1">Fato de Fonte Institucional:</strong>
+                <strong className="text-slate-900 block mb-1">Fontes Institucionais:</strong>
                 Informações sobre produtos, presença de mercado e histórico de 40+ anos da LG Lugar de Gente foram obtidas exclusivamente de canais oficiais e declarações públicas da empresa (site institucional e apresentações em eventos como CONARH).
               </p>
               <p>
                 <strong className="text-slate-900 block mb-1">Leitura Profissional de Diego Moraes:</strong>
-                A correlação entre as dores do mercado, a esteira de implantação e as oportunidades de aplicação de IA agêntica reflete a análise técnica independente do autor, baseada em 15 anos de vivência em grandes corporações.
+                A correlação entre processos de RH, governança, tecnologia HCM e projetos corporativos reflete a análise técnica independente do autor, fundamentada em sua trajetória profissional.
               </p>
             </div>
 
