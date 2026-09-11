@@ -54,7 +54,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-9 lg:gap-12 items-center">
           <div className="lg:col-span-7 space-y-5 sm:space-y-7">
             <div className="space-y-2 overflow-visible">
-              <motion.h1 className="text-[2.15rem] sm:text-[2.75rem] lg:text-[3.2rem] xl:text-[3.45rem] font-black tracking-[-0.035em] leading-[1.06] max-w-[820px]">
+              <motion.h1 className="text-[2rem] sm:text-[2.4rem] lg:text-[2.75rem] xl:text-[3rem] font-black tracking-[-0.03em] leading-[1.08] max-w-[760px]">
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
