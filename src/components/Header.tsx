@@ -54,7 +54,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
             : 'top-[3px] left-0 right-0 border-b border-slate-200/80 liquid-glass-light'
         }`}
       >
-        <div className={`mx-auto transition-all duration-500 ${isScrolled ? 'px-3 sm:px-4 lg:px-5' : 'max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
+        <div className={`mx-auto transition-all duration-500 relative z-10 ${isScrolled ? 'px-3 sm:px-4 lg:px-5' : 'max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
           <div className={`flex items-center justify-between gap-2 sm:gap-4 transition-all duration-500 ${isScrolled ? 'h-14 sm:h-[62px]' : 'h-16 sm:h-20'}`}>
             <a
               href="#"
@@ -74,7 +74,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 </span>
               </div>
 
-              <div className={`h-8 w-px bg-slate-300 hidden sm:block mx-1 transition-opacity ${isScrolled ? 'opacity-55' : 'opacity-100'}`} />
+              <div className={`h-8 w-px bg-slate-300 hidden sm:block mx-1 transition-opacity ${isScrolled ? 'opacity-70' : 'opacity-100'}`} />
 
               <div className={`hidden sm:flex items-center pl-1 shrink-0 -mt-[17px] transition-all duration-500 origin-left ${isScrolled ? 'scale-[0.90]' : 'scale-100'}`}>
                 <LGLogo size="sm" />
@@ -86,7 +86,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`font-bold uppercase tracking-wider text-slate-600 hover:text-[#008CD2] transition-all whitespace-nowrap shrink-0 rounded-full hover:bg-white/55 ${
+                  className={`font-bold uppercase tracking-wider text-[#31435A] hover:text-[#008CD2] transition-all whitespace-nowrap shrink-0 rounded-full hover:bg-[#EAF6FB] ${
                     isScrolled ? 'text-[10px] xl:text-[11px] px-2 xl:px-2.5 py-2' : 'text-[11px] xl:text-xs px-1.5 xl:px-2.5 py-1.5'
                   }`}
                 >
@@ -108,7 +108,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-slate-700 hover:text-[#0F294A] transition-colors focus:outline-hidden rounded-full hover:bg-white/70"
+                className="lg:hidden p-2 text-slate-700 hover:text-[#0F294A] transition-colors focus:outline-hidden rounded-full hover:bg-[#EAF6FB]"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"
                 aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -122,7 +122,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
         {mobileMenuOpen && (
           <div
             id="mobile-navigation"
-            className={`lg:hidden max-h-[calc(100dvh-6rem)] overflow-y-auto mx-2 mb-2 px-4 pt-3 pb-5 space-y-1 rounded-3xl border border-white/70 shadow-xl backdrop-blur-3xl bg-white/88 ${isScrolled ? '' : 'mt-1'}`}
+            className={`lg:hidden max-h-[calc(100dvh-6rem)] overflow-y-auto mx-2 mb-2 px-4 pt-3 pb-5 space-y-1 rounded-3xl border border-[#CFEAF5] shadow-xl backdrop-blur-3xl bg-white/95 ${isScrolled ? '' : 'mt-1'}`}
           >
             <div className="pb-3 mb-2 border-b border-slate-200/60 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Apresentação para</span>
