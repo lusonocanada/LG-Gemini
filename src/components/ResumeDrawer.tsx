@@ -132,7 +132,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                     <span>linkedin.com/in/diegomoraes87</span>
                   </a>
                   <span>•</span>
-                  <a href="https://diegomoraes.me" target="_blank" rel="noreferrer" className="font-semibold text-slate-800 hover:text-[#008CD2]">diegomoraes.me</a>
+                  <a href="https://lg.diegomoraes.me" target="_blank" rel="noreferrer" className="font-semibold text-slate-800 hover:text-[#008CD2]">lg.diegomoraes.me</a>
                 </div>
               </div>
 
