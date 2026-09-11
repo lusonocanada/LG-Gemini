@@ -19,8 +19,8 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
         {/* Main Header Statement */}
         <div className="max-w-4xl mx-auto text-center space-y-6 mb-14">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#14263D] border border-slate-700 text-xs font-mono font-bold uppercase tracking-widest text-[#FFC20E] rounded-full">
-            <span className="w-2 h-2 rounded-full bg-[#FFC20E]" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 liquid-glass-pill text-xs font-mono font-bold uppercase tracking-widest text-[#0F294A] rounded-full shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#008CD2]" />
             <span>PRÓXIMO PASSO</span>
           </div>
 
@@ -58,7 +58,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
 
           {/* 3. Conectar no LinkedIn */}
           <a
-            href="https://linkedin.com/in/diegomoraes87"
+            href="https://www.linkedin.com/in/diegomoraes87/"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#14263D] hover:bg-[#1E3A5F] text-white border border-slate-700 hover:border-slate-500 text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-md hover:shadow-lg"
@@ -68,9 +68,9 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
           </a>
         </div>
 
-        {/* Executive Contact Card */}
-        <div className="max-w-4xl mx-auto bg-[#0A192F] border-2 border-slate-800 p-6 sm:p-8 shadow-2xl">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
+        {/* Executive Contact Card with Apple-Style Liquid Glass */}
+        <div className="max-w-4xl mx-auto rounded-3xl liquid-glass-dark border border-white/15 p-6 sm:p-8 shadow-2xl backdrop-blur-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
             
             <div className="space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold block">

@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import { ArrowRight, FileText, CheckCircle2, TrendingUp, Award, Globe } from 'lucide-react';
-import LGLogo from './LGLogo';
 import HeroExecutivePhoto from './HeroExecutivePhoto';
 
 interface HeroProps {
@@ -23,25 +22,20 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Top Editorial Eyebrow */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 sm:mb-12 border-b border-slate-200">
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 sm:mb-12 border-b border-slate-200/80">
           <div className="flex items-center gap-3">
             <span className="inline-flex gap-1">
-              <span className="w-2.5 h-1 bg-[#1B4E9B]" />
-              <span className="w-2.5 h-1 bg-[#008CD2]" />
-              <span className="w-2.5 h-1 bg-[#00A3E0]" />
-              <span className="w-2.5 h-1 bg-[#FFC20E]" />
-              <span className="w-2.5 h-1 bg-[#F58220]" />
-              <span className="w-2.5 h-1 bg-[#E53924]" />
-              <span className="w-2.5 h-1 bg-[#8A1538]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#1B4E9B]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#008CD2]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#00A3E0]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#FFC20E]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#F58220]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#E53924]" />
+              <span className="w-2.5 h-1.5 rounded-full bg-[#8A1538]" />
             </span>
             <span className="text-xs font-bold font-mono tracking-widest text-slate-600 uppercase">
               APRESENTAÇÃO EXECUTIVA · TRANSFORMAÇÃO DE RH, IMPLANTAÇÃO E IA APLICADA
             </span>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <span>Apresentação para</span>
-            <LGLogo size="xs" />
           </div>
         </div>
 
@@ -58,9 +52,9 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                 transition={{ duration: 0.5 }}
                 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0F294A] tracking-tight leading-[1.1]"
               >
-                Eu já estive onde os clientes da LG estão.{' '}
+                Eu conheço a transformação pelo lado de quem vive a operação.{' '}
                 <span className="text-[#008CD2] block mt-2">
-                  Agora quero ajudar a transformação a acontecer do outro lado.
+                  Agora, quero ajudar a LG a fazer cada entrega acontecer.
                 </span>
               </motion.h1>
             </div>
@@ -79,31 +73,39 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
             >
-              <div className="p-3.5 bg-[#F8FAFC] border-l-4 border-l-[#1B4E9B] border-t border-r border-b border-slate-200 flex items-center gap-3">
-                <Award size={18} className="text-[#1B4E9B] shrink-0" />
+              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#1B4E9B] flex items-center gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#1B4E9B]/10 flex items-center justify-center shrink-0">
+                  <Award size={18} className="text-[#1B4E9B]" />
+                </div>
                 <span className="text-xs font-bold text-[#0F294A] leading-snug">
                   15+ anos em RH, projetos e transformação
                 </span>
               </div>
 
-              <div className="p-3.5 bg-[#F8FAFC] border-l-4 border-l-[#008CD2] border-t border-r border-b border-slate-200 flex items-center gap-3">
-                <TrendingUp size={18} className="text-[#008CD2] shrink-0" />
+              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#008CD2] flex items-center gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#008CD2]/10 flex items-center justify-center shrink-0">
+                  <TrendingUp size={18} className="text-[#008CD2]" />
+                </div>
                 <span className="text-xs font-bold text-[#0F294A] leading-snug">
                   R$ 10 milhões de economia anual aproximada em Talent Acquisition
                 </span>
               </div>
 
-              <div className="p-3.5 bg-[#F8FAFC] border-l-4 border-l-[#00A3E0] border-t border-r border-b border-slate-200 flex items-center gap-3">
-                <CheckCircle2 size={18} className="text-[#00A3E0] shrink-0" />
+              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#00A3E0] flex items-center gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center shrink-0">
+                  <CheckCircle2 size={18} className="text-[#00A3E0]" />
+                </div>
                 <span className="text-xs font-bold text-[#0F294A] leading-snug">
                   60% de redução aproximada no ciclo de admissão digital
                 </span>
               </div>
 
-              <div className="p-3.5 bg-[#F8FAFC] border-l-4 border-l-[#F58220] border-t border-r border-b border-slate-200 flex items-center gap-3">
-                <Globe size={18} className="text-[#F58220] shrink-0" />
+              <div className="p-4 rounded-2xl liquid-glass-card border-l-4 border-l-[#F58220] flex items-center gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#F58220]/10 flex items-center justify-center shrink-0">
+                  <Globe size={18} className="text-[#F58220]" />
+                </div>
                 <span className="text-xs font-bold text-[#0F294A] leading-snug">
                   Brasil + Canadá: experiência corporativa e multicultural
                 </span>

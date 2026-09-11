@@ -63,28 +63,28 @@ export default function Metrics() {
           </h2>
         </div>
 
-        {/* 4 Metric Selector Tabs */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        {/* 4 Metric Selector Tabs with Liquid Glass */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {metricStories.map((item, idx) => {
             const isSelected = activeMetric === idx;
             return (
               <button
                 key={idx}
                 onClick={() => setActiveMetric(idx)}
-                className={`p-5 text-left transition-all cursor-pointer border-t-4 ${
+                className={`p-5 text-left rounded-2xl transition-all cursor-pointer ${
                   isSelected 
-                    ? 'bg-[#0F294A] text-white border-t-[#FFC20E] shadow-md' 
-                    : 'bg-[#F8FAFC] hover:bg-slate-100 text-slate-700 border-t-slate-300 border-l border-r border-b border-slate-200'
+                    ? 'liquid-glass-dark text-white border-2 border-[#00A3E0] shadow-xl scale-[1.02]' 
+                    : 'liquid-glass-card text-slate-700 hover:text-[#0F294A]'
                 }`}
               >
-                <div className="flex items-center justify-between text-[10px] font-mono mb-1 font-bold uppercase">
-                  <span style={{ color: isSelected ? '#FFC20E' : item.color }}>{item.title}</span>
-                  <span className={isSelected ? 'text-slate-300' : 'text-slate-500'}>0{idx + 1}</span>
+                <div className="flex items-center justify-between text-[10px] font-mono mb-2 font-bold uppercase">
+                  <span style={{ color: isSelected ? '#00A3E0' : item.color }}>{item.title}</span>
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${isSelected ? 'bg-white/10 text-slate-200' : 'bg-slate-200/60 text-slate-600'}`}>0{idx + 1}</span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-black tracking-tight mb-1">
+                <div className="text-2xl sm:text-3xl font-black tracking-tight mb-1.5">
                   {item.value}
                 </div>
-                <div className="text-xs font-medium line-clamp-2">
+                <div className="text-xs font-medium leading-snug line-clamp-2 opacity-90">
                   {item.subtitle}
                 </div>
               </button>
@@ -92,19 +92,20 @@ export default function Metrics() {
           })}
         </div>
 
-        {/* Deep Dive Typographic Showcase */}
-        <div className="border-2 border-slate-200 bg-[#0F294A] shadow-xl overflow-hidden relative text-white mb-8">
+        {/* Deep Dive Typographic Showcase with Liquid Glass Bezel */}
+        <div className="rounded-3xl liquid-glass-dark border border-white/20 shadow-2xl overflow-hidden relative text-white mb-8">
           <div className="absolute top-0 left-0 right-0 z-20">
             <LGChromaticBar size="xs" />
           </div>
 
           <div className="p-8 sm:p-12 space-y-8">
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-6 border-b border-white/15">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#FFC20E] font-bold block mb-1">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-xs font-mono uppercase tracking-widest text-[#FFC20E] font-bold mb-2 border border-white/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFC20E]" />
                   DETALHAMENTO DO RESULTADO · 0{activeMetric + 1}
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white">
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                   {current.title}
                 </h3>
               </div>
@@ -113,9 +114,9 @@ export default function Metrics() {
               </div>
             </div>
 
-            {/* Contexto / Meu Papel / Resultado */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 bg-[#14263D] border-l-4 border-l-[#008CD2] border-t border-r border-b border-slate-800">
+            {/* Contexto / Meu Papel / Resultado with Frosted Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors border-t-4 border-t-[#008CD2]">
                 <span className="text-[11px] font-mono uppercase text-[#008CD2] font-bold block mb-2">
                   Contexto
                 </span>
@@ -124,7 +125,7 @@ export default function Metrics() {
                 </p>
               </div>
 
-              <div className="p-6 bg-[#14263D] border-l-4 border-l-[#FFC20E] border-t border-r border-b border-slate-800">
+              <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors border-t-4 border-t-[#FFC20E]">
                 <span className="text-[11px] font-mono uppercase text-[#FFC20E] font-bold block mb-2">
                   Meu papel
                 </span>
@@ -133,7 +134,7 @@ export default function Metrics() {
                 </p>
               </div>
 
-              <div className="p-6 bg-[#14263D] border-l-4 border-l-[#F58220] border-t border-r border-b border-slate-800">
+              <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors border-t-4 border-t-[#F58220]">
                 <span className="text-[11px] font-mono uppercase text-[#F58220] font-bold block mb-2">
                   Resultado
                 </span>

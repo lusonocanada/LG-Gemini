@@ -96,25 +96,25 @@ export default function WorkingMethodology() {
           </p>
         </div>
 
-        {/* Phase Selector Conveyor (5 Step Blueprint) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+        {/* Phase Selector Conveyor (5 Step Blueprint) with Liquid Glass */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 mb-8">
           {steps.map((step, idx) => {
             const isSelected = activeStep === idx;
             return (
               <button
                 key={idx}
                 onClick={() => setActiveStep(idx)}
-                className={`p-4 text-left border-t-4 transition-all duration-200 cursor-pointer ${
+                className={`p-4 text-left rounded-2xl transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? 'bg-[#0F294A] text-white border-t-[#FFC20E] shadow-lg'
-                    : 'bg-white hover:bg-slate-50 text-slate-700 border-t-slate-300 border-l border-r border-b border-slate-200'
+                    ? 'liquid-glass-dark text-white border-2 border-[#00A3E0] shadow-xl scale-[1.02]'
+                    : 'liquid-glass-card text-slate-700 hover:text-[#0F294A] hover:scale-[1.01]'
                 }`}
               >
                 <div className="flex items-center justify-between text-[11px] font-mono mb-1.5 font-bold">
-                  <span style={{ color: isSelected ? '#FFC20E' : step.color }}>PASSO {step.number}</span>
-                  <span className="w-2 h-2" style={{ backgroundColor: step.color }} />
+                  <span style={{ color: isSelected ? '#00A3E0' : step.color }}>PASSO {step.number}</span>
+                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: step.color }} />
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider block opacity-75 mb-1">
+                <div className="text-xs font-mono uppercase tracking-wider block opacity-80 mb-1">
                   {step.focus}
                 </div>
                 <h3 className="text-sm sm:text-base font-black tracking-tight leading-snug">
@@ -125,8 +125,8 @@ export default function WorkingMethodology() {
           })}
         </div>
 
-        {/* Detailed Inspection Stage for Selected Phase */}
-        <div className="bg-white border-2 border-slate-200 shadow-xl p-6 sm:p-10 relative overflow-hidden">
+        {/* Detailed Inspection Stage for Selected Phase with Liquid Glass */}
+        <div className="liquid-glass-card rounded-3xl border border-slate-200/90 shadow-2xl p-6 sm:p-10 relative overflow-hidden">
           <div className="w-full absolute top-0 left-0 right-0">
             <LGChromaticBar size="xs" />
           </div>
@@ -136,7 +136,7 @@ export default function WorkingMethodology() {
             <div className="lg:col-span-6 space-y-4">
               <div className="flex items-center gap-3">
                 <span 
-                  className="px-3 py-1 text-xs font-mono font-bold text-white uppercase"
+                  className="px-3 py-1 rounded-md text-xs font-mono font-bold text-white uppercase shadow-xs"
                   style={{ backgroundColor: steps[activeStep].color }}
                 >
                   ETAPA {steps[activeStep].number}
@@ -155,7 +155,7 @@ export default function WorkingMethodology() {
               </p>
 
               {/* Quality Gate Checkpoint */}
-              <div className="p-4 bg-[#F8FAFC] border-l-4 border-l-[#E53924] border-t border-r border-b border-slate-200">
+              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-md border-l-4 border-l-[#E53924] border-t border-r border-b border-slate-200/80 shadow-xs">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#E53924] font-bold block mb-1">
                   Ponto de Controle (Gate de Qualidade):
                 </span>
@@ -165,15 +165,15 @@ export default function WorkingMethodology() {
               </div>
             </div>
 
-            <div className="lg:col-span-6 space-y-3 bg-[#F8FAFC] p-6 border border-slate-200">
+            <div className="lg:col-span-6 space-y-3 bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/80 shadow-xs">
               <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold block mb-2">
                 Entregáveis Desta Fase:
               </span>
 
               <div className="space-y-3">
                 {steps[activeStep].deliverables.map((item, dIdx) => (
-                  <div key={dIdx} className="flex items-start gap-3 bg-white p-3.5 border border-slate-200 shadow-2xs">
-                    <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                  <div key={dIdx} className="flex items-start gap-3 bg-white/90 backdrop-blur-sm p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                    <CheckCircle2 size={16} className="text-[#008CD2] shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
                       {item}
                     </span>

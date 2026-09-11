@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X, ExternalLink } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
 
@@ -7,12 +7,107 @@ interface FooterProps {
   onOpenCvModal: () => void;
 }
 
+interface SourceItem {
+  title: string;
+  url: string;
+}
+
+const sourcesList: SourceItem[] = [
+  {
+    title: 'LG Lugar de Gente — página institucional e jornada de RH',
+    url: 'https://www.lg.com.br/'
+  },
+  {
+    title: 'LG Lugar de Gente — Quem somos',
+    url: 'https://www.lg.com.br/quem-somos/'
+  },
+  {
+    title: 'LiGiaPro — agentes de IA para RH',
+    url: 'https://www.lg.com.br/ligia/'
+  },
+  {
+    title: 'People Analytics',
+    url: 'https://www.lg.com.br/produtos/people-analytics/'
+  },
+  {
+    title: 'LG Benefícios',
+    url: 'https://www.lg.com.br/beneficios/'
+  },
+  {
+    title: 'LG Connect Marketplace',
+    url: 'https://www.lg.com.br/marketplace/'
+  },
+  {
+    title: 'Canais BPO',
+    url: 'https://www.lg.com.br/canais-bpo/'
+  },
+  {
+    title: 'Moavi e LG Lugar de Gente',
+    url: 'https://www.lg.com.br/blog/moavi-lg-lugar-de-gente/'
+  },
+  {
+    title: 'CONARH 2025 — IA e dados estratégicos',
+    url: 'https://www.lg.com.br/blog/conarh-2025-ia-dados-estrategicos/'
+  },
+  {
+    title: 'Aquecimento CONARH 2026',
+    url: 'https://lp.lg.com.br/aquecimento-conarh-2026/'
+  },
+  {
+    title: 'Report IA no RH',
+    url: 'https://page.lg.com.br/lps/wp-content/uploads/2026/02/Report-IA-no-RH.pdf'
+  }
+];
+
 export default function Footer({ onOpenCvModal }: FooterProps) {
   const [sourcesModalOpen, setSourcesModalOpen] = useState(false);
+  const sourcesButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    if (sourcesModalOpen) {
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setSourcesModalOpen(false);
+        }
+        if (e.key === 'Tab' && drawerRef.current) {
+          const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          if (focusableElements.length === 0) return;
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = '';
+        if (sourcesButtonRef.current) {
+          sourcesButtonRef.current.focus();
+        }
+      };
+    }
+  }, [sourcesModalOpen]);
 
   const navLinks = [
     { label: 'Visão', href: '#visao' },
@@ -38,12 +133,12 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
             
             {/* Identity & Scope */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="font-extrabold text-lg tracking-tight text-white">
                   DIEGO MORAES
                 </span>
                 <span className="text-slate-600">|</span>
-                <LGLogo onDark size="xs" />
+                <LGLogo onDark size="sm" />
               </div>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
@@ -73,6 +168,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 </button>
 
                 <button
+                  ref={sourcesButtonRef}
                   onClick={() => setSourcesModalOpen(true)}
                   className="inline-flex items-center gap-1.5 bg-[#14263D] hover:bg-[#1C3352] text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 text-xs font-semibold px-4 py-2.5 rounded-full transition-colors cursor-pointer"
                 >
@@ -121,7 +217,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/diegomoraes87"
+                  href="https://www.linkedin.com/in/diegomoraes87/"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#00A3E0] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
@@ -145,10 +241,10 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
           </div>
 
-          {/* Mandatory Neutrality Statement */}
+          {/* Mandatory Statement */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
-              Página profissional elaborada por Diego Moraes como proposta executiva para a LG Lugar de Gente. As marcas, produtos e dados mencionados pertencem aos seus respectivos titulares e são citados para fins de análise e contexto profissional.
+              Apresentação profissional independente criada por Diego Moraes. LG Lugar de Gente e suas marcas são citadas exclusivamente como contexto de estudo e afinidade profissional.
             </p>
             <span className="shrink-0 text-slate-400 font-mono text-xs">
               © {new Date().getFullYear()} Diego Moraes
@@ -158,45 +254,94 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
         </div>
       </footer>
 
-      {/* Discrete Sources Drawer / Modal */}
+      {/* Accessible Sources Drawer / Dialog */}
       {sourcesModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div 
+          className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="sources-drawer-title"
+        >
+          {/* Backdrop */}
           <div 
             onClick={() => setSourcesModalOpen(false)}
-            className="fixed inset-0 bg-black/80" 
+            className="fixed inset-0 bg-[#0F294A]/80 backdrop-blur-xs transition-opacity" 
           />
-          <div className="relative z-10 max-w-lg w-full bg-white text-slate-900 border-t-4 border-t-[#008CD2] p-6 sm:p-8 shadow-2xl space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#008CD2]">
-                Fontes Institucionais e Metodológicas
-              </span>
+
+          {/* Dialog Panel */}
+          <div 
+            ref={drawerRef}
+            className="relative z-10 w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] bg-white text-slate-900 rounded-t-3xl sm:rounded-2xl border-t-4 border-t-[#008CD2] shadow-2xl flex flex-col overflow-hidden"
+          >
+            {/* Top Bar */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white shrink-0">
+              <h2 id="sources-drawer-title" className="text-sm font-bold uppercase tracking-wider text-[#008CD2]">
+                Fontes e Referências
+              </h2>
               <button 
                 onClick={() => setSourcesModalOpen(false)}
-                className="p-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
+                aria-label="Fechar fontes e referências"
+                className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
             </div>
 
-            <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
-              <p>
-                <strong className="text-slate-900 block mb-1">Fontes Institucionais:</strong>
-                Informações sobre produtos, presença de mercado e histórico de 40+ anos da LG Lugar de Gente foram obtidas exclusivamente de canais oficiais e declarações públicas da empresa (site institucional e apresentações em eventos como CONARH).
-              </p>
-              <p>
-                <strong className="text-slate-900 block mb-1">Leitura Profissional de Diego Moraes:</strong>
-                A correlação entre processos de RH, governança, tecnologia HCM e projetos corporativos reflete a análise técnica independente do autor, fundamentada em sua trajetória profissional.
-              </p>
+            {/* Scrollable Content */}
+            <div className="overflow-y-auto p-6 sm:p-8 space-y-6 flex-1">
+              
+              {/* Mandatory Opening Statement */}
+              <div className="p-4 bg-[#F8FAFC] border-l-4 border-l-[#008CD2] border-t border-r border-b border-slate-200 text-xs text-slate-700 leading-relaxed font-medium">
+                Fontes institucionais públicas consultadas como contexto para esta apresentação. Elas não representam endosso, afiliação ou participação da LG Lugar de Gente.
+              </div>
+
+              {/* Real Clickable Links List */}
+              <div className="space-y-3">
+                {sourcesList.map((item, idx) => (
+                  <div 
+                    key={idx}
+                    className="p-3.5 bg-white border border-slate-200 hover:border-[#008CD2] rounded-xl transition-all shadow-2xs hover:shadow-xs group"
+                  >
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block space-y-1"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="text-xs sm:text-sm font-bold text-[#0F294A] group-hover:text-[#008CD2] transition-colors">
+                          {idx + 1}. {item.title}
+                        </span>
+                        <ExternalLink size={14} className="text-slate-400 group-hover:text-[#008CD2] shrink-0 mt-0.5" />
+                      </div>
+                      <span className="text-xs font-mono text-[#008CD2] break-all block">
+                        {item.url}
+                      </span>
+                      <span className="text-[11px] text-slate-500 block pt-0.5">
+                        Acesso em setembro de 2026
+                      </span>
+                    </a>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mandatory Closing Statement */}
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed font-normal">
+                Posicionamentos e ofertas podem evoluir. As interpretações profissionais desta apresentação são de Diego Moraes.
+              </div>
+
             </div>
 
-            <div className="pt-3 border-t border-slate-200 text-right">
+            {/* Sticky Footer */}
+            <div className="p-4 border-t border-slate-200 bg-white flex justify-end shrink-0">
               <button
                 onClick={() => setSourcesModalOpen(false)}
-                className="px-6 py-2.5 bg-[#0F294A] hover:bg-[#1B4E9B] text-white text-xs font-bold uppercase tracking-wider rounded-full cursor-pointer shadow-xs"
+                className="px-6 py-2.5 bg-[#0F294A] hover:bg-[#1B4E9B] text-white text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer shadow-xs"
               >
                 Fechar
               </button>
             </div>
+
           </div>
         </div>
       )}

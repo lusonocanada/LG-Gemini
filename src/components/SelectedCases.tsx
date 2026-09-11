@@ -43,7 +43,7 @@ const casesData: CaseItem[] = [
     number: '02',
     title: 'CSC, orçamento e governança',
     organization: 'Santander Brasil',
-    period: '2012 – 2015',
+    period: '2012 – 2016',
     color: '#008CD2',
     contexto: 'A Vice-Presidência de RH precisava conectar planejamento estratégico, disciplina orçamentária e modernização operacional.',
     desafio: 'Governar o orçamento de pessoal enquanto as operações de RH migravam para um modelo de Centro de Serviços Compartilhados.',
@@ -62,11 +62,11 @@ const casesData: CaseItem[] = [
     number: '03',
     title: 'Talent Acquisition e Workday',
     organization: 'Santander Brasil',
-    period: '2015 – 2017',
+    period: '2016 – 2018',
     color: '#8A1538',
     contexto: 'O modelo de atração e seleção precisava ganhar eficiência e oferecer uma experiência mais digital ao candidato, em paralelo à implantação global do Workday.',
     desafio: 'Reformular o modelo com economia real, sem perder qualidade, e adaptar os processos de recrutamento à realidade brasileira dentro de um projeto global.',
-    meuPapel: 'Liderança na reformulação de Talent Acquisition e ponto focal de Talent no projeto global Workday para o Brasil.',
+    meuPapel: 'Atuação na reformulação de Talent Acquisition e como ponto focal de Talent no projeto global Workday para o Brasil.',
     comoConduzi: 'Internalização de processos seletivos estratégicos, redesenho de fluxos, acompanhamento de indicadores e localização funcional do Workday.',
     entregas: [
       'Internalização de processos seletivos estratégicos',
@@ -80,16 +80,15 @@ const casesData: CaseItem[] = [
     number: '04',
     title: 'People Analytics e mobilidade',
     organization: 'Santander Brasil',
-    period: '2017 – 2018',
+    period: '2016 – 2018',
     color: '#F58220',
     contexto: 'Uma organização com cerca de 50 mil colaboradores precisava de mais visibilidade para decisões sobre talentos e mobilidade interna.',
     desafio: 'Conectar dados de pessoas a uma visão mais estruturada de oportunidades internas.',
     meuPapel: 'Atuação em People Analytics e iniciativas de mobilidade interna.',
-    comoConduzi: 'Organização de informações de talento, criação de dashboards e desenvolvimento de algoritmo de mobilidade.',
+    comoConduzi: 'Organização de informações de talento e desenvolvimento de modelos de mobilidade a partir das perguntas da liderança.',
     entregas: [
-      'Dashboards de People Analytics',
-      'Algoritmo e modelos de mobilidade interna',
-      'Informações para apoiar decisões de talento'
+      'Informações de talento organizadas para apoiar decisões',
+      'Modelos de mobilidade interna'
     ],
     resultado: 'Mais visibilidade sobre talentos e mobilidade interna para cerca de 50 mil colaboradores.'
   },
@@ -159,7 +158,7 @@ export default function SelectedCases() {
         <div className="hidden lg:grid grid-cols-12 gap-8 items-start">
           
           {/* Left: Case Selector */}
-          <div className="col-span-4 space-y-2">
+          <div className="col-span-4 space-y-3">
             <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-3">
               Selecione o Case:
             </span>
@@ -170,10 +169,10 @@ export default function SelectedCases() {
                 <button
                   key={c.id}
                   onClick={() => setSelectedCaseIdx(idx)}
-                  className={`w-full text-left p-4 transition-all duration-200 cursor-pointer border-l-4 ${
+                  className={`w-full text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer border-l-4 ${
                     isSelected 
-                      ? 'bg-white shadow-md border-t border-r border-b border-slate-300 translate-x-1' 
-                      : 'bg-[#F8FAFC] hover:bg-white border-t border-r border-b border-slate-200 opacity-85 hover:opacity-100'
+                      ? 'liquid-glass-light shadow-lg scale-[1.02] border-t border-r border-b border-white' 
+                      : 'liquid-glass-card opacity-85 hover:opacity-100 hover:scale-[1.01]'
                   }`}
                   style={{ borderLeftColor: c.color }}
                 >
@@ -192,7 +191,7 @@ export default function SelectedCases() {
             })}
           </div>
 
-          {/* Right: Detailed Showcase */}
+          {/* Right: Detailed Showcase with Liquid Glass */}
           <div className="col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -201,18 +200,18 @@ export default function SelectedCases() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.25 }}
-                className="bg-white border-2 border-slate-200 shadow-xl overflow-hidden"
+                className="liquid-glass-card rounded-3xl border border-slate-200/80 shadow-2xl overflow-hidden"
               >
                 {/* Chromatic Top Bar */}
                 <div className="w-full">
                   <LGChromaticBar size="xs" />
                 </div>
 
-                {/* Case Header (Typographic, no image) */}
-                <div className="p-6 sm:p-8 bg-[#0F294A] text-white">
+                {/* Case Header (Liquid Glass Dark) */}
+                <div className="p-6 sm:p-8 liquid-glass-dark text-white border-b border-white/10">
                   <div className="flex items-center justify-between gap-2 mb-2">
                     <span 
-                      className="px-3 py-1 text-xs font-mono font-bold text-white uppercase tracking-wider"
+                      className="px-3 py-1 rounded-md text-xs font-mono font-bold text-white uppercase tracking-wider shadow-xs"
                       style={{ backgroundColor: activeCase.color }}
                     >
                       CASE {activeCase.number}
@@ -222,7 +221,7 @@ export default function SelectedCases() {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-black text-white">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                     {activeCase.title}
                   </h3>
                 </div>
@@ -232,7 +231,7 @@ export default function SelectedCases() {
                   
                   {/* Contexto & Desafio */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 bg-[#F8FAFC] border-t-2 border-slate-300 border-l border-r border-b border-slate-200">
+                    <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-xs">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-bold block mb-1">
                         Contexto
                       </span>
@@ -241,7 +240,7 @@ export default function SelectedCases() {
                       </p>
                     </div>
 
-                    <div className="p-4 bg-[#F8FAFC] border-t-2 border-t-[#E53924] border-l border-r border-b border-slate-200">
+                    <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-md border-t-2 border-t-[#E53924] border-l border-r border-b border-slate-200/80 shadow-xs">
                       <span className="text-[10px] font-mono uppercase tracking-widest text-[#E53924] font-bold block mb-1">
                         Desafio
                       </span>
@@ -252,7 +251,7 @@ export default function SelectedCases() {
                   </div>
 
                   {/* Meu Papel */}
-                  <div className="bg-[#0F294A] text-white p-5 border-l-4 shadow-sm" style={{ borderLeftColor: activeCase.color }}>
+                  <div className="liquid-glass-dark rounded-2xl text-white p-5 border-l-4 shadow-sm" style={{ borderLeftColor: activeCase.color }}>
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#FFC20E] font-bold block mb-1">
                       Meu Papel
                     </span>
@@ -358,17 +357,17 @@ export default function SelectedCases() {
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-                className="relative z-10 w-full max-h-[88vh] bg-white border-t-4 p-6 overflow-y-auto space-y-6 shadow-2xl"
+                className="relative z-10 w-full max-h-[88vh] liquid-glass-light rounded-t-3xl border-t-4 p-6 overflow-y-auto space-y-6 shadow-2xl backdrop-blur-2xl"
                 style={{ borderTopColor: mobileModalCase.color }}
               >
-                <div className="flex items-center justify-between pb-3 border-b border-slate-200 sticky top-0 bg-white z-20">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200/80 sticky top-0 bg-white/80 backdrop-blur-xl z-20 -mx-2 px-2">
                   <span className="text-xs font-mono font-bold" style={{ color: mobileModalCase.color }}>
                     CASE {mobileModalCase.number} · {mobileModalCase.organization}
                   </span>
                   <button
                     onClick={() => setMobileModalCase(null)}
                     aria-label="Fechar detalhes do case"
-                    className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
+                    className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 rounded-full transition-colors cursor-pointer"
                   >
                     <X size={20} />
                   </button>

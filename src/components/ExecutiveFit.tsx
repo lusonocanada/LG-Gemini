@@ -57,7 +57,7 @@ export default function ExecutiveFit() {
           {areas.map((area, idx) => (
             <div
               key={idx}
-              className="bg-white border-t-4 border-l border-r border-b border-slate-200 p-8 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow"
+              className="liquid-glass-card rounded-2xl border-t-4 border-l border-r border-b p-8 flex flex-col justify-between shadow-xs hover:shadow-xl"
               style={{ borderTopColor: area.color }}
             >
               <div>

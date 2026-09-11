@@ -20,27 +20,32 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
   };
 
   useEffect(() => {
+    // Check prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      handleDismiss();
+      return;
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
         handleDismiss();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
-  useEffect(() => {
-    // Reveal recipient at 1.8s
+    // Reveal context at 1.1s
     const timerStep2 = setTimeout(() => {
       setStep(2);
-    }, 1800);
+    }, 1100);
 
-    // Auto complete at 5.5s
+    // Auto complete at 3.2s (max 3.5s)
     const timerFinish = setTimeout(() => {
       handleDismiss();
-    }, 5500);
+    }, 3200);
 
     return () => {
+      window.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timerStep2);
       clearTimeout(timerFinish);
     };
@@ -137,7 +142,7 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
           <div className="relative z-10 w-full h-16 flex items-center justify-between px-6 sm:px-12">
             <div className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[#008CD2]" />
-              <span>Apresentação Executiva</span>
+              <span>Apresentação profissional executiva</span>
             </div>
 
             <button
@@ -161,15 +166,15 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
               className="space-y-4"
             >
               <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#00A3E0] uppercase block">
-                Repertório · Método · Transformação
+                Apresentação profissional executiva
               </span>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
                 DIEGO MORAES
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-lg mx-auto">
-                Transformação de RH, Implantação e IA Aplicada
+              <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-xl mx-auto">
+                Transformação de RH · Operações Corporativas · Implantação de Plataformas · IA Aplicada
               </p>
             </motion.div>
 
@@ -183,11 +188,11 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
                   className="mt-10 pt-8 border-t border-slate-800 flex flex-col items-center gap-3"
                 >
                   <span className="text-[11px] tracking-wider uppercase text-slate-400">
-                    Apresentação direcionada à
+                    Contexto estratégico: afinidade com a LG Lugar de Gente
                   </span>
 
                   {/* Pristine official LG Logo inside clear container on dark */}
-                  <LGLogo onDark size="sm" />
+                  <LGLogo onDark size="md" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -204,7 +209,7 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
               }}
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer"
             >
-              <span>Entrar na Apresentação</span>
+              <span>Entrar na apresentação</span>
               <ChevronRight size={14} />
             </motion.button>
           </div>
