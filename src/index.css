@@ -285,7 +285,9 @@ section[id] { scroll-margin-top: 7rem; }
   body * { visibility: hidden; }
   #resume-printable-area, #resume-printable-area * { visibility: visible; }
   #resume-printable-area { position: absolute; left: 0; top: 0; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; background: #FFFFFF !important; color: #0F172A !important; overflow: visible !important; box-shadow: none !important; border: none !important; }
-  section, article, .border-l-2, table { break-inside: avoid; page-break-inside: avoid; }
+  /* Seções longas podem quebrar entre páginas; só cards e títulos ficam inteiros. */
+  article, .border-l-2, table { break-inside: avoid; page-break-inside: avoid; }
+  #resume-printable-area h2 { break-after: avoid; page-break-after: avoid; }
   body:has(.resume-dialog) .presentation-content { display: none !important; }
   .resume-dialog, .resume-panel { position: static !important; display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; transform: none !important; box-shadow: none !important; }
   .resume-dialog > :first-child { display: none !important; }

@@ -30,7 +30,7 @@ export default function HeroExecutivePhoto() {
           </h2>
 
           <p className="text-xs text-slate-300 font-medium">
-            Transformação de RH · Implantação · PMO · IA aplicada
+            HR Transformation · HR Tech · Dados · IA aplicada
           </p>
 
           <div className="pt-2.5 border-t border-white/15 flex flex-wrap gap-2 items-center justify-between text-[11px] text-slate-200 font-medium">

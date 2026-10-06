@@ -104,7 +104,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                       Diego Moraes da Silva
                     </h1>
                     <p className="text-sm font-bold text-[#008CD2] mt-1">
-                      HR Transformation · HR Tech & Applied AI · People Analytics · HR Operations
+                      Recursos Humanos Sênior · HR Transformation · HR Tech & Applied AI · People Analytics · HR Operations & CSC
                     </p>
                   </div>
                 </div>
@@ -137,27 +137,39 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               </div>
 
               <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-2">Resumo Executivo</h2>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-2">Perfil Executivo</h2>
                 <p className="text-sm text-slate-700 leading-relaxed text-justify">
-                  Profissional sênior de Recursos Humanos com 18 anos de trajetória no Brasil e no Canadá, atuando na transformação de operações, decisões e experiências de pessoas na interseção entre estratégia, processos, dados e tecnologia. Experiência em HR Transformation, HR Operations, People Analytics, Talent Acquisition, Workforce Planning, HR PMO e HR Tech, com passagens por Santander e Banco Safra. Hoje amplia esse repertório com automação, produtos digitais e IA aplicada, conectando problemas reais de RH a processos, dados, sistemas e soluções executáveis.
+                  Profissional sênior de Recursos Humanos com 18 anos de trajetória no Brasil e no Canadá, atuando na transformação de operações, decisões e experiências de pessoas na interseção entre estratégia, processos, dados e tecnologia. Experiência em HR Transformation, HR Operations e Shared Services, People Analytics, Talent Acquisition, Workforce Planning, HR PMO e HR Tech, com passagens por Santander e Banco Safra e atuação internacional no Canadá. Histórico de diagnóstico, redesenho de processos, governança executiva e implantação/evolução de soluções, com interface com vice-presidência de RH, comitês executivos, lideranças, Tecnologia, Operações e fornecedores. Atualmente amplia essa trajetória com automação, produtos digitais e IA aplicada, com foco em ganho de capacidade, qualidade de decisão e eficiência.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Convergência profissional · LG Lugar de Gente</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Impacto Selecionado</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                   {[
-                    'HR Tech: experiência concreta com PeopleSoft, Workday, eSocial, autosserviço e plataformas digitais de Talent Acquisition.',
-                    'Transformação: diagnóstico, processos, governança, portfólio, riscos, adoção e acompanhamento de resultados.',
-                    'Governança: interface com vice-presidência, comitês executivos, lideranças, Tecnologia, Operações e fornecedores.',
-                    'People Analytics: Data Warehouse, Power BI, modelos preditivos, mobilidade interna e suporte à decisão em escala.',
-                    'Operações e jornadas: CSC, admissão, onboarding, desligamento, Talent Acquisition e workforce planning.',
-                    'IA aplicada: automação, produtos digitais, prototipação e pesquisa autoral no People Systems Brief.'
-                  ].map((text, idx) => (
-                    <div key={idx} className="p-3 bg-[#F8FAFC] border-l-2 border-l-[#008CD2] border-t border-r border-b border-slate-200 text-xs text-slate-800 font-medium leading-relaxed">
-                      {text}
+                    ['R$ 10 milhões', 'em redução de custo operacional em 12 meses'],
+                    ['~2.000 vagas/mês', 'em operação de Talent Acquisition transformada'],
+                    ['~50 mil', 'colaboradores em solução de mobilidade interna'],
+                    ['~R$ 6 bilhões', 'em custos de pessoas sob budget e forecast'],
+                    ['−55%', 'no ciclo de admissão, de 22 para 10 dias'],
+                    ['~3.600', 'gestores e HRBPs atendidos por dashboard mensal de RH']
+                  ].map(([value, label]) => (
+                    <div key={value} className="p-3 bg-[#F8FAFC] border-t-2 border-t-[#008CD2] border-l border-r border-b border-slate-200">
+                      <span className="block text-base font-black text-[#0F294A]">{value}</span>
+                      <span className="block text-[11px] text-slate-600 leading-snug mt-0.5">{label}</span>
                     </div>
                   ))}
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Competências Executivas</h2>
+                <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-700">
+                  <Toolkit label="Transformação e operações" text="HR Transformation | Modelo Operacional | HR Operations | Shared Services / CSC | Process Improvement | Change Management | Employee Experience" />
+                  <Toolkit label="Dados, HR Tech e IA" text="People Analytics | Workforce Analytics | Power BI | Data Warehouse | Workday | PeopleSoft | HR Tech | Automação | Applied AI" />
+                  <Toolkit label="Estratégia e governança" text="People Strategy | Workforce Planning | Capacity Planning | Budget & Forecast | Governança Executiva | Decision Support" />
+                  <Toolkit label="Projetos e implantação" text="HR PMO | Gestão de Portfólio | Requisitos | Gestão de Riscos | Stakeholder Management | Melhoria Contínua" />
+                  <Toolkit label="Talentos e jornadas" text="Talent Acquisition | Mobilidade Interna | International Recruitment | Workforce Mobility | Onboarding | Early Careers" />
                 </div>
               </section>
 
@@ -166,101 +178,95 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                 <div className="space-y-4">
                   <Experience
                     color="#8A1538"
-                    title="Consultor de Transformação de RH, Processos e IA Aplicada"
+                    title="Consultor de Transformação de RH, Processos e IA Aplicada | Consultoria independente"
                     period="06/2025 – atual"
                     location="São Paulo, SP"
-                    intro="Atuação independente em HR Transformation, processos, People Analytics, automação, produtos digitais e IA aplicada, conectando necessidades de negócio, experiência do usuário e tecnologia."
+                    intro="Atuação independente em transformação de RH, processos e operações, conectando estratégia, dados, tecnologia e experiência do usuário para estruturar e implementar soluções de melhoria."
                     bullets={[
-                      'Condução de projetos do diagnóstico à entrega, estruturando roadmaps, requisitos, prioridades, cronogramas, indicadores e mecanismos de governança.',
-                      'Tradução de necessidades funcionais em jornadas, dashboards, MVPs e soluções testáveis, atuando como ponte entre negócio, usuários e Tecnologia.',
-                      'Desenvolvimento de dashboards, CRMs, workflows, automações e produtos digitais aplicados a necessidades de RH e operações.',
-                      'Construção de produtos digitais como The Lusim e FreelaDeck e produção autoral no People Systems Brief sobre HR Tech, People Analytics, agentes de IA e futuro do trabalho.'
-                    ]}
-                  />
-
-                  <Experience
-                    color="#1B4E9B"
-                    title="Gerente de Projetos de RH / HR PMO | Banco Safra"
-                    period="10/2018 – 04/2020"
-                    location="São Paulo, SP"
-                    intro="Recrutado para estruturar o PMO de RH e apoiar diretamente o Diretor de Recursos Humanos na agenda de transformação do banco."
-                    bullets={[
-                      'Estruturação da governança de portfólio: escopo, cronogramas, riscos, dependências, recursos, prioridades, mudanças e planos de ação.',
-                      'Condução de reuniões de status, steering updates e reports executivos; interface entre RH, Tecnologia, Operações e PMO corporativo.',
-                      'Liderança de equipe multidisciplinar e responsabilidade pelas operações de Admissão e Onboarding.',
-                      'Digitalização do processo de admissão em PeopleSoft, reduzindo aproximadamente 55% o ciclo de admissão.',
-                      'Redesenho do desligamento em PeopleSoft, reduzindo aproximadamente 50% o tempo de processamento.',
-                      'Implantação multidisciplinar do eSocial, expansão de autosserviço e modernização de canais e processos de RH.'
-                    ]}
-                  />
-
-                  <Experience
-                    color="#E53924"
-                    title="Santander Brasil | Progressão em Projetos, Planejamento, Talent Acquisition e People Analytics"
-                    period="06/2010 – 10/2018"
-                    location="São Paulo, SP"
-                    bullets={[
-                      'Coordenador de People Analytics (2018): mobilidade interna por algoritmo sobre ~50 mil colaboradores, Data Warehouse, indicadores e dashboards executivos.',
-                      'Coordenador de Talent Acquisition (2016–2018): internalização e digitalização da operação; plataforma digital de seleção; ponto focal de Talent no projeto global Workday Brasil; redução aproximada de R$ 10 milhões em custos operacionais em 12 meses.',
-                      'Coordenador de Planejamento Estratégico de RH (2014–2016): portfólio da Vice-Presidência de RH, governança de cronogramas, riscos e impactos; transformação de Operações de RH em CSC com processos digitalizados e automação.',
-                      'Analista Sênior de Orçamento, Indicadores e Projetos (2010–2014): orçamento de RH, TMI/IBM, dashboards, integração ABN-Santander, SAP/ERP, S2P, projetos digitais e Comitê de Gastos e Investimentos.'
+                      'Diagnósticos, mapeamento de processos AS-IS/TO-BE, desenho de jornadas, requisitos, priorização de iniciativas e roadmaps.',
+                      'Modelos de governança, indicadores, planos de ação e mecanismos de acompanhamento para apoiar execução e decisão.',
+                      'Dashboards, CRMs, automações, workflows e soluções digitais aplicadas a necessidades de RH e operações.',
+                      'Aplicação de HR Tech e IA em pesquisa, análise, documentação, desenho de processos, geração de insights e redução de atividades manuais.',
+                      'Produtos digitais de ponta a ponta com apoio de IA: The Lusim, plataforma SaaS em operação para consultores de imigração canadense, e FreelaDeck, para gestão de freelancers.',
+                      'Produção autoral do People Systems Brief, newsletter sobre RH, HR Tech, People Analytics, IA, transformação e futuro do trabalho.'
                     ]}
                   />
 
                   <Experience
                     color="#F58220"
-                    title="Especialista em Imigração e Processos | CanadaVistos Immigration Consulting"
+                    title="HR Business Partner | Federation of Canadian-Brazilian Businesses (FCBB)"
                     period="10/2021 – 06/2025"
                     location="Toronto, Canadá"
                     bullets={[
-                      'Gestão de processos complexos, prazos críticos, controles de status, qualidade e experiência do cliente em ambiente internacional.',
-                      'Liderança de equipe de consultores e padronização de processos ponta a ponta para elevar previsibilidade, qualidade e reduzir retrabalho.',
-                      'Atuação consultiva com múltiplos stakeholders, traduzindo requisitos complexos em orientações claras e planos de ação.'
+                      'Apoio consultivo ao comitê executivo e a seis lideranças regionais em estrutura, pessoas, prioridades e execução.',
+                      'Workforce Planning e Capacity Planning para estrutura de aproximadamente 36 profissionais.',
+                      'Alinhamento entre estratégia organizacional, metas, prioridades das lideranças e iniciativas de pessoas, com comunicação e stakeholder management no contexto Brasil-Canadá.'
+                    ]}
+                  />
+
+                  <Experience
+                    color="#F58220"
+                    title="Especialista em Imigração, Processos e Operações → Coordenação Operacional | CanadaVistos"
+                    period="10/2021 – 06/2025"
+                    location="Toronto, Canadá"
+                    bullets={[
+                      'Operação regulatória de aproximadamente 650 processos por ano: prioridades, documentação, acompanhamento e qualidade operacional.',
+                      'Padronização, digitalização e automação de atendimento, triagem e acompanhamento, com fluxos, controles e rotinas operacionais.',
+                      'International Recruitment e contratação via LMIA para empregadores canadenses, dossiês regulatórios e suporte a Work Permit.'
+                    ]}
+                  />
+
+                  <Experience
+                    color="#FFC20E"
+                    title="Dono de Franquia | Seda Intercâmbios"
+                    period="03/2020 – 04/2021"
+                    location="Toronto, Canadá"
+                    bullets={[
+                      'Gestão da operação da unidade em Toronto, com responsabilidade por P&L, atendimento, relacionamento e tomada de decisão.',
+                      'Manutenção de rede de aproximadamente 26 parcerias com escolas canadenses durante a pandemia.'
+                    ]}
+                  />
+
+                  <Experience
+                    color="#1B4E9B"
+                    title="Gerente de Projetos de RH | HR PMO | Banco Safra"
+                    period="10/2018 – 04/2020"
+                    location="São Paulo, SP"
+                    intro="Recrutado para estruturar a função de PMO de RH e apoiar a agenda de transformação da Diretoria de Recursos Humanos, conectando RH, Tecnologia, Operações e PMO corporativo."
+                    bullets={[
+                      'Estruturação do HR PMO, com liderança de equipe direta e coordenação de iniciativas em estrutura matricial.',
+                      'Digitalização da admissão, reduzindo o ciclo de aproximadamente 22 para 10 dias (cerca de 55%).',
+                      'Redesenho do desligamento integrado ao PeopleSoft, reduzindo o tempo de processamento em aproximadamente 50%.',
+                      'Implantação do eSocial e autosserviço de ponto, férias e declarações no aplicativo de RH.',
+                      'Clube de descontos com mais de 2.500 estabelecimentos parceiros, pacote de benefícios para empresa coligada e PMO da implantação do Gympass.'
+                    ]}
+                  />
+
+                  <Experience
+                    color="#E53924"
+                    title="Santander | Estratégia, Transformação, Talentos, Dados e PMO de RH"
+                    period="06/2010 – 10/2018"
+                    location="São Paulo, SP"
+                    intro="Progressão interna: Analista de Projetos no PMO Corporativo (2010–2012) → Analista de Indicadores de RH (2012–2013) → Analista Sênior de Orçamento de RH (2013–2014) → Coordenador de Planejamento Estratégico de RH (2014–2016) → Coordenador de Atração e Seleção (2016–2018) → Coordenador de People Analytics (2018)."
+                    bullets={[
+                      'Redesenho e internalização de operação de ~2.000 vagas/mês, antes apoiada por 25+ consultorias, com redução aproximada de R$ 10 milhões em custo operacional em 12 meses.',
+                      'Liderança da implantação de mobilidade interna com matching algorítmico para ~50 mil colaboradores; ponto focal local de Atração e Seleção no rollout global do Workday.',
+                      'Data Warehouse de RH, dashboards de Excel para Power BI, modelo preditivo de risco de saída e análises de prontidão para promoção e mérito.',
+                      'Governança executiva da Diretoria de RH em reporte à Vice-Presidência para ~300 profissionais; transformação de Operações de RH em CSC.',
+                      'Budget, forecast e realizado de ~R$ 6 bilhões em custos de pessoas; simulador orçamentário para comitês de pessoas.',
+                      'Dashboard mensal automatizado para ~3.600 gestores e HRBPs; projetos de eficiência de custos com ~230 gestores de despesas.'
                     ]}
                   />
 
                   <Experience
                     color="#008CD2"
-                    title="Analista de Orçamento | ABN AMRO Brasil"
+                    title="Analista de Orçamento | ABN AMRO"
                     period="05/2008 – 05/2010"
                     location="São Paulo, SP"
                     bullets={[
-                      'Implementação de sistema de gestão para Compras, Despesas, SAP e Contratos; aplicação de PDCA, indicadores, macrofluxos, fluxogramas e planos de ação.',
-                      'Automação de controles com Access e VBA/Excel e produção de apresentações executivas.'
+                      'Planejamento e acompanhamento de despesas, gestão orçamentária e padronização de processos de compras.'
                     ]}
                   />
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Resultados Selecionados</h2>
-                <ul className="space-y-2 text-xs text-slate-700 leading-relaxed list-disc pl-5">
-                  <li>55% de redução aproximada no ciclo de admissão, de 22 para 10 dias, após digitalização no Banco Safra.</li>
-                  <li>50% de redução no tempo de processamento de desligamentos após redesenho em PeopleSoft.</li>
-                  <li>R$ 10 milhões de redução aproximada de custos operacionais em 12 meses na transformação de Talent Acquisition do Santander.</li>
-                  <li>~50 mil colaboradores considerados em iniciativa de mobilidade interna apoiada por algoritmo e People Analytics.</li>
-                  <li>HR PMO estruturado do zero no Safra, com portfólio, riscos, cronogramas, comitês e reports executivos.</li>
-                </ul>
-              </section>
-
-              <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Modelo de Condução da Transformação</h2>
-                <ol className="space-y-2 text-xs text-slate-700 leading-relaxed list-decimal pl-5">
-                  <li><strong>Kick-off e escopo:</strong> alinhamento de expectativa, premissas, papéis, entregáveis e critérios de aceite.</li>
-                  <li><strong>Plano e cronograma:</strong> WBS, marcos, dependências, capacidade de time, orçamento e baseline.</li>
-                  <li><strong>Execução e riscos:</strong> rituais de status, matriz de riscos, gestão de mudanças, conflitos e escalonamento.</li>
-                  <li><strong>Validação e go-live:</strong> testes com usuários-chave, treinamento, plano de corte, comunicação e checklist de produção.</li>
-                  <li><strong>Estabilização:</strong> acompanhamento pós-go-live, indicadores de adoção, lições aprendidas e transição para operação/serviço.</li>
-                </ol>
-              </section>
-
-              <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">HR Transformation, HR Tech & Digital Toolkit</h2>
-                <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-700">
-                  <Toolkit label="Gestão de projetos" text="MS Project | Jira | Trello | Asana | Excel Avançado | PMO | WBS | Risk & Change Management" />
-                  <Toolkit label="HCM / HR Tech" text="PeopleSoft | Workday | eSocial | HRIS | plataformas digitais de Talent Acquisition" />
-                  <Toolkit label="Dados & reports" text="Power BI | SQL | Data Warehouse | Excel/VBA | indicadores | dashboards | reporting executivo" />
-                  <Toolkit label="Automação & IA" text="Python | APIs | Make | Supabase | IA aplicada | automação de processos | prototipagem" />
                 </div>
               </section>
 
@@ -268,27 +274,50 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                 <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Formação & Certificações</h2>
                 <div className="space-y-2.5 text-xs">
                   <Education title="Diploma in Business Management" school="Toronto School of Management" period="2020 – 2022" />
-                  <Education title="Gerenciamento de Projetos" school="Fundação Getulio Vargas (FGV)" period="2011 – 2012" />
-                  <Education title="Bacharelado em Administração de Empresas" school="Universidade Cruzeiro do Sul" period="2005 – 2008" />
+                  <Education title="Gestão de Projetos" school="Fundação Getulio Vargas (FGV)" period="2011 – 2012" />
+                  <Education title="Administração de Empresas" school="Universidade Cruzeiro do Sul" period="2005 – 2008" />
                   <div className="p-3.5 bg-[#F8FAFC] border-l-2 border-l-[#FFC20E] border-t border-r border-b border-slate-200">
-                    <span className="font-black text-[#0F294A] block mb-1">Certificações / desenvolvimento</span>
-                    <span className="text-slate-600">Certified Project Management | O Papel do RH na Transformação Digital | Power BI: Como Criar um Dashboard de RH | QuickBooks Certification</span>
+                    <span className="font-black text-[#0F294A] block mb-1">Certificações</span>
+                    <span className="text-slate-600">Certified Scrum Product Owner, CSPO (Scrum Alliance) | Certified Project Management (Google) | Project Management Certification, PMI Methodologies | Power BI: Dashboard de RH (Universidade Santander) | O Papel do RH na Transformação Digital (Universidade Santander)</span>
                   </div>
                 </div>
               </section>
 
               <section>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Ferramentas</h2>
+                <p className="text-xs text-slate-700 leading-relaxed">
+                  Power BI | Data Warehouse | Workday | PeopleSoft | HRIS / HR Tech | Automação de Processos | Applied AI | Desenvolvimento de Produtos Digitais
+                </p>
+              </section>
+
+              <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-2">Idiomas</h2>
-                <div className="flex gap-4 text-xs">
-                  <div className="p-3.5 bg-[#F8FAFC] border-l-2 border-l-[#008CD2] border-t border-r border-b border-slate-200 flex-1">
-                    <span className="font-black text-[#0F294A] block">Português</span>
-                    <span className="text-slate-600">Nativo</span>
-                  </div>
-                  <div className="p-3.5 bg-[#F8FAFC] border-l-2 border-l-[#F58220] border-t border-r border-b border-slate-200 flex-1">
-                    <span className="font-black text-[#0F294A] block">Inglês</span>
-                    <span className="text-slate-600">Profissional</span>
-                  </div>
+                <div className="grid grid-cols-3 gap-2.5 text-xs">
+                  {[['Português', 'Nativo', '#008CD2'], ['Inglês', 'Profissional', '#F58220'], ['Espanhol', 'Intermediário', '#8A1538']].map(([lang, level, color]) => (
+                    <div key={lang} className="p-3.5 bg-[#F8FAFC] border-l-2 border-t border-r border-b border-slate-200" style={{ borderLeftColor: color }}>
+                      <span className="font-black text-[#0F294A] block">{lang}</span>
+                      <span className="text-slate-600">{level}</span>
+                    </div>
+                  ))}
                 </div>
+              </section>
+
+              <section>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-2">Produção Editorial · People Systems Brief</h2>
+                <p className="text-xs text-slate-700 leading-relaxed mb-2">
+                  Newsletter autoral no LinkedIn sobre RH, HR Tech, IA, dados, transformação e futuro do trabalho.
+                </p>
+                <ol className="space-y-1 text-xs text-slate-700 leading-relaxed list-decimal pl-5">
+                  <li>People Analytics precisa voltar a mudar decisões</li>
+                  <li>Depois do headcount: como skills, IA e capacidade estão mudando o workforce planning</li>
+                  <li>Skills first exige evidência: quando competência não pode virar keyword matching 2.0</li>
+                  <li>Quando a IA ajuda os dois lados: o que muda no papel do recrutador?</li>
+                  <li>Agentes de IA em RH: por que o produto é apenas uma parte da transformação</li>
+                  <li>Do workflow à inteligência: como a IA está ampliando o papel do ATS</li>
+                </ol>
+                <a href="https://www.linkedin.com/newsletters/people-systems-brief-7513012658317721600" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-semibold text-[#008CD2] break-all">
+                  linkedin.com/newsletters/people-systems-brief
+                </a>
               </section>
             </div>
 

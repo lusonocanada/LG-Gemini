@@ -175,7 +175,7 @@ export default function SplashScreen({ onFinish, onComplete }: SplashScreenProps
           </h1>
 
           <p className="text-sm sm:text-base text-slate-300 font-normal tracking-wide max-w-xl mx-auto">
-            Transformação de RH, Implantação e IA Aplicada
+            HR Transformation · HR Tech · Dados · IA Aplicada
           </p>
         </motion.div>
 

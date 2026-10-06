@@ -24,37 +24,38 @@ interface Chapter {
 
 const chapters: Chapter[] = [
   {
-    id: 'santander-early',
-    period: '2008 – 2012',
-    company: 'ABN AMRO / Santander Brasil',
-    role: 'Orçamento, processos e projetos corporativos',
+    id: 'abn-amro',
+    period: '2008 – 2010',
+    company: 'ABN AMRO',
+    role: 'Analista de Orçamento',
     location: 'São Paulo, Brasil',
     color: '#1B4E9B',
-    headline: 'Integração pós-fusão, processos e disciplina orçamentária.',
-    description: 'Atuação em projetos de integração sistêmica após a aquisição do ABN AMRO pelo Santander, mapeamento de processos operacionais e governança orçamentária.',
+    headline: 'Orçamento, processos e controles.',
+    description: 'Planejamento e acompanhamento de despesas, gestão orçamentária e padronização de processos de compras.',
     deliverables: [
-      'Padronização de rotinas',
-      'Mapeamento e redesenho de fluxos',
-      'Acompanhamento físico-financeiro de projetos'
+      'Planejamento e acompanhamento de despesas',
+      'Gestão orçamentária',
+      'Padronização de processos de compras'
     ],
     image: '/images/banco-real.jpg',
     imageAlt: 'Fachada do Banco Real / ABN AMRO, em fotografia fornecida por Diego Moraes.'
   },
   {
-    id: 'santander-expansion',
-    period: '2012 – 2018',
+    id: 'santander',
+    period: '2010 – 2018',
     company: 'Santander Brasil',
-    role: 'Indicadores, orçamento, planejamento estratégico de RH, Talent Acquisition e People Analytics',
+    role: 'Seis posições: PMO corporativo → Planejamento de RH → Talent Acquisition → People Analytics',
     location: 'São Paulo, Brasil',
     color: '#008CD2',
-    headline: 'Do planejamento de RH à transformação de Talent e dados.',
-    description: 'Gestão de indicadores, orçamento e portfólio de RH; CSC, catálogo de serviços e interface RH/TI; transformação de Talent Acquisition, Workday Brasil, People Analytics e mobilidade interna para cerca de 50 mil colaboradores.',
+    headline: 'De PMO corporativo a People Analytics.',
+    description: 'Progressão interna em seis posições, de Analista de Projetos no PMO Corporativo a Coordenador de People Analytics, passando por Indicadores, Orçamento e Planejamento Estratégico de RH e Atração e Seleção. Governança executiva em reporte à Vice-Presidência, transformação de Operações de RH em CSC, Talent Acquisition, Workday e mobilidade interna.',
     deliverables: [
-      'Cenários orçamentários',
-      'Catálogo de serviços e SLAs',
-      'Transformação de Talent Acquisition',
-      'Atuação como ponto focal de Talent no Workday Brasil',
-      'Modelos de mobilidade interna'
+      'Budget, forecast e realizado de ~R$ 6 bilhões em custos de pessoas',
+      'Dashboard mensal automatizado para ~3.600 gestores e HRBPs',
+      'Governança executiva da Diretoria de RH, com ~300 profissionais',
+      'Internalização de ~2.000 vagas/mês, com ~R$ 10 milhões de redução em 12 meses',
+      'Ponto focal local de Atração e Seleção no rollout global do Workday',
+      'Mobilidade interna com matching algorítmico para ~50 mil colaboradores'
     ],
     image: '/images/santander-sede.jpg',
     imageAlt: 'Fachada do Santander, em fotografia fornecida por Diego Moraes.',
@@ -64,16 +65,17 @@ const chapters: Chapter[] = [
     id: 'safra-pmo',
     period: '2018 – 2020',
     company: 'Banco Safra',
-    role: 'Gerente de Projetos de RH e estruturação do HR PMO',
+    role: 'Gerente de Projetos de RH · HR PMO',
     location: 'São Paulo, Brasil',
     color: '#F58220',
-    headline: 'PMO de RH, PeopleSoft e jornadas digitais que ganharam velocidade.',
-    description: 'Estruturação do HR PMO, priorização de carteira, admissão digital com redução aproximada de 55% no ciclo e redesenho do desligamento com redução aproximada de 50% no processamento.',
+    headline: 'HR PMO e transformação operacional.',
+    description: 'Estruturação do HR PMO do zero, com equipe direta e coordenação matricial com Tecnologia, Operações e PMO corporativo. Admissão digital, desligamento no PeopleSoft, eSocial, autosserviço e iniciativas de employee experience.',
     deliverables: [
-      'Metodologia de PMO e rituais executivos',
-      'Admissão digital no PeopleSoft',
-      'Modernização de portal e aplicativo',
-      'Redesenho de desligamento'
+      'Admissão digital: de 22 para 10 dias (−55%)',
+      'Desligamento integrado ao PeopleSoft (−50% no processamento)',
+      'Implantação do eSocial e modernização dos processos regulatórios',
+      'Autosserviço de ponto, férias e declarações no app de RH',
+      'Clube de descontos com 2.500+ parceiros, Gympass e bem-estar'
     ],
     image: '/images/banco-safra.webp',
     imageAlt: 'Fachada do Banco Safra, em fotografia fornecida por Diego Moraes.'
@@ -82,15 +84,15 @@ const chapters: Chapter[] = [
     id: 'toronto-intl',
     period: '2020 – 2025',
     company: 'Toronto, Canadá',
-    role: 'HR Business Partner e gestão operacional',
+    role: 'Franquia e P&L · HR Business Partner · Operação de imigração',
     location: 'Toronto, Canadá',
     color: '#FFC20E',
-    headline: 'HRBP e gestão operacional em ambiente multicultural.',
-    description: 'Atuação em Business Partnering, governança e liderança de operações, com formação em Business Management pela Toronto School of Management.',
+    headline: 'Operação em ambientes multiculturais, regulados e orientados ao cliente.',
+    description: 'Três frentes em Toronto: gestão de franquia com responsabilidade por P&L, HR Business Partner na Federation of Canadian-Brazilian Businesses e operação regulatória de imigração na CanadaVistos, com evolução para coordenação operacional. Diploma in Business Management pela Toronto School of Management.',
     deliverables: [
-      'Apoio à governança e planejamento',
-      'Padronização de operações críticas',
-      'Gestão de operações e relacionamento'
+      'FCBB · HRBP (2021–2025): apoio ao comitê executivo e a 6 lideranças regionais; Workforce e Capacity Planning para ~36 profissionais',
+      'CanadaVistos (2021–2025): ~650 processos por ano, LMIA, Work Permit e recrutamento internacional',
+      'Seda Intercâmbios (2020–2021): gestão de P&L e 26 parcerias com escolas mantidas durante a pandemia'
     ],
     image: '/images/trajetoria-canada.webp',
     imageAlt: 'Vista urbana de Toronto em contexto multicultural e profissional.'
@@ -98,16 +100,17 @@ const chapters: Chapter[] = [
   {
     id: 'digital-ai',
     period: '2025 – Atual',
-    company: 'Consultoria e soluções digitais',
+    company: 'Consultoria independente',
     role: 'HR Transformation, produtos digitais e IA aplicada',
     location: 'São Paulo, Brasil',
     color: '#8A1538',
-    headline: 'Do problema de RH à solução: processos, dados, automação e IA aplicada.',
-    description: 'Diagnóstico, redesenho de processos, dashboards, automação, produtos digitais e IA aplicada a problemas reais de negócio e RH, com pesquisa autoral sobre HR Tech e futuro do trabalho.',
+    headline: 'Do desenho do processo à construção da solução.',
+    description: 'Diagnóstico, mapeamento AS-IS/TO-BE, requisitos, roadmaps, dashboards, automações e produtos digitais construídos de ponta a ponta com apoio de IA, além de pesquisa autoral sobre RH, HR Tech e futuro do trabalho.',
     deliverables: [
-      'Diagnóstico e desenho de processos',
-      'People Analytics, dados e automação',
-      'Produtos digitais e IA aplicada'
+      'Diagnóstico, jornadas, requisitos e roadmaps de transformação',
+      'Dashboards, CRMs, automações e workflows para RH e operações',
+      'The Lusim, plataforma SaaS em operação, e FreelaDeck',
+      'People Systems Brief, newsletter autoral no LinkedIn'
     ],
     image: '/images/trajetoria-digital.webp',
     imageAlt: 'Mesa de trabalho com protótipos e materiais de planejamento.'
@@ -147,7 +150,7 @@ export default function Trajetoria() {
           eyebrow="Trajetória"
           color="#1B4E9B"
           title={<>Uma jornada construída dentro da complexidade —{' '}<span className="text-[#1B4E9B]">não observando-a de fora.</span></>}
-          lead="18 anos entre Santander, Banco Safra, Canadá e consultoria — sempre dentro do RH, perto da operação."
+          lead="18 anos entre ABN AMRO, Santander, Banco Safra, Canadá e consultoria — 12 deles em São Paulo, sempre perto da operação."
         />
 
         {/* Mobile: linha do tempo; o detalhe abre em drawer, sem trocar conteúdo fora da tela. */}

@@ -27,17 +27,18 @@ const casesData: CaseItem[] = [
     organization: 'Santander Brasil',
     period: '2016 – 2018',
     color: '#E53924',
-    highlight: { value: 'R$ 10 mi', label: 'de economia anual aproximada' },
-    contexto: 'O modelo de atração e seleção precisava ganhar eficiência e oferecer uma experiência mais digital ao candidato, em paralelo à implantação global do Workday.',
+    highlight: { value: 'R$ 10 mi', label: 'de redução de custo operacional em 12 meses' },
+    contexto: 'Uma operação de aproximadamente 2.000 vagas por mês dependia de mais de 25 consultorias externas, em paralelo ao rollout global do Workday.',
     desafio: 'Reformular o modelo com economia real, sem perder qualidade, e adaptar os processos de recrutamento à realidade brasileira dentro de um projeto global.',
-    meuPapel: 'Atuação na reformulação de Talent Acquisition e como ponto focal de Talent no projeto global Workday para o Brasil.',
+    meuPapel: 'Coordenador de Atração e Seleção, responsável pelo redesenho e internalização da operação e ponto focal local de Atração e Seleção no rollout global do Workday.',
     comoConduzi: 'Internalização de processos seletivos estratégicos, redesenho de fluxos, acompanhamento de indicadores e localização funcional do Workday.',
     entregas: [
       'Internalização de processos seletivos estratégicos',
       'Redesenho de fluxos de seleção',
-      'Localização dos processos de recrutamento no Workday para o Brasil'
+      'Localização dos processos de recrutamento no Workday para o Brasil',
+      'Contribuição em iniciativas de diversidade, inclusão e early careers'
     ],
-    resultado: 'Economia anual aproximada de R$ 10 milhões.'
+    resultado: 'Redução aproximada de R$ 10 milhões em custo operacional em 12 meses, com ~2.000 vagas por mês em modelo internalizado.'
   },
   {
     id: 'safra-pmo',
@@ -49,13 +50,14 @@ const casesData: CaseItem[] = [
     highlight: { value: '−55%', label: 'no ciclo de admissão (22 → 10 dias) e −50% no desligamento' },
     contexto: 'A Diretoria de RH tinha uma carteira prioritária de projetos que precisava de governança, cadência de decisão e visibilidade executiva.',
     desafio: 'Criar o PMO de RH e acelerar jornadas críticas de admissão e desligamento sem gerar fricção na operação.',
-    meuPapel: 'Gerente de Projetos de RH, responsável por estruturar o HR PMO e conduzir a carteira prioritária da diretoria.',
+    meuPapel: 'Gerente de Projetos de RH, recrutado para estruturar o HR PMO do zero, com equipe direta e coordenação matricial com Tecnologia, Operações e PMO corporativo.',
     comoConduzi: 'Metodologia de PMO, matriz de priorização, rituais executivos, gestão de riscos e dependências com Tecnologia e Operações.',
     entregas: [
       'Metodologia de PMO, comitês e rituais executivos',
       'Admissão digital no PeopleSoft',
-      'Modernização do portal e do aplicativo de RH',
-      'Redesenho do fluxo de desligamento'
+      'Redesenho do desligamento integrado ao PeopleSoft',
+      'Implantação do eSocial e modernização dos processos regulatórios',
+      'Autosserviço de ponto, férias e declarações no aplicativo de RH'
     ],
     resultado: 'Redução aproximada de 55% no ciclo de admissão (de 22 para 10 dias) e de 50% no tempo de processamento de desligamentos.'
   },
@@ -66,55 +68,58 @@ const casesData: CaseItem[] = [
     organization: 'Santander Brasil',
     period: '2016 – 2018',
     color: '#1B4E9B',
-    highlight: { value: '50 mil', label: 'colaboradores com mais visibilidade para mobilidade' },
+    highlight: { value: '50 mil', label: 'colaboradores em mobilidade interna com matching algorítmico' },
     contexto: 'Uma organização com cerca de 50 mil colaboradores precisava de mais visibilidade para decisões sobre talentos e mobilidade interna.',
     desafio: 'Conectar dados de pessoas a uma visão mais estruturada de oportunidades internas.',
-    meuPapel: 'Atuação em People Analytics e iniciativas de mobilidade interna.',
-    comoConduzi: 'Organização de informações de talento e desenvolvimento de modelos de mobilidade a partir das perguntas da liderança.',
+    meuPapel: 'Liderança da implantação da mobilidade interna e, em 2018, Coordenador de People Analytics.',
+    comoConduzi: 'Matching algorítmico priorizando o talento interno antes da busca externa, coordenação entre áreas de RH e parceiros, inclusive na escolha de uma alternativa tecnológica após dificuldades do fornecedor original.',
     entregas: [
-      'Informações de talento organizadas para apoiar decisões',
-      'Modelos de mobilidade interna'
+      'Mobilidade interna com matching algorítmico',
+      'Data Warehouse de RH e dashboards evoluídos de Excel para Power BI',
+      'Modelo preditivo de risco de saída',
+      'Análises de prontidão para promoção e mérito'
     ],
-    resultado: 'Mais visibilidade sobre talentos e mobilidade interna para cerca de 50 mil colaboradores.'
+    resultado: 'Mobilidade interna com matching algorítmico para cerca de 50 mil colaboradores e decisões de carreira apoiadas por análises preditivas.'
   },
   {
     id: 'csc-budget',
     number: '04',
-    title: 'CSC, orçamento e governança',
+    title: 'Orçamento, CSC e governança executiva',
     organization: 'Santander Brasil',
     period: '2012 – 2016',
     color: '#F58220',
-    highlight: { value: 'CSC', label: 'budget de pessoal, catálogo de serviços e SLAs' },
+    highlight: { value: '~R$ 6 bi', label: 'em custos de pessoas sob budget e forecast' },
     contexto: 'A Vice-Presidência de RH precisava conectar planejamento estratégico, disciplina orçamentária e modernização operacional.',
     desafio: 'Governar o orçamento de pessoal enquanto as operações de RH migravam para um modelo de Centro de Serviços Compartilhados.',
-    meuPapel: 'Atuação em indicadores, orçamento e planejamento estratégico de RH, com apoio à gestão do portfólio da VP de RH e interface com TI.',
-    comoConduzi: 'Cenários orçamentários, estruturação de catálogo de serviços, definição de SLAs e articulação entre negócio, TI e especialistas funcionais.',
+    meuPapel: 'Analista de Indicadores, Analista Sênior de Orçamento e Coordenador de Planejamento Estratégico de RH, liderando a governança executiva da Diretoria de RH em reporte à Vice-Presidência.',
+    comoConduzi: 'Comitês, metas e portfólio para ~300 profissionais; simulador orçamentário para comitês de pessoas; redesenho e digitalização de processos no CSC; avaliações preventivas antes de auditorias externas.',
     entregas: [
-      'Governança e acompanhamento do budget de pessoal',
-      'Catálogo de serviços de RH e SLAs',
-      'Cenários orçamentários para liderança',
-      'Operações com autosserviço e escala'
+      'Budget, forecast e realizado de ~R$ 6 bilhões em custos de pessoas',
+      'Simulador de promoção, mérito, contratação e desligamento',
+      'Dashboard mensal automatizado para ~3.600 gestores e HRBPs',
+      'Operações de RH em CSC, com indicadores de satisfação e produtividade'
     ],
-    resultado: 'Maior clareza para a liderança sobre orçamento, serviços e prioridades operacionais de RH.'
+    resultado: 'Governança de ~R$ 6 bilhões em custos de pessoas e indicadores mensais para ~3.600 gestores e HRBPs.'
   },
   {
     id: 'ia-prototipacao',
     number: '05',
     title: 'IA aplicada e prototipação',
-    organization: 'Consultoria e soluções digitais',
+    organization: 'Consultoria independente',
     period: '2025 – Atual',
     color: '#8A1538',
-    highlight: { value: 'Ciclos curtos', label: 'hipóteses testadas antes de escalar' },
+    highlight: { value: 'The Lusim', label: 'plataforma SaaS em operação, construída com apoio de IA' },
     contexto: 'Gargalos de operação e RH podem ser testados em ciclos curtos antes de exigir um grande investimento.',
     desafio: 'Reduzir o tempo entre uma necessidade real e uma solução utilizável, com validação humana.',
-    meuPapel: 'Atuação em transformação digital, automação, dados e IA aplicada.',
+    meuPapel: 'Consultor independente de Transformação de RH, Processos e IA Aplicada.',
     comoConduzi: 'Diagnóstico, prototipação, desenho de fluxos, dashboards e automações para testar hipóteses.',
     entregas: [
-      'Protótipos funcionais',
-      'Dashboards e fluxos de apoio à decisão',
-      'Automações de rotinas de análise e documentação'
+      'The Lusim: plataforma SaaS em operação para consultores de imigração canadense',
+      'FreelaDeck: gestão comercial, operacional e financeira de freelancers',
+      'Dashboards, CRMs, automações e workflows para RH e operações',
+      'People Systems Brief: newsletter autoral sobre RH, HR Tech e IA'
     ],
-    resultado: 'Hipóteses testadas em ciclos curtos antes de uma implantação em maior escala.'
+    resultado: 'Produtos digitais construídos de ponta a ponta com apoio de IA, incluindo um SaaS em operação.'
   }
 ];
 

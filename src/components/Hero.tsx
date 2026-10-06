@@ -9,9 +9,9 @@ interface HeroProps {
 
 const stats = [
   { value: '18 anos', label: 'em RH no Brasil e no Canadá', color: '#1B4E9B' },
-  { value: 'R$ 10 mi', label: 'de economia anual em Talent Acquisition', color: '#E53924' },
-  { value: '−55%', label: 'no ciclo de admissão digital', color: '#008CD2' },
-  { value: '50 mil', label: 'colaboradores em People Analytics', color: '#F58220' },
+  { value: 'R$ 10 mi', label: 'de redução de custo em Talent Acquisition', color: '#E53924' },
+  { value: '−55%', label: 'no ciclo de admissão (22 → 10 dias)', color: '#008CD2' },
+  { value: '~R$ 6 bi', label: 'em custos de pessoas sob budget e forecast', color: '#F58220' },
 ];
 
 export default function Hero({ onOpenCvModal }: HeroProps) {
