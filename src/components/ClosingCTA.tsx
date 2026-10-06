@@ -25,11 +25,11 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-            Quero levar para a LG a visão de quem viveu a dor da implantação na cadeira do cliente.
+            Quero levar para a LG uma visão de RH construída entre estratégia, operação, dados e tecnologia.
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-3xl mx-auto">
-            Trago repertório em projetos, processos, dados e tecnologia, com a postura de quem prefere resolver gargalos reais a vender promessas vazias. Se a agenda da LG é fazer a transformação chegar com qualidade à ponta, temos muito sobre o que conversar.
+            Trago 18 anos de experiência em RH, transformação, People Analytics, operações e projetos, somados hoje a produtos digitais e IA aplicada. Minha contribuição está em conectar problemas reais de negócio a processos, dados, tecnologia e decisões que funcionem na prática.
           </p>
         </div>
 
