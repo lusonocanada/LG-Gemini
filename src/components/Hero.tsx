@@ -8,9 +8,9 @@ interface HeroProps {
 }
 
 const proofCards = [
-  { icon: Award, color: '#1B4E9B', text: '15+ anos em RH, projetos e transformação' },
+  { icon: Award, color: '#1B4E9B', text: '18 anos em RH, transformação, dados e tecnologia' },
   { icon: TrendingUp, color: '#008CD2', text: 'R$ 10 milhões de economia anual aproximada em Talent Acquisition' },
-  { icon: CheckCircle2, color: '#00A3E0', text: '60% de redução aproximada no ciclo de admissão digital' },
+  { icon: CheckCircle2, color: '#00A3E0', text: '55% de redução aproximada no ciclo de admissão digital' },
   { icon: Globe, color: '#F58220', text: 'Brasil + Canadá: experiência corporativa e multicultural' },
 ];
 
@@ -46,7 +46,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
               <span className="w-2.5 h-1.5 rounded-full bg-[#8A1538]" />
             </span>
             <span className="text-xs font-bold font-mono tracking-widest text-slate-600 uppercase">
-              TRANSFORMAÇÃO · OPERAÇÃO · ENTREGA
+              PESSOAS · PROCESSOS · DADOS · TECNOLOGIA
             </span>
           </div>
         </motion.div>
@@ -61,7 +61,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                   transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[#0F294A]"
                 >
-                  Eu conheço a transformação
+                  Transformo RH conectando
                 </motion.span>
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 24, filter: 'blur(8px)' }}
@@ -69,7 +69,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                   transition={reduced ? { duration: 0 } : { duration: 0.72, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[#0F294A]"
                 >
-                  pelo lado de quem vive a <span className="text-[#1B4E9B]">operação.</span>
+                  <span className="text-[#1B4E9B]">pessoas, processos, dados e tecnologia.</span>
                 </motion.span>
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
@@ -77,7 +77,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                   transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 0.82, ease: [0.16, 1, 0.3, 1] }}
                   className="block mt-3 text-[#008CD2]"
                 >
-                  Agora, quero ajudar a LG
+                  Agora, quero levar esse repertório
                 </motion.span>
                 <motion.span
                   initial={reduced ? false : { opacity: 0, y: 28, filter: 'blur(9px)' }}
@@ -85,7 +85,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                   transition={reduced ? { duration: 0 } : { duration: 0.82, delay: 1.02, ease: [0.16, 1, 0.3, 1] }}
                   className="hero-signature block text-[#008CD2]"
                 >
-                  a fazer cada entrega acontecer.
+                  ao próximo ciclo da LG.
                 </motion.span>
               </motion.h1>
             </div>
@@ -96,7 +96,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
               transition={reduced ? { duration: 0 } : { duration: 0.6, delay: 1.35 }}
               className="text-base sm:text-[1.05rem] text-slate-700 font-normal leading-relaxed max-w-2xl"
             >
-              Construí minha trajetória dentro de operações complexas de RH. Fui o cliente que precisou organizar prioridades, implantar sistemas, conectar áreas, defender decisões, treinar pessoas e fazer uma mudança funcionar depois do go-live. Hoje, transformo esse repertório em método para conectar tecnologia, experiência e resultado.
+              Minha trajetória foi construída dentro do RH, conectando estratégia, operações, dados e tecnologia em ambientes complexos. Passei por planejamento, PMO, Talent Acquisition, People Analytics, transformação operacional e implantação de sistemas. Hoje amplio esse repertório com automação, produtos digitais e IA aplicada, sempre partindo de problemas reais de negócio e de pessoas.
             </motion.p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
