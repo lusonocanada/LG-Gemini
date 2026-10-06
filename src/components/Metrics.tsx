@@ -17,11 +17,11 @@ export default function Metrics() {
     },
     {
       title: 'Admissão digital',
-      value: '60%',
-      subtitle: 'Redução aproximada no ciclo de admissão digital.',
+      value: '55%',
+      subtitle: 'Redução aproximada no ciclo de admissão digital, de 22 para 10 dias.',
       contexto: 'Jornada de admissão no PeopleSoft em ambiente de RH de alta complexidade.',
       meuPapel: 'Gerente de Projetos de RH e responsável por conduzir a transformação da jornada.',
-      resultado: 'Redução aproximada de 60% no ciclo do processo.',
+      resultado: 'Redução aproximada de 55% no ciclo do processo.',
       color: '#008CD2'
     },
     {
@@ -60,7 +60,7 @@ export default function Metrics() {
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F294A] leading-[1.12]">
-            Resultados que mostram como eu transformo complexidade em entrega.
+            Resultados que mostram como conecto transformação, dados e execução a impacto mensurável.
           </h2>
         </div>
 
