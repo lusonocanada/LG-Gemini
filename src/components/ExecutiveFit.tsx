@@ -2,31 +2,31 @@ import ContextImage from './ContextImage';
 export default function ExecutiveFit() {
   const areas = [
     {
-      title: 'Projetos estratégicos e PMO de RH',
-      missao: 'Estruturação de portfólio, governança, prazos e alinhamento com áreas de negócio e tecnologia.',
-      diferencial: 'Experiência de PMO de RH em banco de grande porte e condução de projetos estruturantes.',
-      comoAtuo: 'Rituais executivos, gestão de riscos, priorização de carteira e acompanhamento de entregas.',
+      title: 'HR Transformation, operating model e PMO',
+      missao: 'Conectar estratégia de RH a modelo operacional, governança, portfólio e execução com áreas de negócio e tecnologia.',
+      diferencial: 'Experiência em governança executiva, CSC, HR PMO e transformação de operações em ambientes de grande escala.',
+      comoAtuo: 'Diagnóstico, priorização, governança, gestão de riscos e acompanhamento de resultados.',
       color: '#1B4E9B'
     },
     {
-      title: 'Implantação e transformação de processos de RH',
-      missao: 'Aproximação entre processos, tecnologia e as pessoas que operam a solução no dia a dia.',
-      diferencial: 'Vivência em jornadas críticas — admissão, desligamento, catálogo de serviços e modelos de atração.',
-      comoAtuo: 'Mapeamento de fluxos, eliminação de gargalos e foco na adoção prática das equipes.',
+      title: 'HR Tech e transformação de jornadas',
+      missao: 'Traduzir problemas funcionais de RH em processos, requisitos, soluções e jornadas que funcionem na operação.',
+      diferencial: 'Vivência como cliente de HR Tech em Workday, PeopleSoft, autosserviço, admissão, desligamento e Talent Acquisition.',
+      comoAtuo: 'Mapeamento AS-IS/TO-BE, requisitos, simplificação de fluxos, adoção e estabilização.',
       color: '#008CD2'
     },
     {
-      title: 'People Analytics, dados e planejamento',
-      missao: 'Transformar dados dispersos em informações para decisão da liderança.',
+      title: 'People Analytics, dados e decisão',
+      missao: 'Fazer dados de pessoas saírem do dashboard e chegarem a decisões mais claras para a liderança.',
       diferencial: 'Atuação em indicadores, orçamento de RH, People Analytics e mobilidade em grande escala.',
-      comoAtuo: 'Estruturação de métricas, conciliação de informações e visão executiva de portfólio.',
+      comoAtuo: 'Pergunta de negócio, dados confiáveis, análise, contexto e recomendação para decisão.',
       color: '#FFC20E'
     },
     {
-      title: 'IA aplicada e prototipação operacional',
-      missao: 'Testar soluções para gargalos reais antes de grandes investimentos.',
-      diferencial: 'Capacidade de prototipar fluxos, desenhar automações e validar hipóteses em ciclos curtos.',
-      comoAtuo: 'Diagnóstico de processos, prototipação rápida e foco em utilidade real para a operação.',
+      title: 'IA aplicada, produtos digitais e pensamento de mercado',
+      missao: 'Explorar como automação e IA podem ampliar capacidade, qualidade de decisão e eficiência em RH.',
+      diferencial: 'Construção de produtos digitais e pesquisa autoral no People Systems Brief sobre HR Tech, People Analytics, agentes e futuro do trabalho.',
+      comoAtuo: 'Diagnóstico, experimentação, automação e IA aplicada com foco em utilidade, governança e impacto real.',
       color: '#8A1538'
     }
   ];
@@ -45,11 +45,11 @@ export default function ExecutiveFit() {
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F294A] leading-[1.12] mb-4">
-            Áreas onde vejo maior aderência com a minha experiência.
+            Onde minha experiência pode contribuir para o próximo ciclo de HR Tech.
           </h2>
 
           <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
-            Onde minha trajetória pode gerar contribuição prática dentro da agenda da empresa.
+            Quatro frentes que conectam minha trajetória em RH à evolução de produtos, operações, dados e inteligência.
           </p>
         </div>
 
