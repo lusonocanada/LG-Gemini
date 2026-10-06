@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, FileText } from 'lucide-react';
+import { ArrowRight, CheckCircle2, FileText, Layers, Rocket } from 'lucide-react';
 import BottomSheet from './BottomSheet';
 import SectionHeader from './SectionHeader';
 
@@ -100,26 +100,6 @@ const casesData: CaseItem[] = [
       'Operações de RH em CSC, com indicadores de satisfação e produtividade'
     ],
     resultado: 'Governança de ~R$ 6 bilhões em custos de pessoas e indicadores mensais para ~3.600 gestores e HRBPs.'
-  },
-  {
-    id: 'ia-prototipacao',
-    number: '05',
-    title: 'IA aplicada e prototipação',
-    organization: 'Consultoria independente',
-    period: '2025 – Atual',
-    color: '#8A1538',
-    highlight: { value: 'The Lusim', label: 'plataforma SaaS em operação, construída com apoio de IA' },
-    contexto: 'Gargalos de operação e RH podem ser testados em ciclos curtos antes de exigir um grande investimento.',
-    desafio: 'Reduzir o tempo entre uma necessidade real e uma solução utilizável, com validação humana.',
-    meuPapel: 'Consultor independente de Transformação de RH, Processos e IA Aplicada.',
-    comoConduzi: 'Diagnóstico, prototipação, desenho de fluxos, dashboards e automações para testar hipóteses.',
-    entregas: [
-      'The Lusim: plataforma SaaS em operação para consultores de imigração canadense',
-      'FreelaDeck: gestão comercial, operacional e financeira de freelancers',
-      'Dashboards, CRMs, automações e workflows para RH e operações',
-      'People Systems Brief: newsletter autoral sobre RH, HR Tech e IA'
-    ],
-    resultado: 'Produtos digitais construídos de ponta a ponta com apoio de IA, incluindo um SaaS em operação.'
   }
 ];
 
@@ -156,6 +136,97 @@ function CaseDetail({ item }: { item: CaseItem }) {
             </li>
           ))}
         </ul>
+      </div>
+    </div>
+  );
+}
+
+// Conteúdo e capturas vindos da seção "Transformação Digital e IA" de diegomoraes.me.
+const digital = {
+  label: 'Consultoria independente',
+  title: 'Transformação Digital e IA',
+  subtitle: 'Prática independente de transformação digital: do diagnóstico à execução de produtos digitais, usando IA como alavanca de execução.',
+  period: 'jun/2025 a atual · São Paulo',
+  steps: [
+    'Diagnóstico de necessidades',
+    'Desenho e melhoria de processos',
+    'Roadmap e governança',
+    'Execução de produtos digitais com IA'
+  ],
+  products: [
+    {
+      name: 'The Lusim',
+      tag: 'SaaS em operação',
+      description: 'Plataforma para consultores de imigração canadense, construída de ponta a ponta.',
+      image: '/images/produtos/the-lusim.webp',
+      imageAlt: 'Painel do The Lusim com agenda, tarefas e notícias de imigração do consultor.',
+      position: 'left top',
+      icon: Rocket
+    },
+    {
+      name: 'FreelaDeck',
+      tag: 'SaaS para freelancers',
+      description: 'Propostas comerciais, CRM e gestão operacional e financeira.',
+      image: '/images/produtos/freeladeck.webp',
+      imageAlt: 'Página do FreelaDeck mostrando o fluxo da oportunidade à proposta.',
+      position: 'center top',
+      icon: Layers
+    }
+  ]
+};
+
+function DigitalAI() {
+  return (
+    <div className="mt-10 lg:mt-14 rounded-3xl border border-slate-200 bg-[#F8FAFC] p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div>
+        <div className="flex items-center justify-between gap-3 text-[11px] font-mono">
+          <span className="font-bold text-[#8A1538]">CASE 05 · {digital.label.toUpperCase()}</span>
+        </div>
+        <h3 className="mt-3 text-[1.65rem] sm:text-4xl font-black tracking-tight text-[#0F294A] leading-[1.1]">{digital.title}</h3>
+        <p className="mt-2 text-[11px] font-mono font-bold uppercase tracking-widest text-[#008CD2]">{digital.period}</p>
+        <p className="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed">{digital.subtitle}</p>
+        <ol className="mt-6 border-t border-slate-200">
+          {digital.steps.map((step, idx) => (
+            <li key={step} className="grid grid-cols-[48px_1fr] items-center py-3.5 sm:py-4 border-b border-slate-200">
+              <span className="text-2xl sm:text-3xl font-black text-[#008CD2] leading-none">{String(idx + 1).padStart(2, '0')}</span>
+              <span className="text-[15px] sm:text-base font-semibold text-[#0F294A] leading-snug">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="space-y-4">
+        {digital.products.map(product => {
+          const Icon = product.icon;
+          return (
+            <article key={product.name} className="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+              <div className="aspect-[16/8] bg-slate-100 border-b border-slate-200 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  width={1600}
+                  height={800}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: product.position }}
+                />
+              </div>
+              <div className="p-5 sm:p-6 space-y-3">
+                <div className="flex items-center gap-3.5">
+                  <span className="w-11 h-11 rounded-full bg-[#0F294A] flex items-center justify-center shrink-0">
+                    <Icon size={20} className="text-white" />
+                  </span>
+                  <div>
+                    <h4 className="text-xl font-black text-[#0F294A] leading-tight">{product.name}</h4>
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#E53924]">{product.tag}</span>
+                  </div>
+                </div>
+                <p className="text-sm sm:text-[15px] text-slate-700 leading-relaxed">{product.description}</p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );
@@ -208,7 +279,7 @@ export default function SelectedCases({ onOpenCvModal }: SelectedCasesProps) {
             </button>
           ))}
 
-          <div className="rounded-2xl bg-[#0F294A] text-white p-5 sm:p-6 flex flex-col justify-between gap-5">
+          <div className="sm:col-span-2 rounded-2xl bg-[#0F294A] text-white p-5 sm:p-6 flex flex-col justify-between gap-5">
             <div>
               <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#FFC20E]">Visão completa</span>
               <p className="text-lg font-black leading-snug mt-2">Todas as experiências, formação e competências em um só lugar.</p>
@@ -223,6 +294,8 @@ export default function SelectedCases({ onOpenCvModal }: SelectedCasesProps) {
             </button>
           </div>
         </div>
+
+        <DigitalAI />
 
         <p className="mt-8 text-xs text-slate-500 text-center">
           Métricas aproximadas, referentes a projetos e experiências profissionais de Diego Moraes em seus respectivos contextos.

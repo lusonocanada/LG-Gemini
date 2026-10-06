@@ -7,7 +7,7 @@ import {
   Mail,
   Linkedin,
   MapPin,
-  Printer,
+  Download,
   Copy,
   Check,
   Phone
@@ -34,8 +34,6 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
       setCopiedEmail(false);
     }
   };
-
-  const handlePrint = () => window.print();
 
   return (
     <AnimatePresence>
@@ -74,13 +72,14 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               </div>
 
               <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrint}
-                  className="inline-flex items-center gap-1.5 px-5 py-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+                <a
+                  href="/cv-diego-moraes-lg.pdf"
+                  download="CV - Diego Moraes - LG.pdf"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer rounded-full shadow-xs hover:shadow-md"
                 >
-                  <Printer size={13} />
-                  <span>Imprimir / PDF</span>
-                </button>
+                  <Download size={13} />
+                  <span>Baixar PDF</span>
+                </a>
                 <button
                   onClick={onClose}
                   className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 rounded-full transition-colors cursor-pointer"
@@ -101,7 +100,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   />
                   <div>
                     <h1 id="resume-drawer-title" className="text-2xl sm:text-3xl font-black text-[#0F294A] tracking-tight">
-                      Diego Moraes da Silva
+                      Diego Moraes
                     </h1>
                     <p className="text-sm font-bold text-[#008CD2] mt-1">
                       Recursos Humanos Sênior · HR Transformation · HR Tech & Applied AI · People Analytics · HR Operations & CSC

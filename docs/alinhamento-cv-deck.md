@@ -61,10 +61,13 @@ Estes itens estavam no site, mas **não estão no CV**. Foram retirados para man
 - Toolkit detalhado: MS Project, Jira, Trello, Asana, SQL, Python, APIs, Make, Supabase, Access/VBA, TMI/IBM, S2P. Ficou a lista de Ferramentas do CV.
 - Safra: "apoiar diretamente o Diretor de RH" e "responsabilidade pelas operações de Admissão e Onboarding". O CV diz "apoiar a agenda de transformação da Diretoria de RH".
 
-## Pendentes: decisão do Diego
+## Decisões do Diego (outubro de 2026)
 
-1. **Nome**: o currículo interno usa "Diego Moraes da Silva"; o CV e o Deck usam "Diego Moraes".
-2. **Método**: o site tem 5 passos (Entender → Alinhar → Construir → Entrar em operação → Estabilizar). O slide 10 do Deck tem 6 (Diagnóstico → Processo → Dados → Automação → Produto digital → IA aplicada). Não se contradizem, mas o ideal é um só método, ou deixar claro que o do Deck é o da fase de consultoria.
-3. **People Systems Brief**: no Deck tem um slide próprio (11) e no CV uma seção própria. No site aparece só como evidência e no currículo. Pode virar um bloco curto na home, com as 6 edições e o link.
-4. **Competências e formação**: os slides 12 e 13 do Deck não têm equivalente na home, apenas no currículo. Está adequado para o site, salvo se você quiser um resumo visível sem abrir o currículo.
-5. **PDF do CV**: o botão de imprimir gera o currículo a partir do HTML. Se preferir oferecer exatamente o PDF diagramado, basta colocá-lo em `public/` e trocar o botão por "Baixar CV (PDF)".
+1. **Nome**: "Diego Moraes" em todo o site, como no CV e no Deck.
+2. **Método**: fica o de 5 passos do site; o método de 6 etapas do Deck não entra.
+3. **People Systems Brief**: sem bloco próprio na home; segue no currículo e como evidência.
+4. **PDF do CV**: o arquivo diagramado está em `public/cv-diego-moraes-lg.pdf`, com botões "Baixar PDF" no currículo e "Baixar CV (PDF)" no Contato.
+
+## Case 05 · Transformação Digital e IA
+
+Copiado da seção de mesmo nome em diegomoraes.me (`components/DigitalAI.tsx` e `data/profileData.ts` do repositório `lusonocanada/diegomoraes`): texto, período, as 4 etapas e os produtos The Lusim e FreelaDeck, com as capturas convertidas de PNG (1,3 MB e 2 MB) para WebP de 1.600 px (94 kB e 76 kB) e os ícones Rocket e Layers. Substitui o antigo Case 05 "IA aplicada e prototipação", que repetia o mesmo conteúdo. O monograma DM não foi trazido, porque esta apresentação usa a identidade da LG.

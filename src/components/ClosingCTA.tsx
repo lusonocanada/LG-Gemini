@@ -1,4 +1,4 @@
-import { FileText, Phone, Linkedin, MapPin, Mail } from 'lucide-react';
+import { Download, FileText, Phone, Linkedin, MapPin, Mail } from 'lucide-react';
 import LGChromaticBar from './LGChromaticBar';
 
 interface ClosingCTAProps {
@@ -44,6 +44,15 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
             <FileText size={16} />
             <span>Ver currículo</span>
           </button>
+
+          <a
+            href="/cv-diego-moraes-lg.pdf"
+            download="CV - Diego Moraes - LG.pdf"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-100 text-[#0F294A] text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg"
+          >
+            <Download size={16} />
+            <span>Baixar CV (PDF)</span>
+          </a>
 
           {/* 2. Conversar no WhatsApp */}
           <a
