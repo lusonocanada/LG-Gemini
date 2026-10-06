@@ -50,7 +50,7 @@ export default function Trajetoria() {
       location: 'São Paulo, Brasil',
       color: '#F58220',
       headline: 'PMO de RH, PeopleSoft e jornadas digitais que ganharam velocidade.',
-      description: 'Estruturação do HR PMO, priorização de carteira, admissão digital com redução aproximada de 60% no ciclo e redesenho do desligamento com redução aproximada de 50% no processamento.',
+      description: 'Estruturação do HR PMO, priorização de carteira, admissão digital com redução aproximada de 55% no ciclo e redesenho do desligamento com redução aproximada de 50% no processamento.',
       deliverables: [
         'Metodologia de PMO e rituais executivos',
         'Admissão digital no PeopleSoft',
@@ -77,15 +77,15 @@ export default function Trajetoria() {
       id: 'digital-ai',
       period: '2025 – Atual',
       company: 'Consultoria e soluções digitais',
-      role: 'Transformação, prototipação e IA aplicada',
+      role: 'HR Transformation, produtos digitais e IA aplicada',
       location: 'São Paulo, Brasil',
       color: '#8A1538',
-      headline: 'IA aplicada, prototipação e resolução de problemas operacionais.',
-      description: 'Diagnóstico, redesenho de processos, dashboards, automação e protótipos voltados a problemas reais de negócio e RH.',
+      headline: 'Do problema de RH à solução: processos, dados, automação e IA aplicada.',
+      description: 'Diagnóstico, redesenho de processos, dashboards, automação, produtos digitais e IA aplicada a problemas reais de negócio e RH, com pesquisa autoral sobre HR Tech e futuro do trabalho.',
       deliverables: [
-        'Diagnóstico e prototipação',
-        'Organização de dados e automação',
-        'Desenho de experiência'
+        'Diagnóstico e desenho de processos',
+        'People Analytics, dados e automação',
+        'Produtos digitais e IA aplicada'
       ]
     }
   ];
