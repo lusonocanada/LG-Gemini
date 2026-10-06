@@ -28,13 +28,11 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'Visão', href: '#visao' },
-    { label: 'Resultados', href: '#resultados' },
     { label: 'Trajetória', href: '#trajetoria' },
     { label: 'Cases', href: '#cases' },
-    { label: 'Método', href: '#metodo' },
-    { label: 'Aderência', href: '#aderencia' },
+    { label: 'Como trabalho', href: '#metodo' },
     { label: 'Por que LG', href: '#porque-lg' },
+    { label: 'Contato', href: '#contato' },
   ];
 
   return (
@@ -103,7 +101,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 }`}
               >
                 <FileText size={13} className="text-[#FFC20E]" />
-                <span className="hidden min-[400px]:inline">Ver perfil completo</span><span className="min-[400px]:hidden">Perfil</span>
+                <span className="hidden min-[400px]:inline">Ver currículo</span><span className="min-[400px]:hidden">CV</span>
               </button>
 
               <button
@@ -150,7 +148,7 @@ export default function Header({ onOpenCvModal }: HeaderProps) {
                 className="w-full flex items-center justify-center gap-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold py-3 rounded-full transition-colors shadow-xs"
               >
                 <FileText size={14} />
-                <span>Ver perfil completo</span>
+                <span>Ver currículo</span>
               </button>
             </div>
           </div>

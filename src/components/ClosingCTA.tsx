@@ -7,7 +7,7 @@ interface ClosingCTAProps {
 
 export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
   return (
-    <section className="py-20 lg:py-28 bg-[#0F294A] text-white relative border-t-2 border-b border-slate-800 overflow-hidden">
+    <section id="contato" className="py-16 sm:py-20 lg:py-28 bg-[#0F294A] text-white relative border-t-2 border-b border-slate-800 overflow-hidden">
       
       {/* Top Chromatic Bar */}
       <div className="absolute top-0 left-0 right-0 z-20">
@@ -34,15 +34,15 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
         </div>
 
         {/* 3 Executive CTAs */}
-        <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-4 mb-16">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
           
-          {/* 1. Ver perfil completo */}
+          {/* 1. Ver currículo */}
           <button
             onClick={event => { event.currentTarget.focus(); onOpenCvModal(); }}
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
           >
             <FileText size={16} />
-            <span>Ver perfil completo</span>
+            <span>Ver currículo</span>
           </button>
 
           {/* 2. Conversar no WhatsApp */}
@@ -50,7 +50,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
             href="https://wa.me/5511932211288"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#F58220] hover:bg-[#E53924] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#F58220] hover:bg-[#E53924] text-white text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-lg hover:shadow-xl active:scale-98"
           >
             <Phone size={16} />
             <span>Conversar no WhatsApp</span>
@@ -61,7 +61,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
             href="https://www.linkedin.com/in/diegomoraes87/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#14263D] hover:bg-[#1E3A5F] text-white border border-slate-700 hover:border-slate-500 text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#14263D] hover:bg-[#1E3A5F] text-white border border-slate-700 hover:border-slate-500 text-xs font-mono font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full shadow-md hover:shadow-lg"
           >
             <Linkedin size={16} className="text-[#00A3E0]" />
             <span>Conectar no LinkedIn</span>
@@ -99,7 +99,7 @@ export default function ClosingCTA({ onOpenCvModal }: ClosingCTAProps) {
             </div>
 
             <div className="sm:pl-6 pt-4 sm:pt-0 space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8A1538] font-bold block">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#F58220] font-bold block">
                 E-MAIL
               </span>
               <p className="text-sm font-bold text-white flex items-center gap-2">

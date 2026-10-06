@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useDialog } from '../hooks/useDialog';
-import { Phone, Mail, Linkedin, MapPin, ArrowUp, FileText, X, ExternalLink } from 'lucide-react';
+import { ArrowUp, FileText, X, ExternalLink } from 'lucide-react';
 import LGLogo from './LGLogo';
 import LGChromaticBar from './LGChromaticBar';
 
@@ -70,13 +70,11 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
   };
 
   const navLinks = [
-    { label: 'Visão', href: '#visao' },
-    { label: 'Resultados', href: '#resultados' },
     { label: 'Trajetória', href: '#trajetoria' },
     { label: 'Cases', href: '#cases' },
-    { label: 'Método', href: '#metodo' },
-    { label: 'Aderência', href: '#aderencia' },
+    { label: 'Como trabalho', href: '#metodo' },
     { label: 'Por que LG', href: '#porque-lg' },
+    { label: 'Contato', href: '#contato' },
   ];
 
   return (
@@ -87,8 +85,8 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
-            <div className="lg:col-span-5 space-y-4">
+          <div className="pb-10 border-b border-slate-800">
+            <div className="max-w-3xl space-y-4">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="font-extrabold text-lg tracking-tight text-white">
                   DIEGO MORAES
@@ -119,7 +117,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
                   className="inline-flex items-center gap-2 bg-[#008CD2] hover:bg-[#0072CE] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors uppercase tracking-wider cursor-pointer shadow-xs"
                 >
                   <FileText size={14} />
-                  <span>Ver perfil completo</span>
+                  <span>Ver currículo</span>
                 </button>
 
                 <button
@@ -140,58 +138,6 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#00A3E0] block mb-2">
-                Contato Direto
-              </span>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <a
-                  href="https://wa.me/5511932211288"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#F58220] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Phone size={15} className="text-[#F58220] shrink-0" />
-                  <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-mono">WhatsApp</span>
-                    <span className="font-bold text-white">+55 11 93221-1288</span>
-                  </div>
-                </a>
-
-                <a
-                  href="mailto:mvdigo@gmail.com"
-                  className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#008CD2] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Mail size={15} className="text-[#008CD2] shrink-0" />
-                  <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-mono">E-mail</span>
-                    <span className="font-bold text-white">mvdigo@gmail.com</span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/diegomoraes87/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#00A3E0] border-t border-r border-b border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Linkedin size={15} className="text-[#00A3E0] shrink-0" />
-                  <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-mono">LinkedIn</span>
-                    <span className="font-bold text-white">linkedin.com/in/diegomoraes87</span>
-                  </div>
-                </a>
-
-                <div className="flex items-center gap-2.5 p-3.5 bg-[#14263D] border-l-2 border-l-[#FFC20E] border-t border-r border-b border-slate-700 text-slate-300">
-                  <MapPin size={15} className="text-[#FFC20E] shrink-0" />
-                  <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-mono">Localização</span>
-                    <span className="font-bold text-white">São Paulo, SP · Brasil</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="pt-6 border-b border-slate-800 pb-6">

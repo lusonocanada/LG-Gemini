@@ -1,5 +1,7 @@
 # Imagens de contexto
 
+> Atualização (outubro de 2026): após a auditoria em `docs/auditoria-ux-ui.md`, só `trajetoria-canada.webp` e `trajetoria-digital.webp` continuam em uso, junto com as fotos dos bancos. As demais foram removidas por duplicarem outras imagens ou por serem genéricas demais para o tema.
+
 Geradas pela ferramenta integrada image_gen. Conversão local para WebP, qualidade 78, largura 1.600 px. As imagens ilustram contextos e não documentam projetos ou clientes. Foto pessoal e logo oficial preservados.
 
 

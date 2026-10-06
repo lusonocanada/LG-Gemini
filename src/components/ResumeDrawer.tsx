@@ -95,7 +95,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               <div className="pb-6 border-b border-slate-200">
                 <div className="flex items-center gap-4">
                   <img
-                    src="/hero-photo2.png"
+                    src="/hero-photo2.webp"
                     alt="Diego Moraes"
                     className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover object-[center_15%] border-2 border-[#008CD2] shadow-sm shrink-0"
                   />

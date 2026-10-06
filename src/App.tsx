@@ -3,12 +3,9 @@ import { MotionConfig } from 'motion/react';
 import { useMotionPreference } from './hooks/useMotionPreference';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import HRVision from './components/HRVision';
-import Metrics from './components/Metrics';
 import Trajetoria from './components/Trajetoria';
 import SelectedCases from './components/SelectedCases';
 import WorkingMethodology from './components/WorkingMethodology';
-import ExecutiveFit from './components/ExecutiveFit';
 import WhyLG from './components/WhyLG';
 import ClosingCTA from './components/ClosingCTA';
 import Footer from './components/Footer';
@@ -16,12 +13,18 @@ import SplashScreen from './components/SplashScreen';
 import ResumeDrawer from './components/ResumeDrawer';
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  // A abertura aparece uma vez por sessão; recarregar ou voltar à página leva direto ao conteúdo.
+  const [showSplash, setShowSplash] = useState(() => {
+    try { return sessionStorage.getItem('splash-seen') !== '1'; } catch { return true; }
+  });
   const [showCvModal, setShowCvModal] = useState(false);
 
   const reduced = useMotionPreference();
   const closeCv = useCallback(() => setShowCvModal(false), []);
-  const finishSplash = useCallback(() => setShowSplash(false), []);
+  const finishSplash = useCallback(() => {
+    try { sessionStorage.setItem('splash-seen', '1'); } catch { /* armazenamento indisponível */ }
+    setShowSplash(false);
+  }, []);
 
   return (
     <MotionConfig reducedMotion="user" transition={reduced ? { duration: 0, delay: 0 } : undefined}>
@@ -35,12 +38,9 @@ export default function App() {
 
             <main>
               <Hero onOpenCvModal={() => setShowCvModal(true)} />
-              <HRVision />
-              <Metrics />
               <Trajetoria />
-              <SelectedCases />
+              <SelectedCases onOpenCvModal={() => setShowCvModal(true)} />
               <WorkingMethodology />
-              <ExecutiveFit />
               <WhyLG />
               <ClosingCTA onOpenCvModal={() => setShowCvModal(true)} />
             </main>

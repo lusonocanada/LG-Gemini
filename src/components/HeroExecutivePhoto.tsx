@@ -7,11 +7,11 @@ export default function HeroExecutivePhoto() {
         <LGChromaticBar size="xs" />
       </div>
 
-      <div className="relative rounded-2xl overflow-hidden bg-[#0F294A] min-h-[520px] sm:min-h-[600px] lg:min-h-[640px] flex flex-col justify-end">
+      <div className="relative rounded-2xl overflow-hidden bg-[#0F294A] min-h-[440px] sm:min-h-[560px] lg:min-h-[640px] flex flex-col justify-end">
         <img
-          src="/hero-photo2.png"
+          src="/hero-photo2.webp"
           alt="Diego Moraes"
-          className="hero-cinematic-photo w-full h-[520px] sm:h-[600px] lg:h-[640px] object-cover object-[center_12%]"
+          className="hero-cinematic-photo w-full h-[440px] sm:h-[560px] lg:h-[640px] object-cover object-[center_12%]"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1929]/95 via-[#0C1929]/30 to-transparent pointer-events-none" />
@@ -39,7 +39,7 @@ export default function HeroExecutivePhoto() {
               <span>Ecossistemas de RH</span>
             </span>
             <span className="font-mono text-slate-300 px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-[10px]">
-              15+ anos de experiência
+              18 anos de experiência
             </span>
           </div>
         </div>
