@@ -98,7 +98,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
-                Apresentação executiva e proposta de valor profissional direcionada à <strong>LG Lugar de Gente</strong>. Transformação de RH, implantação de plataformas corporativas, governança de processos e inteligência artificial aplicada.
+                Apresentação executiva e proposta de valor profissional direcionada à <strong>LG Lugar de Gente</strong>. HR Transformation, HR Tech, People Analytics, operações, governança, produtos digitais e IA aplicada.
               </p>
 
               <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
@@ -199,13 +199,13 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
               Documento de caráter privado, confidencial e não comercial
             </p>
             <p className="text-[10px] sm:text-[11px] text-slate-500 leading-relaxed max-w-6xl">
-              Material destinado exclusivamente a processo seletivo, avaliação de candidatura e apresentação profissional a colaboradores da LG Lugar de Gente. O conteúdo reúne produção autoral e referências visuais inspiradas em materiais públicos disponibilizados pela LG Lugar de Gente em seus canais institucionais. Marcas, logotipos, nomes empresariais, identidade visual, paleta cromática, elementos gráficos e demais sinais distintivos eventualmente reproduzidos ou mencionados permanecem de titularidade de seus respectivos detentores e são utilizados unicamente para contextualização da candidatura, sem alegação de afiliação oficial, endosso, patrocínio, aprovação institucional ou finalidade comercial, publicitária ou de divulgação pública.
+              Material destinado exclusivamente a apresentação profissional, avaliação de perfil e circulação interna entre colaboradores da LG Lugar de Gente. O conteúdo reúne produção autoral e referências visuais inspiradas em materiais públicos disponibilizados pela LG Lugar de Gente em seus canais institucionais. Marcas, logotipos, nomes empresariais, identidade visual, paleta cromática, elementos gráficos e demais sinais distintivos eventualmente reproduzidos ou mencionados permanecem de titularidade de seus respectivos detentores e são utilizados unicamente para contextualização da candidatura, sem alegação de afiliação oficial, endosso, patrocínio, aprovação institucional ou finalidade comercial, publicitária ou de divulgação pública.
             </p>
           </div>
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 leading-relaxed">
             <p className="max-w-3xl">
-              Uso restrito ao contexto desta candidatura e às pessoas diretamente envolvidas em sua avaliação.
+              Uso restrito ao contexto desta apresentação profissional e às pessoas diretamente envolvidas em sua avaliação.
             </p>
             <span className="shrink-0 text-slate-400 font-mono text-xs">
               © {new Date().getFullYear()} Diego Moraes
