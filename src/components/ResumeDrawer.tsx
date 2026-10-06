@@ -104,7 +104,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                       Diego Moraes da Silva
                     </h1>
                     <p className="text-sm font-bold text-[#008CD2] mt-1">
-                      Gerente de Projetos · Implantação HCM · HR Tech · PMO · Stakeholders · Change Management
+                      HR Transformation · HR Tech & Applied AI · People Analytics · HR Operations
                     </p>
                   </div>
                 </div>
@@ -139,20 +139,20 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-2">Resumo Executivo</h2>
                 <p className="text-sm text-slate-700 leading-relaxed text-justify">
-                  Gerente de Projetos e profissional sênior de Recursos Humanos com 15+ anos de experiência em ambientes corporativos complexos, conduzindo iniciativas na interseção entre projetos, processos de RH, sistemas HCM, operação e experiência do cliente. Histórico em implantação e evolução de PeopleSoft, Workday, SAP/ERP, eSocial e plataformas digitais de Talent Acquisition, com governança de escopo, cronograma, riscos, mudanças, orçamento, indicadores e reports executivos. Atuação direta com Diretoria, Vice-Presidência, TI, Operações, fornecedores e usuários, coordenando equipes multidisciplinares e múltiplas frentes simultaneamente. Forte comunicação executiva, negociação, tomada de decisão e gestão de stakeholders. Diferencial para a LG: vivência real nos processos de RH/HCM que o cliente precisa parametrizar, implantar, adotar e operar após o go-live.
+                  Profissional sênior de Recursos Humanos com 18 anos de trajetória no Brasil e no Canadá, atuando na transformação de operações, decisões e experiências de pessoas na interseção entre estratégia, processos, dados e tecnologia. Experiência em HR Transformation, HR Operations, People Analytics, Talent Acquisition, Workforce Planning, HR PMO e HR Tech, com passagens por Santander e Banco Safra. Hoje amplia esse repertório com automação, produtos digitais e IA aplicada, conectando problemas reais de RH a processos, dados, sistemas e soluções executáveis.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Aderência à vaga · LG Lugar de Gente</h2>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Convergência profissional · LG Lugar de Gente</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {[
-                    'Implantação de software: PeopleSoft, Workday, eSocial, SAP/ERP e plataforma digital de seleção.',
-                    'Gestão de projeto: escopo, prazo, orçamento, riscos, mudanças, dependências, indicadores e reports.',
-                    'Stakeholders: comitês executivos, steering, liderança, clientes, usuários, TI, Operações e fornecedores.',
-                    'Frentes simultâneas: coordenação de equipes multidisciplinares e portfólios de transformação em bancos.',
-                    'HCM / RH: admissão, onboarding, desligamento, Talent Acquisition, CSC, indicadores e planejamento.',
-                    'Melhoria contínua: digitalização, automação, autosserviço, PDCA, redesign de processos e experiência.'
+                    'HR Tech: experiência concreta com PeopleSoft, Workday, eSocial, autosserviço e plataformas digitais de Talent Acquisition.',
+                    'Transformação: diagnóstico, processos, governança, portfólio, riscos, adoção e acompanhamento de resultados.',
+                    'Governança: interface com vice-presidência, comitês executivos, lideranças, Tecnologia, Operações e fornecedores.',
+                    'People Analytics: Data Warehouse, Power BI, modelos preditivos, mobilidade interna e suporte à decisão em escala.',
+                    'Operações e jornadas: CSC, admissão, onboarding, desligamento, Talent Acquisition e workforce planning.',
+                    'IA aplicada: automação, produtos digitais, prototipação e pesquisa autoral no People Systems Brief.'
                   ].map((text, idx) => (
                     <div key={idx} className="p-3 bg-[#F8FAFC] border-l-2 border-l-[#008CD2] border-t border-r border-b border-slate-200 text-xs text-slate-800 font-medium leading-relaxed">
                       {text}
@@ -166,15 +166,15 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                 <div className="space-y-4">
                   <Experience
                     color="#8A1538"
-                    title="Consultor de Transformação Digital | Freelance | Self-Employed"
+                    title="Consultor de Transformação de RH, Processos e IA Aplicada"
                     period="06/2025 – atual"
                     location="São Paulo, SP"
-                    intro="Atuação independente em projetos de transformação, HR Tech, melhoria de processos, automação e produtos digitais, conectando necessidade de negócio, execução e tecnologia."
+                    intro="Atuação independente em HR Transformation, processos, People Analytics, automação, produtos digitais e IA aplicada, conectando necessidades de negócio, experiência do usuário e tecnologia."
                     bullets={[
                       'Condução de projetos do diagnóstico à entrega, estruturando roadmaps, requisitos, prioridades, cronogramas, indicadores e mecanismos de governança.',
                       'Tradução de necessidades funcionais em jornadas, dashboards, MVPs e soluções testáveis, atuando como ponte entre negócio, usuários e Tecnologia.',
-                      'Entrega de dashboards, sistemas web, CRMs, plataformas de gestão e automações com React, Next.js, Python, APIs, Supabase e IA aplicada.',
-                      'Projetos executados incluem Dashboard People Analytics com IA, The Lusim, CanadaVistos, Freelance Cockpit, Business Intelligence Overview e ferramentas de gestão.'
+                      'Desenvolvimento de dashboards, CRMs, workflows, automações e produtos digitais aplicados a necessidades de RH e operações.',
+                      'Construção de produtos digitais como The Lusim e FreelaDeck e produção autoral no People Systems Brief sobre HR Tech, People Analytics, agentes de IA e futuro do trabalho.'
                     ]}
                   />
 
@@ -188,7 +188,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                       'Estruturação da governança de portfólio: escopo, cronogramas, riscos, dependências, recursos, prioridades, mudanças e planos de ação.',
                       'Condução de reuniões de status, steering updates e reports executivos; interface entre RH, Tecnologia, Operações e PMO corporativo.',
                       'Liderança de equipe multidisciplinar e responsabilidade pelas operações de Admissão e Onboarding.',
-                      'Digitalização do processo de admissão em PeopleSoft, reduzindo aproximadamente 60% o tempo de contratação.',
+                      'Digitalização do processo de admissão em PeopleSoft, reduzindo aproximadamente 55% o ciclo de admissão.',
                       'Redesenho do desligamento em PeopleSoft, reduzindo aproximadamente 50% o tempo de processamento.',
                       'Implantação multidisciplinar do eSocial, expansão de autosserviço e modernização de canais e processos de RH.'
                     ]}
@@ -235,7 +235,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Resultados Selecionados</h2>
                 <ul className="space-y-2 text-xs text-slate-700 leading-relaxed list-disc pl-5">
-                  <li>60% de redução no tempo de contratação após digitalização da admissão no Banco Safra.</li>
+                  <li>55% de redução aproximada no ciclo de admissão, de 22 para 10 dias, após digitalização no Banco Safra.</li>
                   <li>50% de redução no tempo de processamento de desligamentos após redesenho em PeopleSoft.</li>
                   <li>R$ 10 milhões de redução aproximada de custos operacionais em 12 meses na transformação de Talent Acquisition do Santander.</li>
                   <li>~50 mil colaboradores considerados em iniciativa de mobilidade interna apoiada por algoritmo e People Analytics.</li>
@@ -244,7 +244,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               </section>
 
               <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Modelo de Condução de Implantação</h2>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Modelo de Condução da Transformação</h2>
                 <ol className="space-y-2 text-xs text-slate-700 leading-relaxed list-decimal pl-5">
                   <li><strong>Kick-off e escopo:</strong> alinhamento de expectativa, premissas, papéis, entregáveis e critérios de aceite.</li>
                   <li><strong>Plano e cronograma:</strong> WBS, marcos, dependências, capacidade de time, orçamento e baseline.</li>
@@ -255,10 +255,10 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
               </section>
 
               <section>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">Project Management, HCM & Digital Toolkit</h2>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#1B4E9B] mb-3">HR Transformation, HR Tech & Digital Toolkit</h2>
                 <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-700">
                   <Toolkit label="Gestão de projetos" text="MS Project | Jira | Trello | Asana | Excel Avançado | PMO | WBS | Risk & Change Management" />
-                  <Toolkit label="HCM / HR Tech" text="PeopleSoft | Workday | SAP SuccessFactors | LG Gente | eSocial | plataformas digitais de Talent Acquisition" />
+                  <Toolkit label="HCM / HR Tech" text="PeopleSoft | Workday | eSocial | HRIS | plataformas digitais de Talent Acquisition" />
                   <Toolkit label="Dados & reports" text="Power BI | SQL | Data Warehouse | Excel/VBA | indicadores | dashboards | reporting executivo" />
                   <Toolkit label="Automação & IA" text="Python | APIs | Make | Supabase | IA aplicada | automação de processos | prototipagem" />
                 </div>
